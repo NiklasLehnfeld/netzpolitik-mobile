@@ -345,6 +345,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.3"
+  paging:
+    dependency: "direct main"
+    description:
+      name: paging
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   path:
     dependency: transitive
     description:

@@ -1,39 +1,47 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:paging/paging.dart';
 import 'package:provider/provider.dart';
 import 'package:wordpress_blog_app_template/models/article.dart';
 import 'package:wordpress_blog_app_template/rest/RestClient.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_progress_indicator.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/articles/article_list_entry.dart';
 
+const LIST_ITEM_SPACING = 15.0;
 
-const LIST_ITEM_SPACING = 10.0;
-
-class ArticlesWidget extends StatelessWidget {
+class ArticlesWidget extends StatefulWidget {
 
   const ArticlesWidget();
 
   @override
+  _ArticlesWidgetState createState() => _ArticlesWidgetState();
+}
+
+class _ArticlesWidgetState extends State<ArticlesWidget> {
+
+  RestClient restClient;
+
+  @override
+  void initState() {
+    restClient = context.read<RestClient>();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
 
-    var restClient = context.watch<RestClient>();
-
-    return FutureBuilder(
-      future: restClient.fetchArticles(),
-      builder: (context, snapshot) {
-
-        if (!snapshot.hasData) {
-          return WPProgressIndicator();
-        }
-
-        var articles = snapshot.data as List<Article>;
-
-        return ListView.separated(
-          itemCount: articles.length,
-          itemBuilder: (context, index) => ArticleListEntry(articles[index]),
-          separatorBuilder: (context, index) => SizedBox(height: LIST_ITEM_SPACING),
-        );
-      },
+    return Pagination<Article>(
+      pageBuilder: (currentListSize) => loadData(context, currentListSize),
+      itemBuilder: (index, article) => Container(
+        child: ArticleListEntry(article),
+        margin: EdgeInsets.only(bottom: LIST_ITEM_SPACING),
+      )
     );
+  }
+
+  Future<List<Article>> loadData(BuildContext context, int currentListSize) async {
+
+    var page = currentListSize ~/ restClient.pageSize + 1;
+
+    return restClient.fetchArticles(page: page);
   }
 }

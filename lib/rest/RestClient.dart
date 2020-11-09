@@ -3,6 +3,7 @@ import 'package:wordpress_blog_app_template/models/article.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+const PAGE_SIZE = 10;
 
 class RestClient {
 
@@ -12,8 +13,8 @@ class RestClient {
 
   RestClient(this.configuration);
 
-  Future<List<Article>> fetchArticles() async {
-    var url = '$baseUrl/wp-json/wp/v2/posts?_embed';
+  Future<List<Article>> fetchArticles({int page = 1}) async {
+    var url = '$baseUrl/wp-json/wp/v2/posts?_embed&page_size=$PAGE_SIZE&page=$page';
     var response = await http.get(url);
 
     assert (response.statusCode == 200, 'Error while fetching posts from $url, http code: ${response.statusCode}, error: ${response.body}');
@@ -25,5 +26,7 @@ class RestClient {
 
     return articles;
   }
+
+  int get pageSize => PAGE_SIZE;
 
 }
