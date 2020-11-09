@@ -21,6 +21,7 @@ dependencies:
 
   cupertino_icons:
   font_awesome_flutter:
+  html_unescape:
 
 dev_dependencies:
   flutter_test:

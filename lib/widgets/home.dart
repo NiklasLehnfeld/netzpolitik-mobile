@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_appbar.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_bottom_navigation_bar.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/articles_widget.dart';
+import 'package:wordpress_blog_app_template/widgets/dashboard/articles/articles_widget.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/settings_widget.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/topics_widget.dart';
 

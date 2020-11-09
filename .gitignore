@@ -96,6 +96,7 @@ proguard/
 *.log
 
 # Android Studio
+.idea
 /*/build/
 /*/local.properties
 /*/out
