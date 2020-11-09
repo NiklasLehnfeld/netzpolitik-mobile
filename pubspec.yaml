@@ -15,9 +15,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  cupertino_icons:
-
   provider:
+  json_annotation:
+  http:
+
+  cupertino_icons:
   font_awesome_flutter:
 
 dev_dependencies:
@@ -26,6 +28,8 @@ dev_dependencies:
 
   pedantic:
   effective_dart:
+  json_serializable:
+  build_runner:
 
 flutter:
   uses-material-design: true

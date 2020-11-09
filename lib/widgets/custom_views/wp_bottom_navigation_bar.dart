@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wordpress_blog_app_template/extensions/ContextExt.dart';
+import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 
 class WPBottomNavigationBar extends StatefulWidget {
 

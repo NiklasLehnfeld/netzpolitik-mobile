@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wordpress_blog_app_template">
-   <application
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
         android:label="wordpress_blog_app_template"
         android:icon="@mipmap/ic_launcher">
         <activity

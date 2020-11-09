@@ -1,16 +1,18 @@
 # wordpress_blog_app_template
 
-A new Flutter project.
+📚 A generic flutter app template for wordpress apps using [Wordpress Rest API](https://developer.wordpress.org/rest-api/)
 
-## Getting Started
+## Serialization
 
-This project is a starting point for a Flutter application.
+The model serialization is done by the [json_serializable](https://pub.dev/packages/json_serializable) plugin, which uses [json_annotation](https://pub.dev/packages/json_annotation) to generate `{file_name}.g.dart` files, which contains the generated json serialization code.
+A detailed how-to for this can be found [here](https://flutter.dev/docs/development/data-and-backend/json)
 
-A few resources to get you started if this is your first Flutter project:
+For a one-time generation of the serialization code run:
+```
+flutter pub run build_runner build --delete-conflicting-outputs
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For starting a `watcher` who automatically regenerates the code after saving changes run:
+```
+flutter pub run build_runner watch --delete-conflicting-outputs
+```
