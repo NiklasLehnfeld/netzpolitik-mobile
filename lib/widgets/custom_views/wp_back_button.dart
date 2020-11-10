@@ -12,7 +12,7 @@ class WPBackButton extends StatelessWidget {
       onPressed: () => Navigator.pop(context),
       icon: FaIcon(
         FontAwesomeIcons.arrowCircleLeft,
-        color: Colors.grey[800],
+        color: context.iconButtonColor,
         size: ICON_SIZE,
       ),
     );

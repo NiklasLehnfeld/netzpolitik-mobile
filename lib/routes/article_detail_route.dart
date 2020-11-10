@@ -4,7 +4,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:wordpress_blog_app_template/models/article.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/extensions/int_ext.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_back_button.dart';
+import 'package:wordpress_blog_app_template/widgets/custom_views/wp_article_appbar.dart';
 
 class ArticleDetailRoute extends StatelessWidget {
   final Article article;
@@ -14,22 +14,15 @@ class ArticleDetailRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildSummaryArea(context),
-                  _buildImage(context),
-                  _buildContentArea(context)
-                ],
-              ),
-              WPBackButton()
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            WPArticleAppBar(article),
+            _buildSummaryArea(context),
+            _buildImage(context),
+            _buildContentArea(context)
+          ],
         ),
       ),
     );
@@ -50,21 +43,19 @@ class ArticleDetailRoute extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 50),
             _buildSubtitle(context),
             _buildTitle(context),
             Html(data: article.summary),
-            Row(
-              children: [
-                Text(creationDate, style: context.body2.copyWith( fontWeight: FontWeight.bold)),
-                Text(' - ', style: context.body2.copyWith( fontWeight: FontWeight.bold)),
-                Text(article.author.name, style: context.body2.copyWith( fontWeight: FontWeight.bold))
-              ],
-            ),
+            Text('$creationDate - $authorNames - in $categoryName - $numberOfReplies ${context.getString('replies')}', style: context.body2.copyWith( fontWeight: FontWeight.bold)),
             SizedBox(height: 12)
           ],
         ),
       );
+  
+  String get authorNames => article.authors.map((a) => a.name).join(', ');
+  String get categoryName => article.categories.first.name;
+
+  int get numberOfReplies => article.replies.length;
 
 
   Widget _buildTitle(BuildContext context) => Hero(
