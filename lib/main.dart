@@ -41,7 +41,7 @@ class WPApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          home: Home(title: appConfig.name),
+          home: Home(),
         );
       },
     );

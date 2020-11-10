@@ -39,5 +39,6 @@ flutter:
 
   assets:
     - localizations/
+    - assets/
 
 
