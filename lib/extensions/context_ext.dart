@@ -2,9 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wordpress_blog_app_template/localization/app_localizations.dart';
 
+const TRANSITION_DURATION = 100;
+
 extension ContextStringProvider on BuildContext {
 
   String getString(String key) => AppLocalizations.of(this).translate(key) ?? key;
+
+  void navigate(Widget Function(BuildContext) builder) => Navigator.of(this).push(
+      PageRouteBuilder(
+        pageBuilder: (context, __, _) => builder(context),
+        transitionDuration: Duration(milliseconds: TRANSITION_DURATION),
+        reverseTransitionDuration: Duration(milliseconds: TRANSITION_DURATION),
+      ),
+  );
+
 
   TextStyle get headline1 => Theme.of(this).textTheme.headline1;
   TextStyle get headline2 => Theme.of(this).textTheme.headline2;
@@ -17,5 +28,8 @@ extension ContextStringProvider on BuildContext {
   TextStyle get body2 => Theme.of(this).textTheme.bodyText2;
 
   Color get primaryColor => Theme.of(this).primaryColor;
+
+  double get width => MediaQuery.of(this).size.width;
+  double get statusBarHeight => MediaQuery.of(this).padding.top;
 
 }
