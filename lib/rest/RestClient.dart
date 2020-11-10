@@ -16,8 +16,13 @@ class RestClient {
 
   RestClient(this.configuration);
 
-  Future<List<Article>> fetchArticles({int page = 1}) async {
+  Future<List<Article>> fetchArticles({int page = 1, Category category}) async {
     var url = '$baseUrl/posts?_embed&page_size=$PAGE_SIZE&page=$page';
+
+    if (category != null) {
+      url = '$url&categories=${category.id}';
+    }
+
     var response = await _get(url);
 
     assert (response is List<dynamic>, 'Error while fetching posts from $url, unexpected response format: $response');

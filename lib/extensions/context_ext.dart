@@ -30,8 +30,10 @@ extension ContextStringProvider on BuildContext {
   Color get primaryColor => Theme.of(this).primaryColor;
   Color get scaffoldColor => Theme.of(this).scaffoldBackgroundColor;
   Color get iconButtonColor => Theme.of(this).primaryColor;
+  Color get dialogBackground => Theme.of(this).dialogBackgroundColor;
 
   double get width => MediaQuery.of(this).size.width;
+  double get height => MediaQuery.of(this).size.height;
   double get statusBarHeight => MediaQuery.of(this).padding.top;
 
 }

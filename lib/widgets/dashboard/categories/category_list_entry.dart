@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wordpress_blog_app_template/models/category.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_card.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
+import 'package:wordpress_blog_app_template/widgets/dashboard/categories/articles_bottom_sheet.dart';
 
 class CategoryListEntry extends StatelessWidget {
 
@@ -15,6 +16,7 @@ class CategoryListEntry extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: WPCard(
+        onTap: () => showArticles(context),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -32,6 +34,14 @@ class CategoryListEntry extends StatelessWidget {
       ),
     );
   }
+
+  void showArticles(BuildContext context) => showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => ArticlesBottomSheet(category),
+      isScrollControlled: true,
+  );
+
 
   Widget _buildDescription(BuildContext context) => Hero(
     tag: 'category-title-${category.id}',
