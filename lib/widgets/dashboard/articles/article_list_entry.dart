@@ -6,7 +6,6 @@ import 'package:wordpress_blog_app_template/routes/article_detail_route.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_card.dart';
 
 class ArticleListEntry extends StatelessWidget {
-
   final Article article;
   final Function onTap;
 
@@ -26,13 +25,9 @@ class ArticleListEntry extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildSubtitle(context),
-                  _buildTitle(context)
-                ],
+                children: [_buildSubtitle(context), _buildTitle(context)],
               ),
             ),
-
           ],
         ),
       ),
@@ -40,22 +35,18 @@ class ArticleListEntry extends StatelessWidget {
   }
 
   Widget _buildTitle(BuildContext context) => Hero(
-    tag: 'article-title-${article.id}',
-    child: Text(
-      article.title,
-      style: context.headline5.copyWith(color: Colors.black),
-    ),
-  );
+        tag: 'article-title-${article.id}',
+        child: Text(article.title,
+            style: context.headline5.copyWith(color: Colors.black)),
+      );
 
   Widget _buildSubtitle(BuildContext context) => Hero(
-    tag: 'article-subtitle-${article.id}',
-    child: Text(article.subTitle, style: context.headline6),
-  );
-  
+        tag: 'article-subtitle-${article.id}',
+        child: Text(article.subTitle, style: context.headline6),
+      );
+
   Widget _buildImage(BuildContext context) => Hero(
-    tag: 'article-thumbnail-${article.id}',
-    child: Image.network(
-      article.imageUrl
-    ),
-  );
+        tag: 'article-thumbnail-${article.id}',
+        child: Image.network(article.imageUrl),
+      );
 }

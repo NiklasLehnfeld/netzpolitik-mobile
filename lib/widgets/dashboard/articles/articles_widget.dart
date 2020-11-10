@@ -8,23 +8,9 @@ import 'package:wordpress_blog_app_template/widgets/dashboard/articles/article_l
 
 const LIST_ITEM_SPACING = 15.0;
 
-class ArticlesWidget extends StatefulWidget {
+class ArticlesWidget extends StatelessWidget {
 
   const ArticlesWidget();
-
-  @override
-  _ArticlesWidgetState createState() => _ArticlesWidgetState();
-}
-
-class _ArticlesWidgetState extends State<ArticlesWidget> {
-
-  RestClient restClient;
-
-  @override
-  void initState() {
-    restClient = context.read<RestClient>();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +26,14 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
 
   Future<List<Article>> loadData(BuildContext context, int currentListSize) async {
 
-    var page = currentListSize ~/ restClient.pageSize + 1;
+    var restClient = context.read<RestClient>();
 
-    return restClient.fetchArticles(page: page);
+    var page = (currentListSize / restClient.pageSize).ceil() + 1;
+
+    var result = await restClient.fetchArticles(page: page);
+
+    result = result.where((element) => element.imageUrl != null).toList();
+
+    return result;
   }
 }

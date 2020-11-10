@@ -38,7 +38,13 @@ class Article {
   factory Article.fromJson(Map json) {
     json['title'] = HtmlUnescape().convert(json['title']['rendered']);
     json['content'] = json['content']['rendered'];
-    json['imageUrl'] = json['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['thumbnail']['source_url'];
+
+    try {
+      json['imageUrl'] = json['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['thumbnail']['source_url'];
+    } catch(e) {
+      // ignore: empty_catches
+    }
+
     json['summary'] = HtmlUnescape().convert(json['excerpt']['rendered']);
     json['authors'] = json['_embedded']['author'];
 

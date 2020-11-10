@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_appbar.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_bottom_navigation_bar.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/articles/articles_widget.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/settings_widget.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/topics_widget.dart';
+import 'package:wordpress_blog_app_template/widgets/dashboard/categories/categories_widget.dart';
+import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 
 
 class Home extends StatefulWidget {
@@ -20,30 +20,42 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  final _children = [
-    BottomNavItemViewHolder(icon: FontAwesomeIcons.newspaper, titleKey: 'articles', child: ArticlesWidget(), selected: true),
-    BottomNavItemViewHolder(icon: FontAwesomeIcons.stream, titleKey: 'topics', child: TopicsWidget()),
-    BottomNavItemViewHolder(icon: FontAwesomeIcons.tools, titleKey: 'settings', child: SettingsWidget()),
-  ];
-
-  WPBottomNavigationBar bottomNavigationBar;
-
-  @override
-  void initState() {
-    bottomNavigationBar = WPBottomNavigationBar(
-      children: _children,
-      onTabChanged: (child) => setState(() {}),
-    );
-    super.initState();
-  }
-
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WPAppBar(widget.title),
-      bottomNavigationBar: bottomNavigationBar,
-      body: bottomNavigationBar.currentItem.child
+      bottomNavigationBar: BottomNavigationBar(
+          elevation: 8.0,
+          showUnselectedLabels: false,
+          currentIndex: _currentIndex,
+          items: BOTTOM_NAV_ITEMS.map((viewHolder) => BottomNavigationBarItem(
+              label: context.getString(viewHolder.titleKey),
+              icon: FaIcon(viewHolder.icon)
+          )).toList(),
+          onTap: (index) => setState(() => _currentIndex = index)
+      ),
+      body: IndexedStack(
+        children: BOTTOM_NAV_ITEMS.map((e) => e.child).toList(),
+        index: _currentIndex,
+      )
     );
   }
+}
+
+const BOTTOM_NAV_ITEMS = [
+  BottomNavItemViewHolder(icon: FontAwesomeIcons.newspaper, titleKey: 'articles', child: ArticlesWidget()),
+  BottomNavItemViewHolder(icon: FontAwesomeIcons.stream, titleKey: 'topics', child: CategoriesWidget()),
+  BottomNavItemViewHolder(icon: FontAwesomeIcons.tools, titleKey: 'settings', child: SettingsWidget()),
+];
+
+class BottomNavItemViewHolder {
+
+  final String titleKey;
+  final IconData icon;
+  final Widget child;
+
+  const BottomNavItemViewHolder({this.titleKey, this.icon, this.child});
+
 }

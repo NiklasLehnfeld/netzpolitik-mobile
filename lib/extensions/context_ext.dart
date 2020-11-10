@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wordpress_blog_app_template/localization/app_localizations.dart';
 
-const TRANSITION_DURATION = 100;
+const TRANSITION_DURATION = 300;
 
 extension ContextStringProvider on BuildContext {
 
@@ -29,7 +29,7 @@ extension ContextStringProvider on BuildContext {
 
   Color get primaryColor => Theme.of(this).primaryColor;
   Color get scaffoldColor => Theme.of(this).scaffoldBackgroundColor;
-  Color get iconButtonColor => Theme.of(this).backgroundColor;
+  Color get iconButtonColor => Theme.of(this).primaryColor;
 
   double get width => MediaQuery.of(this).size.width;
   double get statusBarHeight => MediaQuery.of(this).padding.top;
