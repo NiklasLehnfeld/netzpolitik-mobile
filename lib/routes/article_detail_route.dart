@@ -58,25 +58,16 @@ class ArticleDetailRoute extends StatelessWidget {
   int get numberOfReplies => article.replies.length;
 
 
-  Widget _buildTitle(BuildContext context) => Hero(
-        tag: 'article-title-${article.id}',
-        child: Text(
-          article.title,
-          style: context.headline1.copyWith(color: Colors.black),
-        ),
-      );
+  Widget _buildTitle(BuildContext context) => Text(
+    article.title,
+    style: context.headline1.copyWith(color: Colors.black),
+  );
 
-  Widget _buildSubtitle(BuildContext context) => Hero(
-        tag: 'article-subtitle-${article.id}',
-        child: Text(article.subTitle, style: context.headline2),
-      );
+  Widget _buildSubtitle(BuildContext context) => Text(article.subTitle, style: context.headline2);
 
-  Widget _buildImage(BuildContext context) => Hero(
-        tag: 'article-thumbnail-${article.id}',
-        child: Image.network(
-          article.imageUrl,
-          fit: BoxFit.fitWidth,
-          width: context.width,
-        ),
-      );
+  Widget _buildImage(BuildContext context) => Image.network(
+    article.imageUrl,
+    fit: BoxFit.fitWidth,
+    width: context.width,
+  );
 }

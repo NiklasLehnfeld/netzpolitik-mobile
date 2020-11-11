@@ -16,11 +16,15 @@ class RestClient {
 
   RestClient(this.configuration);
 
-  Future<List<Article>> fetchArticles({int page = 1, Category category}) async {
+  Future<List<Article>> fetchArticles({int page = 1, Category category, String searchTerm}) async {
     var url = '$baseUrl/posts?_embed&page_size=$PAGE_SIZE&page=$page';
 
     if (category != null) {
       url = '$url&categories=${category.id}';
+    }
+
+    if (searchTerm != null) {
+      url = '$url&search=$searchTerm';
     }
 
     var response = await _get(url);

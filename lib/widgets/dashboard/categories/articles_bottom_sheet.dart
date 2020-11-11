@@ -5,16 +5,18 @@ import 'package:wordpress_blog_app_template/widgets/custom_views/wp_bottom_sheet
 import 'package:wordpress_blog_app_template/widgets/dashboard/articles/articles_list.dart';
 
 class ArticlesBottomSheet extends StatelessWidget {
-  final Category category;
+  final Category filterByCategory;
+  final String filterByTerm;
 
-  ArticlesBottomSheet(this.category);
+  ArticlesBottomSheet({this.filterByCategory, this.filterByTerm});
 
   @override
   Widget build(BuildContext context) {
 
     return WPBottomSheet(
         child: ArticlesList(
-          categoryFilter: category,
+          categoryFilter: filterByCategory,
+          contentFilter: filterByTerm,
         )
     );
   }

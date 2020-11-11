@@ -26,6 +26,7 @@ dependencies:
   paging:
   expandable:
   url_launcher:
+  flutter_search_bar:
 
 dev_dependencies:
   flutter_test:

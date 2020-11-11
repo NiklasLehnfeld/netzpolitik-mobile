@@ -14,7 +14,7 @@ class DonationTypeIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: 'donation_${toString()}_icon',
+      tag: 'donation_${type.toString()}_icon',
       child: Container(
         margin: EdgeInsets.all(12),
         width: 100,

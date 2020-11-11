@@ -38,19 +38,13 @@ class CategoryListEntry extends StatelessWidget {
   void showArticles(BuildContext context) => showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      builder: (context) => ArticlesBottomSheet(category),
+      builder: (context) => ArticlesBottomSheet(filterByCategory: category,),
       isScrollControlled: true,
   );
 
 
-  Widget _buildDescription(BuildContext context) => Hero(
-    tag: 'category-title-${category.id}',
-    child: Text(category.description,
-        style: context.body1.copyWith(color: Colors.black)),
-  );
+  Widget _buildDescription(BuildContext context) => Text(category.description,
+      style: context.body1.copyWith(color: Colors.black));
 
-  Widget _buildName(BuildContext context) => Hero(
-    tag: 'category-subtitle-${category.id}',
-    child: Text(category.name, style: context.headline4),
-  );
+  Widget _buildName(BuildContext context) => Text(category.name, style: context.headline4);
 }

@@ -25,6 +25,10 @@ class WPApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
               primarySwatch: Colors.blue,
+              hintColor: Colors.grey,
+              textSelectionTheme: TextSelectionThemeData(
+                cursorColor: Colors.blue
+              ),
               textTheme: TextTheme(
                 headline1: TextStyle(fontSize: FONT_SIZE_DEFAULT + 6, color: context.primaryColor, fontWeight: FontWeight.bold),
                 headline2: TextStyle(fontSize: FONT_SIZE_DEFAULT + 5, color: context.primaryColor, fontWeight: FontWeight.bold),
