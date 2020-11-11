@@ -3,14 +3,16 @@ name: Analyze and Test
 jobs:
   anaylze:
     name: Anaylze
-    runs-on: niklaslehnfeld/flutter-essentials:latest
+    runs-on: ubuntu-latest
+    container: niklaslehnfeld/flutter-essentials:latest
     steps:
     - uses: actions/checkout@v1
     - run: flutter pub get
     - run: flutter analyze
   test:
     name: Test
-    runs-on: niklaslehnfeld/flutter-essentials:latest
+    runs-on: ubuntu-latest
+    container: niklaslehnfeld/flutter-essentials:latest
     steps:
     - uses: actions/checkout@v1
     - run: flutter pub get
