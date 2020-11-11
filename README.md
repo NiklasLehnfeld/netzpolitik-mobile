@@ -16,3 +16,17 @@ For starting a `watcher` who automatically regenerates the code after saving cha
 ```
 flutter pub run build_runner watch --delete-conflicting-outputs
 ```
+
+## Localization
+
+The localization logic is implemented in [app_localizations.dart](lib/localization/app_localizations.dart). 
+All the translation are placed in `localizations/{locale-code}.json` files. 
+
+On app start the app will read the file matching the locale of the device (and `de.json` as fallback). To get a translated string for a specific key use:
+```
+AppLocalizations.of(context).translate('my_awesome_key')
+```
+or import the [context extensions](lib/extensions/context_ext.dart) and use it like you would in android:
+```
+context.getString('my_awesome_key')
+```
