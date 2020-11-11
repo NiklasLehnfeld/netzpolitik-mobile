@@ -6,6 +6,7 @@ class WPCard extends StatefulWidget {
   final Widget child;
   final EdgeInsets margin;
   final BorderRadius cornerRadius;
+  final EdgeInsets padding;
   final double tappedElevation;
   final double defaultElevation;
   final Function onTap;
@@ -16,7 +17,8 @@ class WPCard extends StatefulWidget {
     this.defaultElevation = 8.0,
     this.onTap,
     this.margin,
-    this.cornerRadius
+    this.cornerRadius,
+    this.padding
   });
 
   @override
@@ -31,19 +33,17 @@ class _WPCardState extends State<WPCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTapDown: (d) => setState(() => tapped = true),
-      onTap: () {
-        setState(() => tapped = false);
-        if (widget.onTap != null) {
-          widget.onTap();
-        }
-      },
+      onTap: widget.onTap,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: widget.cornerRadius ?? BorderRadius.circular(8.0)
         ),
         margin: widget.margin,
         elevation: tapped ? widget.tappedElevation : widget.defaultElevation,
-        child: widget.child,
+        child: Padding(
+          padding: widget.padding ?? EdgeInsets.zero,
+          child: widget.child,
+        ),
       ),
     );
   }

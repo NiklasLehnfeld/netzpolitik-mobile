@@ -1,7 +1,45 @@
 {
   "articles": "Aktuelles",
   "topics": "Kategorien",
-  "settings": "Einstellungen",
+  "donate": "Spenden",
   "replies": "Ergänzungen",
-  "entries": "Artikel"
+  "entries": "Artikel",
+
+  "donate_title": "Spenden für netzpolitik.org",
+  "how_to_donate": "Wie spenden?",
+
+  "donate_description_title": "Wieso spenden?",
+  "donate_description": [
+    "<p>Egal wie niedrig unser Kontostand ist, mit uns wird es keine Paywalls geben. Auch wenn wir bald eins der letzten Einhörner in der Medienlandschaft sind: Wir werden dich nie tracken, um deine Daten zu verkaufen. Diese Unabhängigkeit hat einen Preis. Deswegen sind wir in höchstem Maße auf deine Mithilfe angewiesen: <a href=\"https://netzpolitik.org/2019/deine-spende-fuer-eine-lebenswerte-digitale-gesellschaft\"><b>Wir sind nur so stark, wie du uns machst!</b></a></p>",
+    "<p>Natürlich lieben wir Daueraufträge, durch sie können wir langfristig planen und noch mehr investigativ arbeiten. Wir freuen uns aber über jede noch so kleine Einmalspende. Die meisten unserer Spenderinnen und Spender unterstützen uns monatlich mit einem <b>Dauerauftrag über 5 € bis 20 €. </b>An dieser Stelle ein <b>fettes Dankeschön</b> an ausnahmslos alle, die uns da draußen unterstützen!<br> Hier geht’s zu unseren <strong><a href=\"https://netzpolitik.org/spenden-faq\">Spenden-FAQ</a></strong> und unserem <strong><a href=\"https://netzpolitik.org/spenden-faq/#formular\">Spendenquittungsformular</a></strong>.</p>",
+    "<p>Für Spenderinnen und Spender gibt es ab jetzt auch <strong><a href=\"https://netzpolitik.org/netzwerk\">das netzwerk</a></strong>. Mit dem <strong>netzwerk</strong> wollen wir die Knoten mit Euch enger knüpfen. Informiere Dich, <a href=\"https://netzpolitik.org/netzwerk\">was es mit dem netzwerk auf sich hat</a>.<br> &nbsp;</p>"
+  ],
+
+  "transfer_title": "Überweisung",
+  "transfer_description": [
+    "Unser Favorit, da deine Spende ohne Abzüge direkt auf unserem Konto landet. Am liebsten gleich als Dauerauftrag! Weil wir gemeinnützig sind, könnt ihr eure Spende von der Steuer absetzen.",
+    "<p><b>Kontoinhaber:</b> netzpolitik.org e. V. <br> <b>IBAN:</b> DE62430609671149278400 <br> <b>BIC:</b> GENODEM1GLS <br> <b>Verwendungszweck:</b> Spende netzpolitik.org </p>"
+  ],
+
+  "paypal_title": "PayPal",
+  "paypal_description": [
+    "PayPal ist ein verbreitetes Online-Bezahlsystem. Neben <a href=\"https://netzpolitik.org/tag/paypal/\">politischen Problemen</a> fallen jedoch auch recht beträchtliche Gebühren an (1,5 % des Betrages plus 0,35 Euro/pro Transaktion), so dass hier weniger von der Spende übrig bleibt. Wenn ihr trotzdem via PayPal spenden wollt, könnt ihr folgenden Link nutzen:",
+    "<p><strong><a href=\"https://paypal.me/netzpolitik\">paypal.me/netzpolitik</a></strong></p>"
+  ],
+
+  "crypto_title": "Kryptowährungen",
+  "crypto_description": "<p>Spenden in Kryptowährungen nehmen wir nur ungern und nur in <b>Bitcoin</b>. Unsere Adresse dafür ist:<b> 3GSuAzGJQghNKko2cPuYvnyU4eXPYCCETN</b><br> Spenden via Bitcoin erfolgen pseudonym, es können also keine Spendenbescheinigungen ausgestellt werden.</p>",
+
+  "cash_title": "Bargeld",
+  "cash_description": [
+    "Wer keine Überweisung vornehmen kann oder möchte, kann uns auch gerne Bargeld zukommen lassen. Kommt einfach an Arbeitstagen zwischen 10 und 18 Uhr in unserem Büro vorbei:",
+    "<b>netzpolitik.org e. V., Schönhauser Allee 6/7, 10119 Berlin (2. Hinterhof im 5. Stock). </b>",
+    "Oder ihr verschickt Geldscheine per Post, wobei diese von außen nicht erkennbar sein sollten, an die gleiche Adresse. Man kann auch Bargeld in Bankfilialen direkt auf unser Konto einzahlen, das kostet aber teilweise Gebühren."
+  ],
+
+  "sms_title": "SMS Spende",
+  "sms_description": [
+    "Ab sofort kannst auch du eine <b>Stille SMS</b> versenden und obendrein noch etwas Gutes tun: Nämlich uns mit <b>5 €</b> unterstützen. Schick einfach das Kennwort <b>StilleSMS</b> an <b>81190</b>. Die 5 € werden dir dann über deine nächste Handyrechnung oder Prepaid-Guthaben berechnet.",
+    "<p>zzgl. der Standard-SMS-Versandkosten deines Mobilfunkanbieters. Aus technischen und steuerrechtlichen Gründen kann dir leider keine Zuwendungsbestätigung ausgestellt werden. Bitte beachte, dass nicht alle Mobilfunkanbieter die Charity-SMS, bzw. das „Mobile Zahlen“ unterstützen. So kann es z.B. bei Prepaid- oder Geschäftshandys zu Problemen kommen. Bitte wende dich in diesem Fall direkt an deinen Mobilfunk-Anbieter. Das war’s an Kleingedrucktem, versprochen.</p>"
+  ]
 }

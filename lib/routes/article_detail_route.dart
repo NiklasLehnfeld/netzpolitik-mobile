@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:wordpress_blog_app_template/models/article.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/extensions/int_ext.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_article_appbar.dart';
+import 'package:wordpress_blog_app_template/widgets/custom_views/wp_html.dart';
 
 class ArticleDetailRoute extends StatelessWidget {
   final Article article;
@@ -35,7 +35,7 @@ class ArticleDetailRoute extends StatelessWidget {
 
   Widget _buildContentArea(BuildContext context) => Padding(
     padding: EdgeInsets.symmetric(horizontal: 16.0),
-    child: Html(data: article.content),
+    child: WPHtml(article.content),
   );
 
   Widget _buildSummaryArea(BuildContext context) => Padding(
@@ -45,7 +45,7 @@ class ArticleDetailRoute extends StatelessWidget {
           children: [
             _buildSubtitle(context),
             _buildTitle(context),
-            Html(data: article.summary),
+            WPHtml(article.summary),
             Text('$creationDate - $authorNames - in $categoryName - $numberOfReplies ${context.getString('replies')}', style: context.body2.copyWith( fontWeight: FontWeight.bold)),
             SizedBox(height: 12)
           ],

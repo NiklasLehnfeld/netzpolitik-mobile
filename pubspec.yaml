@@ -24,6 +24,8 @@ dependencies:
   font_awesome_flutter:
   html_unescape:
   paging:
+  expandable:
+  url_launcher:
 
 dev_dependencies:
   flutter_test:

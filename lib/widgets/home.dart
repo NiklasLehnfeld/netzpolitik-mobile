@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_appbar.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/articles/articles_widget.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/settings_widget.dart';
+import 'package:wordpress_blog_app_template/widgets/dashboard/donations/donate_widget.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/categories/categories_widget.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 
@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
 const BOTTOM_NAV_ITEMS = [
   BottomNavItemViewHolder(icon: FontAwesomeIcons.newspaper, titleKey: 'articles', child: ArticlesWidget()),
   BottomNavItemViewHolder(icon: FontAwesomeIcons.stream, titleKey: 'topics', child: CategoriesWidget()),
-  BottomNavItemViewHolder(icon: FontAwesomeIcons.tools, titleKey: 'settings', child: SettingsWidget()),
+  BottomNavItemViewHolder(icon: FontAwesomeIcons.solidHeart, titleKey: 'donate', child: DonateWidget()),
 ];
 
 class BottomNavItemViewHolder {
