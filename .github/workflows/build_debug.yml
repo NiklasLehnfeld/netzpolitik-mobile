@@ -2,7 +2,7 @@ on:
   push:
     branches:
     - '*'
-    - '!master'
+    - '!main'
 name: Build Debug
 jobs:
   android:
@@ -11,8 +11,12 @@ jobs:
     container: niklaslehnfeld/flutter-essentials:latest
     steps:
     - uses: actions/checkout@v2
-    - run: flutter pub get
-    - run: cd android && ./gradlew assembleDebug
+    - name: Initiliazing Flutter
+      run: flutter pub get
+    - name: Generating Flutter Serialization Code
+      run: flutter pub run build_runner build --delete-conflicting-outputs
+    - name: Building APK
+      run: cd android && ./gradlew assembleDebug
     - name: Archive APK
       uses: actions/upload-artifact@v2
       with:

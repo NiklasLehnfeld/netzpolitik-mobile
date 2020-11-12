@@ -30,3 +30,13 @@ or import the [context extensions](lib/extensions/context_ext.dart) and use it l
 ```
 context.getString('my_awesome_key')
 ```
+
+## CI / CD
+
+The CI is currently realized using [GitHub Actions](https://github.com/features/actions). 
+All jobs are defined in [test.yml](.github/workflows/test.yml) and [build_debug.yml](.github/workflows/build_debug.yml).
+It is configured like:
+    - Static code analysis and all tests are running on each push
+    - Android & iOS Debug builds are running on each push on every branch except main 
+    
+ 
