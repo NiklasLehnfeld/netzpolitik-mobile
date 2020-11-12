@@ -2,12 +2,13 @@ import 'package:provider/provider.dart';
 import 'package:wordpress_blog_app_template/config/app_configuration.dart';
 import 'package:wordpress_blog_app_template/config/apps.dart';
 import 'package:wordpress_blog_app_template/config/rest_configuration.dart';
+import 'package:wordpress_blog_app_template/models/AudioPlayer.dart';
 import 'package:wordpress_blog_app_template/rest/RestClient.dart';
 
 
 class Providers {
 
-  static List<Provider<dynamic>> get all => [
+  static List<InheritedProvider<dynamic>> get all => [
 
     //app configurations
     Provider<App>(create: (context) => App.NETZPOLITIK),
@@ -15,7 +16,10 @@ class Providers {
     Provider<RestConfiguration>(create: (context) => context.read<AppConfiguration>().restConfiguration, lazy: true),
 
     //singletons
-    Provider<RestClient>(create: (context) => RestClient( context.read<RestConfiguration>() ), lazy: true)
+    Provider<RestClient>(create: (context) => RestClient( context.read<RestConfiguration>() ), lazy: true),
+
+    //logic
+    ChangeNotifierProvider<AudioPlayer>(create: (context) => AudioPlayer()),
 
   ];
 

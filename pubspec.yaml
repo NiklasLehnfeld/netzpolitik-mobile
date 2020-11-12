@@ -27,6 +27,7 @@ dependencies:
   expandable:
   url_launcher:
   flutter_search_bar:
+  assets_audio_player:
 
 dev_dependencies:
   flutter_test:
