@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: flutter pub get
-    - run: android/gradlew assembleDebug
+    - run: cd android && ./gradlew assembleDebug
     - name: Archive APK
       uses: actions/upload-artifact@v2
       with:
@@ -21,7 +21,6 @@ jobs:
   ios:
     name: Build iOS
     runs-on: macos-latest
-    container: niklaslehnfeld/flutter-essentials:latest
     steps:
     - uses: actions/checkout@v2
     - name: Select Xcode version
