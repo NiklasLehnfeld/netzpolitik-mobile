@@ -42,5 +42,5 @@ jobs:
       run: |
         flutter channel master && flutter pub get
         cd ./ios && pod install
-    - name: Build iOS Project
-      run: flutter build ios
+    #- name: Build iOS Project
+    #  run: flutter build ios
