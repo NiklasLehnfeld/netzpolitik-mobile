@@ -11,11 +11,11 @@ jobs:
     container: niklaslehnfeld/flutter-essentials:latest
     steps:
     - uses: actions/checkout@v2
-    - name: Initiliazing Flutter
+    - name: Initiliaze Flutter
       run: flutter pub get
-    - name: Generating Flutter Serialization Code
+    - name: Generate Flutter Serialization Code
       run: flutter pub run build_runner build --delete-conflicting-outputs
-    - name: Building APK
+    - name: Build APK
       run: cd android && ./gradlew assembleDebug
     - name: Archive APK
       uses: actions/upload-artifact@v2
@@ -42,3 +42,5 @@ jobs:
       run: |
         flutter channel master && flutter pub get
         cd ./ios && pod install
+    - name: Build iOS Project
+      run: flutter build ios
