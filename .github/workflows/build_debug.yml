@@ -1,0 +1,43 @@
+on:
+  push:
+    branches:
+    - '*'
+    - '!master'
+name: Build Debug
+jobs:
+  android:
+    name: Build Android
+    runs-on: ubuntu-latest
+    container: niklaslehnfeld/flutter-essentials:latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: flutter pub get
+    - run: android/gradlew assembleDebug
+    - name: Archive APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: debug-build
+        path: build/app/outputs/apk/debug/*.apk
+  ios:
+    name: Build iOS
+    runs-on: macos-latest
+    container: niklaslehnfeld/flutter-essentials:latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Select Xcode version
+      run: sudo xcode-select -s '/Applications/Xcode_11.3.app/Contents/Developer'
+    - name: Bundle install
+      run: cd ./ios && bundle install
+    - name: Setup JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: "12.x"
+    - name: Setup flutter
+      uses: subosito/flutter-action@v1
+      with:
+        flutter-version: "1.17.0"
+        channel: "stable"
+    - name: Install tools
+      run: |
+        flutter channel master && flutter pub get
+        cd ./ios && pod install
