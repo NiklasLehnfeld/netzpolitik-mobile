@@ -51,10 +51,7 @@ class _WPAppBarState extends State<WPAppBar> {
         hintText: context.getString('search_hint'),
       );
 
-  void showArticles(BuildContext context, String term) => showModalBottomSheet(
-    context: context,
-    backgroundColor: Colors.transparent,
-    builder: (context) => ArticlesBottomSheet(filterByTerm: term,),
-    isScrollControlled: true,
+  void showArticles(BuildContext context, String term) => context.showBottomSheet(
+    builder: (context) => ArticlesBottomSheet(filterByTerm: term),
   );
 }

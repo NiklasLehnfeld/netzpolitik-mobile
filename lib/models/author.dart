@@ -7,6 +7,7 @@ class Author {
   int id;
   String name;
   String link;
+  String description;
 
   Author();
 

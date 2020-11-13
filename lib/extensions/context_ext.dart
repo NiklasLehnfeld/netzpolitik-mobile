@@ -21,6 +21,13 @@ extension ContextStringProvider on BuildContext {
       ),
   );
 
+  void showBottomSheet({Widget Function(BuildContext) builder}) => showModalBottomSheet(
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: builder,
+    context: this,
+  );
+
 
   TextStyle get headline1 => Theme.of(this).textTheme.headline1;
   TextStyle get headline2 => Theme.of(this).textTheme.headline2;

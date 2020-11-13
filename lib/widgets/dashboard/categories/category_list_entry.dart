@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/models/category.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_card.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/categories/articles_bottom_sheet.dart';
 
 class CategoryListEntry extends StatelessWidget {
@@ -35,11 +35,8 @@ class CategoryListEntry extends StatelessWidget {
     );
   }
 
-  void showArticles(BuildContext context) => showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
-      builder: (context) => ArticlesBottomSheet(filterByCategory: category,),
-      isScrollControlled: true,
+  void showArticles(BuildContext context) => context.showBottomSheet(
+    builder: (context) => ArticlesBottomSheet(filterByCategory: category),
   );
 
 
