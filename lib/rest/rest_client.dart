@@ -1,8 +1,8 @@
-import 'package:wordpress_blog_app_template/config/rest_configuration.dart';
-import 'package:wordpress_blog_app_template/models/article.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+import 'package:wordpress_blog_app_template/config/rest_configuration.dart';
+import 'package:wordpress_blog_app_template/models/article.dart';
 import 'package:wordpress_blog_app_template/models/category.dart';
 
 const PAGE_SIZE = 10;
