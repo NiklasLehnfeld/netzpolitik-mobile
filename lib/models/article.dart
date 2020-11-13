@@ -12,8 +12,6 @@ class Article {
 
   int id;
   String title;
-
-  @JsonKey(name: 'wps_subtitle')
   String subTitle;
 
   List<Category> categories;
@@ -38,6 +36,7 @@ class Article {
   factory Article.fromJson(Map json) {
     json['title'] = HtmlUnescape().convert(json['title']['rendered']);
     json['content'] = json['content']['rendered'];
+    json['subTitle'] = HtmlUnescape().convert(json['wps_subtitle']);
 
     try {
       json['imageUrl'] = json['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['thumbnail']['source_url'];

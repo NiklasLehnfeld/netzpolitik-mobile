@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/models/AudioPlayer.dart';
+import 'package:wordpress_blog_app_template/logic/AudioPlayer.dart';
+import 'package:wordpress_blog_app_template/models/audio_model.dart';
 
 class WPPlayButton extends StatelessWidget {
   final double size;
-  final String url;
+  final AudioModel audio;
 
-  const WPPlayButton({this.size = 60, this.url});
+  const WPPlayButton({this.size = 60, this.audio});
 
   @override
   Widget build(BuildContext context) {
     var audioPlayer = context.watch<AudioPlayer>();
-    var isBuffering = audioPlayer.isBufferingUrl(url);
+    var isBuffering = audioPlayer.isBufferingAudio(audio);
 
     return _buildBackground(
       context,
@@ -24,7 +25,7 @@ class WPPlayButton extends StatelessWidget {
 
   Widget _buildPlayButton(BuildContext context) {
     var audioPlayer = context.watch<AudioPlayer>();
-    var isPlaying = audioPlayer.isPlayingUrl(url);
+    var isPlaying = audioPlayer.isPlayingAudio(audio);
 
     return IconButton(
       iconSize: size - 30,
@@ -40,7 +41,7 @@ class WPPlayButton extends StatelessWidget {
 
   Widget _buildBackground(BuildContext context, {Widget child}) {
     var audioPlayer = context.watch<AudioPlayer>();
-    var isPlaying = audioPlayer.isPlayingUrl(url);
+    var isPlaying = audioPlayer.isPlayingAudio(audio);
 
     return Container(
       width: size,
@@ -62,5 +63,5 @@ class WPPlayButton extends StatelessWidget {
     );
   }
 
-  void _onPress(AudioPlayer audioPlayer) => audioPlayer.openOrToggle(url);
+  void _onPress(AudioPlayer audioPlayer) => audioPlayer.openOrToggle(audio);
 }

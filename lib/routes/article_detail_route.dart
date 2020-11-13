@@ -4,6 +4,7 @@ import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/extensions/int_ext.dart';
 import 'package:wordpress_blog_app_template/extensions/string_ext.dart';
 import 'package:wordpress_blog_app_template/models/article.dart';
+import 'package:wordpress_blog_app_template/models/audio_model.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_article_appbar.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_html.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_play_button.dart';
@@ -90,7 +91,12 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
             visible: widget.article.content.containsMP3,
             child: Container(
               margin: EdgeInsets.only(right: 10),
-              child: WPPlayButton(url: widget.article.content.mp3Url),
+              child: WPPlayButton(
+                audio: AudioModel(
+                    title: widget.article.title,
+                  url: widget.article.content.mp3Url
+                ),
+              ),
             ),
           )
         ],

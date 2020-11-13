@@ -2,7 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:wordpress_blog_app_template/config/app_configuration.dart';
 import 'package:wordpress_blog_app_template/config/apps.dart';
 import 'package:wordpress_blog_app_template/config/rest_configuration.dart';
-import 'package:wordpress_blog_app_template/models/AudioPlayer.dart';
+import 'package:wordpress_blog_app_template/logic/AudioPlayer.dart';
 import 'package:wordpress_blog_app_template/rest/RestClient.dart';
 
 
