@@ -35,12 +35,12 @@ class AudioPlayer extends ChangeNotifier {
     if (_audio != null && _audio.url == audio.url) {
       toggle();
     } else {
-      open(audio.url);
+      open(audio);
       _audio = audio;
     }
   }
 
-  void open(String url) => _assetsAudioPlayer.open(Audio.network(url));
+  void open(AudioModel audioModel) => _assetsAudioPlayer.open(Audio.network(audioModel.url));
 
   void toggle() => _assetsAudioPlayer.playOrPause();
 

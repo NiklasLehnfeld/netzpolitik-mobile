@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/logic/AudioPlayer.dart';
+import 'package:wordpress_blog_app_template/logic/audio_player.dart';
 import 'package:wordpress_blog_app_template/models/audio_model.dart';
 
 class WPPlayButton extends StatelessWidget {
