@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wordpress_blog_app_template/models/article.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
+import 'package:wordpress_blog_app_template/models/article.dart';
 import 'package:wordpress_blog_app_template/routes/article_detail_route.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_card.dart';
+import 'package:wordpress_blog_app_template/widgets/custom_views/wp_html.dart';
+import 'package:wordpress_blog_app_template/widgets/dashboard/articles/article_image.dart';
 
 class ArticleListEntry extends StatelessWidget {
   final Article article;
@@ -17,22 +19,57 @@ class ArticleListEntry extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: WPCard(
         onTap: () => context.navigate((context) => ArticleDetailRoute(article)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildImage(context),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [_buildSubtitle(context), _buildTitle(context)],
-              ),
-            ),
-          ],
-        ),
+        child: _buildContent(context),
       ),
     );
   }
+
+  Widget _buildContent(BuildContext context) {
+    var isWide = context.width > 700;
+
+    if (isWide) {
+      return _buildHorizontalContent(context);
+    } else {
+      return _buildVerticalContent(context);
+    }
+  }
+
+  Widget _buildHorizontalContent(BuildContext context) => Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(child: ArticleImage(article)),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildSubtitle(context),
+                  _buildTitle(context),
+                  _buildSummary(context),
+                ],
+              ),
+            ),
+          ),
+        ],
+      );
+
+  Widget _buildVerticalContent(BuildContext context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ArticleImage(article),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildSubtitle(context),
+                _buildTitle(context),
+              ],
+            ),
+          ),
+        ],
+      );
 
   Widget _buildTitle(BuildContext context) => Hero(
         tag: 'article-title-${article.id}',
@@ -45,8 +82,5 @@ class ArticleListEntry extends StatelessWidget {
         child: Text(article.subTitle, style: context.headline6),
       );
 
-  Widget _buildImage(BuildContext context) => Hero(
-        tag: 'article-thumbnail-${article.id}',
-        child: Image.network(article.imageUrl),
-      );
+  Widget _buildSummary(BuildContext context) => WPHtml(article.summary);
 }

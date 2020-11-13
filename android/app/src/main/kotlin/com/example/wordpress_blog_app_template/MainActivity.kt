@@ -1,4 +1,4 @@
-package com.example.wordpress_blog_app_template
+package net.lehnfeld.wordpress_blog_app_template
 
 import io.flutter.embedding.android.FlutterActivity
 

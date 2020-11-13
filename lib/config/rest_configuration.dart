@@ -6,4 +6,6 @@ class RestConfiguration {
 
   const RestConfiguration({@required this.baseUrl});
 
+  String get imageBaseUrl => '$baseUrl/wp-upload';
+
 }

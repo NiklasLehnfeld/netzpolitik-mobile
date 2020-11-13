@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
+            VALUE "CompanyName", "net.lehnfeld" "\0"
             VALUE "FileDescription", "A new Flutter project." "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "wordpress_blog_app_template" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2020 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2020 net.lehnfeld. All rights reserved." "\0"
             VALUE "OriginalFilename", "wordpress_blog_app_template.exe" "\0"
             VALUE "ProductName", "wordpress_blog_app_template" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

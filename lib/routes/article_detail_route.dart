@@ -8,6 +8,7 @@ import 'package:wordpress_blog_app_template/models/audio_model.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_article_appbar.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_html.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_play_button.dart';
+import 'package:wordpress_blog_app_template/widgets/dashboard/articles/article_image.dart';
 
 class ArticleDetailRoute extends StatefulWidget {
   final Article article;
@@ -71,34 +72,34 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
 
   int get numberOfReplies => widget.article.replies.length;
 
-  Widget _buildTitle(BuildContext context) => Text(
-        widget.article.title,
-        style: context.headline1.copyWith(color: Colors.black),
+  Widget _buildTitle(BuildContext context) => Hero(
+        tag: 'article-title-${widget.article.id}',
+        child: Text(widget.article.title,
+            style: context.headline5.copyWith(color: Colors.black)),
       );
 
-  Widget _buildSubtitle(BuildContext context) =>
-      Text(widget.article.subTitle, style: context.headline2);
+  Widget _buildSubtitle(BuildContext context) => Hero(
+        tag: 'article-subtitle-${widget.article.id}',
+        child: Text(widget.article.subTitle, style: context.headline6),
+      );
 
-  Widget _buildImage(BuildContext context) => Stack(
-        alignment: Alignment.bottomRight,
-        children: [
-          Image.network(
-            widget.article.imageUrl,
-            fit: BoxFit.fitWidth,
-            width: context.width,
-          ),
-          Visibility(
-            visible: widget.article.content.containsMP3,
-            child: Container(
-              margin: EdgeInsets.only(right: 10),
-              child: WPPlayButton(
-                audio: AudioModel(
-                    title: widget.article.title,
-                  url: widget.article.content.mp3Url
-                ),
-              ),
+  Widget _buildImage(BuildContext context) {
+    return Stack(
+      alignment: Alignment.bottomRight,
+      children: [
+        ArticleImage(widget.article),
+        Visibility(
+          visible: widget.article.content.containsMP3,
+          child: Container(
+            margin: EdgeInsets.only(right: 10),
+            child: WPPlayButton(
+              audio: AudioModel(
+                  title: widget.article.title,
+                  url: widget.article.content.mp3Url),
             ),
-          )
-        ],
-      );
+          ),
+        )
+      ],
+    );
+  }
 }

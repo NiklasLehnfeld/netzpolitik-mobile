@@ -3,7 +3,7 @@ import 'package:wordpress_blog_app_template/config/app_configuration.dart';
 import 'package:wordpress_blog_app_template/config/apps.dart';
 import 'package:wordpress_blog_app_template/config/rest_configuration.dart';
 import 'package:wordpress_blog_app_template/logic/audio_player.dart';
-import 'package:wordpress_blog_app_template/rest/RestClient.dart';
+import 'package:wordpress_blog_app_template/rest/rest_client.dart';
 
 
 class Providers {

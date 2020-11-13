@@ -26,7 +26,7 @@ class Article {
   String date;
   String modified;
 
-  String imageUrl;
+  String imageName;
 
   @JsonKey(ignore: true)
   DateTime get creationTime => DateTime.parse(date);
@@ -39,7 +39,7 @@ class Article {
     json['subTitle'] = HtmlUnescape().convert(json['wps_subtitle']);
 
     try {
-      json['imageUrl'] = json['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['thumbnail']['source_url'];
+      json['imageName'] = json['_embedded']['wp:featuredmedia'][0]['media_details']['file'];
     } catch(e) {
       // ignore: empty_catches
     }
