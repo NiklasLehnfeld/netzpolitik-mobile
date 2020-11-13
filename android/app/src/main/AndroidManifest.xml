@@ -5,7 +5,7 @@
 
 
     <application
-        android:label="wordpress_blog_app_template"
+        android:label="Netzpolitik"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -1,5 +1,5 @@
 name: wordpress_blog_app_template
-description: A new Flutter project.
+description: A generic flutter app template for wordpress apps using Wordpress Rest API
 
 publish_to: 'none'
 
@@ -37,6 +37,16 @@ dev_dependencies:
   effective_dart:
   json_serializable:
   build_runner:
+  flutter_launcher_icons:
+  flutter_launcher_name:
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/netzpolitik_icon.png"
+
+flutter_launcher_name:
+  name: "Netzpolitik"
 
 flutter:
   uses-material-design: true
