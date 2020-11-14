@@ -3,6 +3,23 @@
 A generic flutter app template for wordpress apps using [Wordpress Rest API](https://developer.wordpress.org/rest-api/)
 The example is written for [Netzpolitik.org](https://netzpolitik.org/)
 
+<br>
+
+# 📱 Screenshots
+
+<table>
+    <tr>
+        <td> <img src="screenshots/screenshot_overview.png" alt="drawing" width="300"/> </td>
+        <td> <img src="screenshots/screenshot_article.png" alt="drawing" width="300"/> </td>
+        <td> <img src="screenshots/screenshot_replies.png" alt="drawing" width="300"/> </td>
+    </tr>
+</table>
+<br><br>
+
+
+# 📗 Development Guide
+
+
 ## 💾 Serialization
 
 The model serialization is done by the [json_serializable](https://pub.dev/packages/json_serializable) plugin, which uses [json_annotation](https://pub.dev/packages/json_annotation) to generate `{file_name}.g.dart` files, which contains the generated json serialization code.
