@@ -1,4 +1,4 @@
-package net.lehnfeld.wordpress_blog_app_template
+package net.lehnfeld.netzpolitik
 
 import io.flutter.embedding.android.FlutterActivity
 

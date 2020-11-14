@@ -8,7 +8,7 @@
 PRODUCT_NAME = wordpress_blog_app_template
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = net.lehnfeld.wordpressBlogAppTemplate
+PRODUCT_BUNDLE_IDENTIFIER = net.lehnfeld.netzpolitik
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2020 net.lehnfeld. All rights reserved.
