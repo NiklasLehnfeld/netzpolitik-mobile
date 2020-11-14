@@ -1,11 +1,14 @@
 # 📚 Wordpress Blog App Template
 
-A generic flutter app template for wordpress apps using [Wordpress Rest API](https://developer.wordpress.org/rest-api/)
+A generic flutter app template for wordpress apps using [Wordpress Rest API](https://developer.wordpress.org/rest-api/).
 The example is written for [Netzpolitik.org](https://netzpolitik.org/)
 
 <br>
 
 ## 📱 Screenshots
+
+Here are some screenshots made on an iPad Pro (9.7 inch). Please note the embedded Audio-Player in the first screenshot.
+It is only visible when a podcast is currently playing.
 
 <table>
     <tr>
