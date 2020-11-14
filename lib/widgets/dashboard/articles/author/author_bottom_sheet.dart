@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:wordpress_blog_app_template/models/author.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_bottom_sheet.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/articles/author_list_entry.dart';
+import 'package:wordpress_blog_app_template/widgets/dashboard/articles/author/author_list_entry.dart';
 
 class AuthorBottomSheet extends StatelessWidget {
 

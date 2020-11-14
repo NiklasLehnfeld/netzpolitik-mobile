@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_card.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_divider.dart';
 
@@ -33,13 +34,15 @@ class WPBottomSheet extends StatelessWidget {
   }
 
   Widget _buildDynamicHeightContent(BuildContext context) {
-    return Padding(
+    return Container(
       padding: EdgeInsets.only(left: HORIZONTAL_PADDING, right: HORIZONTAL_PADDING, bottom: HORIZONTAL_PADDING,),
       child: Wrap(
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
+                  width: context.width,
                   margin: EdgeInsets.symmetric(vertical: (BORDER_RADIUS - WPDivider().thickness) / 2),
                   child: WPDivider()
               ),

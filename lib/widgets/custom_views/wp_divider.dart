@@ -11,13 +11,18 @@ class WPDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(1000),
-      child: Container(
-        height: thickness,
-        width: width,
-        color: color,
-      ),
+    return Wrap(
+      alignment: WrapAlignment.center,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(1000),
+          child: Container(
+            height: thickness,
+            width: width,
+            color: color,
+          ),
+        ),
+      ],
     );
   }
 

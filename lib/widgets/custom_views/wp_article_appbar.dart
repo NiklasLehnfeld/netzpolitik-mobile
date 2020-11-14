@@ -3,7 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/models/article.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_back_button.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/articles/author_bottom_sheet.dart';
+import 'package:wordpress_blog_app_template/widgets/dashboard/articles/author/author_bottom_sheet.dart';
+import 'package:wordpress_blog_app_template/widgets/dashboard/articles/replies/replies_bottom_sheet.dart';
 
 class WPArticleAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Article article;
@@ -20,9 +21,9 @@ class WPArticleAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
             icon: FaIcon(
               FontAwesomeIcons.solidCommentAlt,
-              color: context.iconButtonColor,
+              color: article.replies.isNotEmpty ? context.iconButtonColor : null,
             ),
-            onPressed: showComments),
+            onPressed: article.replies.isNotEmpty ? () => showReplies(context) : null),
         IconButton(
           icon: FaIcon(
             FontAwesomeIcons.userAlt,
@@ -34,7 +35,9 @@ class WPArticleAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  void showComments() {}
+  void showReplies(BuildContext context) => context.showBottomSheet(
+    builder: (context) => RepliesBottomSheet(article.replies),
+  );
 
   void showAuthor(BuildContext context) => context.showBottomSheet(
     builder: (context) => AuthorBottomSheet(article.authors),

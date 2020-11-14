@@ -14,6 +14,9 @@ class Reply {
 
   String content;
 
+  @JsonKey(ignore: true) //handled on our own
+  List<Reply> replies = [];
+
   Reply();
 
   factory Reply.fromJson(Map json) {

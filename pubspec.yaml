@@ -29,6 +29,7 @@ dependencies:
   flutter_search_bar:
   assets_audio_player:
   cached_network_image:
+  intl:
 
 dev_dependencies:
   flutter_test:

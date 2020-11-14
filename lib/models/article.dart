@@ -4,6 +4,7 @@ import 'package:wordpress_blog_app_template/models/author.dart';
 import 'package:wordpress_blog_app_template/models/category.dart';
 import 'package:wordpress_blog_app_template/models/reply.dart';
 import 'package:wordpress_blog_app_template/models/tag.dart';
+import 'package:wordpress_blog_app_template/serialization/reply_deserializer.dart';
 
 part 'article.g.dart';
 
@@ -47,13 +48,6 @@ class Article {
     json['summary'] = HtmlUnescape().convert(json['excerpt']['rendered']);
     json['authors'] = json['_embedded']['author'];
 
-    var replies = json['_embedded']['replies'];
-    if (replies != null) {
-      json['replies'] = replies[0];  //if replies exist - they are nested like: "replies": [[{...},{...}]] 🤦
-    } else {
-      json['replies'] = [];
-    }
-
     var terms = json['_embedded']['wp:term'];
     var categoriesAndTags = List<List>.from(terms).reduce((value, element) {
       value.addAll(element);
@@ -63,7 +57,17 @@ class Article {
     json['categories'] = categoriesAndTags.where((element) => element['taxonomy'] == 'category').toList();
     json['tags'] = categoriesAndTags.where((element) => element['taxonomy'] == 'post_tag').toList();
 
-    return _$ArticleFromJson(json);
+    var article = _$ArticleFromJson(json);
+
+    var replies = json['_embedded']['replies'];
+    if (replies != null) {
+      var repliesJson = replies[0];  //if replies exist - they are nested like: "replies": [[{...},{...}]] 🤦
+      article.replies = ReplyDeserializer.deserialize(repliesJson);
+    } else {
+      article.replies = [];
+    }
+    
+    return article;
   }
 
   Map toJson() => _$ArticleToJson(this);
