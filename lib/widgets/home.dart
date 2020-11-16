@@ -22,7 +22,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WPAppBar(),
+      appBar: WPAppBar(
+        showLegalsAction: _currentIndex == 2,
+      ),
       bottomNavigationBar: WPBottomNavigation(
           index: _currentIndex,
           items: BOTTOM_NAV_ITEMS.map((viewHolder) => BottomNavigationBarItem(

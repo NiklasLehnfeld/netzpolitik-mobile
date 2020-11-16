@@ -4,9 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:wordpress_blog_app_template/config/app_configuration.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
+import 'package:wordpress_blog_app_template/routes/imprint_route.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/categories/articles_bottom_sheet.dart';
 
 class WPAppBar extends StatefulWidget implements PreferredSizeWidget {
+  final bool showLegalsAction;
+
+  const WPAppBar({this.showLegalsAction = false});
+
   @override
   _WPAppBarState createState() => _WPAppBarState();
 
@@ -27,15 +32,30 @@ class _WPAppBarState extends State<WPAppBar> {
         child: appConfig.title ?? Text(appConfig.name),
       ),
       actions: [
-        IconButton(
-            icon: FaIcon(
-              FontAwesomeIcons.search,
-              color: context.primaryColor,
-            ),
-            onPressed: () => _searchBar.beginSearch(context))
+        Visibility(
+          visible: widget.showLegalsAction,
+          child: _buildImprintButton(context),
+          replacement: _buildSearchButton(context),
+        )
       ],
     );
   }
+
+  Widget _buildSearchButton(BuildContext context) => IconButton(
+        icon: FaIcon(
+          FontAwesomeIcons.search,
+          color: context.primaryColor,
+        ),
+        onPressed: () => _searchBar.beginSearch(context),
+      );
+
+  Widget _buildImprintButton(BuildContext context) => IconButton(
+        icon: Text(
+          '\§',
+          style: context.headline1.copyWith(color: context.primaryColor),
+        ),
+        onPressed: () => context.navigate((context) => ImprintRoute()),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +71,8 @@ class _WPAppBarState extends State<WPAppBar> {
         hintText: context.getString('search_hint'),
       );
 
-  void showArticles(BuildContext context, String term) => context.showBottomSheet(
-    builder: (context) => ArticlesBottomSheet(filterByTerm: term),
-  );
+  void showArticles(BuildContext context, String term) =>
+      context.showBottomSheet(
+        builder: (context) => ArticlesBottomSheet(filterByTerm: term),
+      );
 }

@@ -50,5 +50,8 @@
   "sms_description": [
     "Ab sofort kannst auch du eine <b>Stille SMS</b> versenden und obendrein noch etwas Gutes tun: Nämlich uns mit <b>5 €</b> unterstützen. Schick einfach das Kennwort <b>StilleSMS</b> an <b>81190</b>. Die 5 € werden dir dann über deine nächste Handyrechnung oder Prepaid-Guthaben berechnet.",
     "<p>zzgl. der Standard-SMS-Versandkosten deines Mobilfunkanbieters. Aus technischen und steuerrechtlichen Gründen kann dir leider keine Zuwendungsbestätigung ausgestellt werden. Bitte beachte, dass nicht alle Mobilfunkanbieter die Charity-SMS, bzw. das „Mobile Zahlen“ unterstützen. So kann es z.B. bei Prepaid- oder Geschäftshandys zu Problemen kommen. Bitte wende dich in diesem Fall direkt an deinen Mobilfunk-Anbieter. Das war’s an Kleingedrucktem, versprochen.</p>"
-  ]
+  ],
+
+  "imprint_headline": "Impressum",
+  "imprint_content": "<b>Hier könnte ihr Impressum stehen!</b>"
 }
