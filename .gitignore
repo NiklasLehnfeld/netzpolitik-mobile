@@ -201,3 +201,4 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/flutter,androidstudio
 
 **/*.g.dart
+release-builds/

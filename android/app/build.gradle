@@ -25,6 +25,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+task printFullArtifactName {
+    print("netzpolitik-v$flutterVersionName(${flutterVersionCode.toInteger()})")
+}
+
 android {
     compileSdkVersion 29
 
@@ -37,19 +41,27 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "net.lehnfeld.netzpolitik"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+
+        archivesBaseName = "netzpolitik-v$versionName($versionCode)"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'netzpolitik'
+            keyPassword System.env.NETZPOLITIK_KEY_PWD ?: ''
+            storeFile file('../keystore.jks')
+            storePassword System.env.NETZPOLITIK_KEYSTORE_PWD ?: ''
+        }
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }
