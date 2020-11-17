@@ -34,7 +34,7 @@ class WPPagination<T> extends StatefulWidget {
 }
 
 class _WPPaginationState<T> extends State<WPPagination<T>> {
-  final List<T> _list = List();
+  final List<T> _list = [];
   bool _isLoading = false;
   bool _isError = false;
   bool _isEndOfList = false;

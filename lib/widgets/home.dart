@@ -21,8 +21,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    print(context.width);
-
     return Scaffold(
       appBar: WPAppBar(
         showLegalsAction: _currentIndex == 2,
