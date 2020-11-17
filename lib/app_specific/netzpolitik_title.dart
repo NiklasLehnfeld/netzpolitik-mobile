@@ -7,7 +7,10 @@ class NetzpolitikTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(bottom: 8),
-        child: Image.asset('assets/netzpolitik_logo.png', width: 450,),
+      child: Image.asset(
+        'assets/netzpolitik_logo.png',
+        width: 450,
+      ),
     );
   }
 }
