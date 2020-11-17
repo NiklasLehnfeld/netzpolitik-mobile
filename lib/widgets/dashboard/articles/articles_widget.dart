@@ -9,9 +9,6 @@ class ArticlesWidget extends StatelessWidget {
   const ArticlesWidget();
 
   @override
-  Widget build(BuildContext context) {
-    return ArticlesList();
-  }
-
+  Widget build(BuildContext context) => ArticlesList();
 
 }

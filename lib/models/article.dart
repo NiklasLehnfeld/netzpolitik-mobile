@@ -23,6 +23,9 @@ class Article {
 
   String content;
   String summary;
+
+  @JsonKey(ignore: true)
+  String get summaryWithoutTags => summary.replaceAll(RegExp('<\/?p>'), '');
   
   String date;
   String modified;

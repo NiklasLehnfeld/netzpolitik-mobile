@@ -49,4 +49,7 @@ extension ContextExteinsions on BuildContext {
   double get height => MediaQuery.of(this).size.height;
   double get statusBarHeight => MediaQuery.of(this).padding.top;
 
+  bool get isWide => width > 700;
+  bool get isUltraWide => width > 1100;
+
 }

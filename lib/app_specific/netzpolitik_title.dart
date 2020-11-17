@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 
 class NetzpolitikTitle extends StatelessWidget {
   const NetzpolitikTitle();
@@ -7,7 +6,8 @@ class NetzpolitikTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Image.asset('assets/netzpolitik_logo.png', width: context.width / 1.7,),
+      padding: EdgeInsets.only(bottom: 8),
+        child: Image.asset('assets/netzpolitik_logo.png', width: 450,),
     );
   }
 }

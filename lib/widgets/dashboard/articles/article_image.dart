@@ -7,9 +7,10 @@ import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/models/article.dart';
 
 
-const IMAGE_ASPECT_RATIO = 1.77;
 
 class ArticleImage extends StatelessWidget {
+  static const IMAGE_ASPECT_RATIO = 1.77;
+
   final Article article;
 
   const ArticleImage(this.article);

@@ -12,8 +12,9 @@ import 'package:wordpress_blog_app_template/widgets/dashboard/articles/article_i
 
 class ArticleDetailRoute extends StatefulWidget {
   final Article article;
+  final bool isBig;
 
-  ArticleDetailRoute(this.article);
+  ArticleDetailRoute(this.article, {this.isBig});
 
   @override
   _ArticleDetailRouteState createState() => _ArticleDetailRouteState();
@@ -24,14 +25,22 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
 
   @override
   Widget build(BuildContext context) {
+
+    Widget topArea;
+
+    if (context.isWide) {
+      topArea = Row(crossAxisAlignment: CrossAxisAlignment.start,children: [Expanded(child: _buildImage(context)), Expanded(child: _buildSummaryArea(context))]);
+    } else {
+      topArea = Column(children: [_buildImage(context), _buildSummaryArea(context)]);
+    }
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             WPArticleAppBar(widget.article),
-            _buildSummaryArea(context),
-            _buildImage(context),
+            topArea,
             _buildContentArea(context)
           ],
         ),
@@ -56,7 +65,7 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
           children: [
             _buildSubtitle(context),
             _buildTitle(context),
-            WPHtml(widget.article.summary),
+            _buildSummary(context),
             Text(
                 '$creationDate - $authorNames - in $categoryName - $numberOfReplies ${context.getString('replies')}',
                 style: context.body2.copyWith(fontWeight: FontWeight.bold)),
@@ -72,15 +81,23 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
 
   int get numberOfReplies => widget.article.replies.length;
 
+  Widget _buildSummary(BuildContext context) => Hero(
+    tag: 'article-summary-${widget.article.id}',
+    child: Text(
+        widget.article.summaryWithoutTags,
+        style: getSummaryStyle(context).copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+    ),
+  );
+
   Widget _buildTitle(BuildContext context) => Hero(
         tag: 'article-title-${widget.article.id}',
         child: Text(widget.article.title,
-            style: context.headline5.copyWith(color: Colors.black)),
+            style: getTitleStyle(context).copyWith(color: Colors.black)),
       );
 
   Widget _buildSubtitle(BuildContext context) => Hero(
         tag: 'article-subtitle-${widget.article.id}',
-        child: Text(widget.article.subTitle, style: context.headline6),
+        child: Text(widget.article.subTitle, style: getSubtitleStyle(context).copyWith( color: context.primaryColor)),
       );
 
   Widget _buildImage(BuildContext context) {
@@ -102,4 +119,8 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
       ],
     );
   }
+
+  TextStyle getTitleStyle(BuildContext context) => widget.isBig ? context.headline1 : context.headline5;
+  TextStyle getSubtitleStyle(BuildContext context) => widget.isBig ? context.headline2 : context.headline6;
+  TextStyle getSummaryStyle(BuildContext context) => widget.isBig ? context.headline4 : context.body2;
 }

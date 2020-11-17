@@ -4,9 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/models/category.dart';
 import 'package:wordpress_blog_app_template/rest/rest_client.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_paged_list.dart';
+import 'package:wordpress_blog_app_template/widgets/custom_views/wp_pagination.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/categories/category_list_entry.dart';
-
 
 
 const LIST_ITEM_SPACING = 15.0;
@@ -31,10 +30,10 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return WPPagedList<Category>(
+    return WPPagination<Category>(
       pageBuilder: (currentListSize) => loadData(context, currentListSize),
-      itemBuilder: (category) => CategoryListEntry(category),
-      errorMessage: context.getString('category_loading_error'),
+      itemBuilder: (position, category, _) => CategoryListEntry(category),
+      errorLabel: context.getString('category_loading_error'),
     );
   }
 
