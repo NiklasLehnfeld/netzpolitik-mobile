@@ -15,25 +15,29 @@ const ERROR_ICON_SIZE = 70.0;
 
 const LIST_ITEM_SPACING = 15.0;
 
-class WPPagination<T> extends StatefulWidget {
-  WPPagination(
-      {Key key,
-      @required this.pageBuilder,
-      @required this.itemBuilder,
-      this.errorLabel})
-      : assert(pageBuilder != null),
+class WPGridPagination<T> extends StatefulWidget {
+  WPGridPagination({
+    Key key,
+    @required this.pageBuilder,
+    @required this.itemBuilder,
+    this.enableSingleTop = true,
+    this.childAspectRatio = ArticleImage.IMAGE_ASPECT_RATIO * 2,
+    this.errorLabel,
+  })  : assert(pageBuilder != null),
         assert(itemBuilder != null),
         super(key: key);
 
   final PaginationBuilder<T> pageBuilder;
   final ItemWidgetBuilder<T> itemBuilder;
+  final double childAspectRatio;
   final String errorLabel;
+  final bool enableSingleTop;
 
   @override
-  _WPPaginationState<T> createState() => _WPPaginationState<T>();
+  _WPGridPaginationState<T> createState() => _WPGridPaginationState<T>();
 }
 
-class _WPPaginationState<T> extends State<WPPagination<T>> {
+class _WPGridPaginationState<T> extends State<WPGridPagination<T>> {
   final List<T> _list = [];
   bool _isLoading = false;
   bool _isError = false;
@@ -76,10 +80,11 @@ class _WPPaginationState<T> extends State<WPPagination<T>> {
       return defaultLoading();
     }
 
-    var skips = context.isUltraWide ? 1 : 0;
+    var skips = context.isUltraWide && widget.enableSingleTop ? 1 : 0;
     var colCount = context.isUltraWide ? 2 : 1;
 
     return CustomScrollView(
+      physics: ClampingScrollPhysics(parent: PageScrollPhysics()),
       slivers: [
         SliverPadding(
           padding: EdgeInsets.only(bottom: LIST_ITEM_SPACING),
@@ -95,12 +100,13 @@ class _WPPaginationState<T> extends State<WPPagination<T>> {
         SliverGrid(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: LIST_ITEM_SPACING,
-            childAspectRatio: ArticleImage.IMAGE_ASPECT_RATIO * 2,
+            childAspectRatio: widget.childAspectRatio,
             crossAxisCount: colCount,
           ),
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
               var position = index + skips;
+
               if (position < _list.length) {
                 return widget.itemBuilder(position, _list[position], false);
               } else if (position == _list.length && !_isEndOfList) {

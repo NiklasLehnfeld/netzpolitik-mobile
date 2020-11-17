@@ -26,25 +26,30 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
   @override
   Widget build(BuildContext context) {
 
-    Widget topArea;
+    return OrientationBuilder(
+      builder: (context, orientation) {
 
-    if (context.isWide) {
-      topArea = Row(crossAxisAlignment: CrossAxisAlignment.start,children: [Expanded(child: _buildImage(context)), Expanded(child: _buildSummaryArea(context))]);
-    } else {
-      topArea = Column(children: [_buildImage(context), _buildSummaryArea(context)]);
-    }
+        Widget topArea;
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            WPArticleAppBar(widget.article),
-            topArea,
-            _buildContentArea(context)
-          ],
-        ),
-      ),
+        if (context.isUltraWide || (context.isWide && orientation == Orientation.landscape)) {
+          topArea = Row(crossAxisAlignment: CrossAxisAlignment.start,children: [Expanded(child: _buildImage(context)), Expanded(child: _buildSummaryArea(context))]);
+        } else {
+          topArea = Column(children: [_buildSummaryArea(context), _buildImage(context)]);
+        }
+
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                WPArticleAppBar(widget.article),
+                topArea,
+                _buildContentArea(context)
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 

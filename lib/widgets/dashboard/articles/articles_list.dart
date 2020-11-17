@@ -5,7 +5,7 @@ import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/models/article.dart';
 import 'package:wordpress_blog_app_template/models/category.dart';
 import 'package:wordpress_blog_app_template/rest/rest_client.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_pagination.dart';
+import 'package:wordpress_blog_app_template/widgets/custom_views/wp_grid_pagination.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/articles/article_list_entry.dart';
 
 
@@ -24,7 +24,7 @@ class _ArticlesListState extends State<ArticlesList> {
 
   @override
   Widget build(BuildContext context) {
-    return WPPagination<Article>(
+    return WPGridPagination<Article>(
       itemBuilder: (position, article, isBig) => ArticleListEntry(article, isBig: isBig,),
       pageBuilder: (listSize) => loadData(context, listSize),
       errorLabel: context.getString('article_loading_error'),
