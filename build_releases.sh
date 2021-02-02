@@ -1,5 +1,8 @@
 mkdir release-builds
 
+flutter pub get
+flutter pub run build_runner build --delete-conflicting-outputs
+
 artifact_name=$(cd android && ./gradlew printFullArtifactName | grep 'netzpolitik')
 
 ## build android apk and move it to release-builds folder
