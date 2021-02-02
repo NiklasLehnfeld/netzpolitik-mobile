@@ -6,7 +6,6 @@ import 'package:wordpress_blog_app_template/widgets/custom_views/wp_appbar.dart'
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_bottom_navigation.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/articles/articles_widget.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/categories/categories_widget.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/donations/donate_widget.dart';
 
 
 class Home extends StatefulWidget {
@@ -44,7 +43,6 @@ class _HomeState extends State<Home> {
 const BOTTOM_NAV_ITEMS = [
   BottomNavItemViewHolder(icon: FontAwesomeIcons.newspaper, titleKey: 'articles', child: ArticlesWidget()),
   BottomNavItemViewHolder(icon: FontAwesomeIcons.stream, titleKey: 'topics', child: CategoriesWidget()),
-  BottomNavItemViewHolder(icon: FontAwesomeIcons.solidHeart, titleKey: 'donate', child: DonateWidget()),
 ];
 
 class BottomNavItemViewHolder {
