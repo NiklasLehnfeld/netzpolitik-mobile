@@ -28,7 +28,7 @@ class WPBottomSheet extends StatelessWidget {
 
     return WPCard(
       margin: EdgeInsets.zero,
-      cornerRadius: BorderRadius.circular(BORDER_RADIUS),
+      cornerRadius: BorderRadius.vertical(top: Radius.circular(BORDER_RADIUS)),
       child: child,
     );
   }
