@@ -4,13 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:wordpress_blog_app_template/config/app_configuration.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/routes/imprint_route.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/categories/articles_bottom_sheet.dart';
+import 'package:wordpress_blog_app_template/widgets/dashboard/imprint/imprint_bottom_sheet.dart';
 
 class WPAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final bool showLegalsAction;
 
-  const WPAppBar({this.showLegalsAction = false});
+  const WPAppBar();
 
   @override
   _WPAppBarState createState() => _WPAppBarState();
@@ -32,11 +31,8 @@ class _WPAppBarState extends State<WPAppBar> {
         child: appConfig.title ?? Text(appConfig.name),
       ),
       actions: [
-        Visibility(
-          visible: widget.showLegalsAction,
-          child: _buildImprintButton(context),
-          replacement: _buildSearchButton(context),
-        )
+        _buildSearchButton(context),
+        _buildImprintButton(context),
       ],
     );
   }
@@ -50,11 +46,13 @@ class _WPAppBarState extends State<WPAppBar> {
       );
 
   Widget _buildImprintButton(BuildContext context) => IconButton(
-        icon: Text(
-          '\§',
-          style: context.headline1.copyWith(color: context.primaryColor),
+        icon: FaIcon(
+          FontAwesomeIcons.infoCircle,
+          color: context.primaryColor,
         ),
-        onPressed: () => context.navigate((context) => ImprintRoute()),
+        onPressed: () => context.showBottomSheet(
+          builder: (context) => ImprintBottomSheet(),
+        ),
       );
 
   @override
