@@ -18,7 +18,7 @@ class ArticleListEntry extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: WPCard(
-        onTap: () => context.navigate((context) => ArticleDetailRoute(article, isBig: isBig,)),
+        onTap: () => context.navigate((context) => ArticleDetailRoute(article, isBig: isBig)),
         child: _buildContent(context),
       ),
     );

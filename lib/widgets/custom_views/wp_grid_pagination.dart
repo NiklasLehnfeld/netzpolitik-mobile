@@ -21,9 +21,10 @@ class WPGridPagination<T> extends StatefulWidget {
     @required this.pageBuilder,
     @required this.itemBuilder,
     this.enableSingleTop = true,
-    this.childAspectRatio = ArticleImage.IMAGE_ASPECT_RATIO * 2,
+    this.childAspectRatio = ArticleImage.IMAGE_ASPECT_RATIO,
     this.errorLabel,
-  })  : assert(pageBuilder != null),
+  })
+      : assert(pageBuilder != null),
         assert(itemBuilder != null),
         super(key: key);
 
@@ -80,45 +81,23 @@ class _WPGridPaginationState<T> extends State<WPGridPagination<T>> {
       return defaultLoading();
     }
 
-    var skips = context.isUltraWide && widget.enableSingleTop ? 1 : 0;
     var colCount = context.isUltraWide ? 2 : 1;
 
-    return CustomScrollView(
-      physics: ClampingScrollPhysics(parent: PageScrollPhysics()),
-      slivers: [
-        SliverPadding(
-          padding: EdgeInsets.only(bottom: LIST_ITEM_SPACING),
-          sliver: SliverList(
-            delegate: SliverChildListDelegate.fixed(
-              _list.getRange(0, skips).map((e) {
-                var position = _list.indexOf(e);
-                return widget.itemBuilder(position, e, true);
-              }).toList(),
-            ),
-          ),
-        ),
-        SliverGrid(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisSpacing: LIST_ITEM_SPACING,
-            childAspectRatio: widget.childAspectRatio,
-            crossAxisCount: colCount,
-          ),
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              var position = index + skips;
-
-              if (position < _list.length) {
-                return widget.itemBuilder(position, _list[position], false);
-              } else if (position == _list.length && !_isEndOfList) {
-                fetchMore();
-                return defaultLoading();
-              }
-              return null;
-            },
-          ),
-        ),
-      ],
-    );
+    return GridView.builder(
+      itemCount: _list.length + 1,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: colCount,
+        childAspectRatio: widget.childAspectRatio,
+      ),
+      itemBuilder: (BuildContext context, int position) {
+        if (position < _list.length) {
+          return widget.itemBuilder(position, _list[position], false);
+        } else if (position == _list.length && !_isEndOfList) {
+          fetchMore();
+          return defaultLoading();
+        }
+        return Container();
+      });
   }
 
   Widget defaultLoading() {
@@ -134,7 +113,8 @@ class _WPGridPaginationState<T> extends State<WPGridPagination<T>> {
     );
   }
 
-  Widget errorWidget(BuildContext context) => Center(
+  Widget errorWidget(BuildContext context) =>
+      Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Column(

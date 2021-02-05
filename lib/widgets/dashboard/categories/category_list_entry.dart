@@ -41,7 +41,7 @@ class CategoryListEntry extends StatelessWidget {
 
 
   Widget _buildDescription(BuildContext context) => Text(category.description,
-      style: context.body1.copyWith(color: Colors.black));
+      style: context.body1.copyWith(color: Colors.black), overflow: TextOverflow.ellipsis, maxLines: 5,);
 
   Widget _buildName(BuildContext context) => Text(category.name, style: context.headline4);
 }
