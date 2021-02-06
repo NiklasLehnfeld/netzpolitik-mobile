@@ -30,6 +30,7 @@ dependencies:
   assets_audio_player:
   cached_network_image:
   intl:
+  flutter_staggered_grid_view:
 
 dev_dependencies:
   flutter_test:

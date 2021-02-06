@@ -8,7 +8,6 @@ import 'package:wordpress_blog_app_template/rest/rest_client.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_grid_pagination.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/articles/article_list_entry.dart';
 
-import 'article_image.dart';
 
 
 class ArticlesList extends StatefulWidget {
@@ -30,9 +29,6 @@ class _ArticlesListState extends State<ArticlesList> {
       itemBuilder: (position, article, isBig) => ArticleListEntry(article, isBig: isBig),
       pageBuilder: (listSize) => loadData(context, listSize),
       errorLabel: context.getString('article_loading_error'),
-      childAspectRatio: context.isWide ?
-        ArticleImage.IMAGE_ASPECT_RATIO * 2 :
-        ArticleImage.IMAGE_ASPECT_RATIO / 1.5,
     );
   }
 

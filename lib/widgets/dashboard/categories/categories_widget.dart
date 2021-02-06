@@ -32,7 +32,6 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   Widget build(BuildContext context) {
     return WPGridPagination<Category>(
       enableSingleTop: false,
-      childAspectRatio: context.isUltraWide ? 3 : context.isWide ? 5 : 2,
       pageBuilder: (currentListSize) => loadData(context, currentListSize),
       itemBuilder: (position, category, _) => CategoryListEntry(category),
       errorLabel: context.getString('category_loading_error'),

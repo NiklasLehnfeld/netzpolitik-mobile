@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 import 'package:wordpress_blog_app_template/models/category.dart';
 import 'package:wordpress_blog_app_template/widgets/custom_views/wp_card.dart';
+import 'package:wordpress_blog_app_template/widgets/custom_views/wp_html.dart';
 import 'package:wordpress_blog_app_template/widgets/dashboard/categories/articles_bottom_sheet.dart';
 
 class CategoryListEntry extends StatelessWidget {
@@ -40,8 +41,8 @@ class CategoryListEntry extends StatelessWidget {
   );
 
 
-  Widget _buildDescription(BuildContext context) => Text(category.description,
-      style: context.body1.copyWith(color: Colors.black), overflow: TextOverflow.ellipsis, maxLines: 5,);
+  Widget _buildDescription(BuildContext context) => WPHtml(category.description,
+      style: context.body1.copyWith(color: Colors.black),);
 
   Widget _buildName(BuildContext context) => Text(category.name, style: context.headline4);
 }

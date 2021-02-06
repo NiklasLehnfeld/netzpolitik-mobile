@@ -3,9 +3,9 @@ library paging;
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/articles/article_image.dart';
 
 typedef PaginationBuilder<T> = Future<List<T>> Function(int currentListSize);
 
@@ -13,7 +13,8 @@ typedef ItemWidgetBuilder<T> = Widget Function(int index, T item, bool isBig);
 
 const ERROR_ICON_SIZE = 70.0;
 
-const LIST_ITEM_SPACING = 15.0;
+const VERTICAL_LIST_ITEM_SPACING = 15.0;
+const HORIZONTAL_LIST_ITEM_SPACING = 5.0;
 
 class WPGridPagination<T> extends StatefulWidget {
   WPGridPagination({
@@ -21,16 +22,13 @@ class WPGridPagination<T> extends StatefulWidget {
     @required this.pageBuilder,
     @required this.itemBuilder,
     this.enableSingleTop = true,
-    this.childAspectRatio = ArticleImage.IMAGE_ASPECT_RATIO,
     this.errorLabel,
-  })
-      : assert(pageBuilder != null),
+  })  : assert(pageBuilder != null),
         assert(itemBuilder != null),
         super(key: key);
 
   final PaginationBuilder<T> pageBuilder;
   final ItemWidgetBuilder<T> itemBuilder;
-  final double childAspectRatio;
   final String errorLabel;
   final bool enableSingleTop;
 
@@ -83,21 +81,33 @@ class _WPGridPaginationState<T> extends State<WPGridPagination<T>> {
 
     var colCount = context.isUltraWide ? 2 : 1;
 
-    return GridView.builder(
-      itemCount: _list.length + 1,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: colCount,
-        childAspectRatio: widget.childAspectRatio,
-      ),
-      itemBuilder: (BuildContext context, int position) {
-        if (position < _list.length) {
-          return widget.itemBuilder(position, _list[position], false);
-        } else if (position == _list.length && !_isEndOfList) {
-          fetchMore();
-          return defaultLoading();
+    return StaggeredGridView.countBuilder(
+        crossAxisCount: colCount,
+        itemCount: _list.length + 1,
+        mainAxisSpacing: VERTICAL_LIST_ITEM_SPACING,
+        crossAxisSpacing: HORIZONTAL_LIST_ITEM_SPACING,
+        itemBuilder: (BuildContext context, int position) {
+          if (position < _list.length) {
+            return widget.itemBuilder(position, _list[position], false);
+          } else if (position == _list.length && !_isEndOfList) {
+            fetchMore();
+            return defaultLoading();
+          }
+          return Container();
+        },
+        staggeredTileBuilder: (int index) {
+
+          if (widget.enableSingleTop && index == 0 && context.isWide) {
+            return StaggeredTile.fit(colCount);
+          }
+
+          if (index == _list.length) {
+            return StaggeredTile.extent(colCount, 40);
+          }
+
+          return StaggeredTile.fit(1);
         }
-        return Container();
-      });
+    );
   }
 
   Widget defaultLoading() {
@@ -113,8 +123,7 @@ class _WPGridPaginationState<T> extends State<WPGridPagination<T>> {
     );
   }
 
-  Widget errorWidget(BuildContext context) =>
-      Center(
+  Widget errorWidget(BuildContext context) => Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Column(
