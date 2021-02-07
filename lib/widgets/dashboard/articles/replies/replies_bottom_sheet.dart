@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/models/reply.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_bottom_sheet.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/articles/replies/reply_list_entry.dart';
+import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/models/reply.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_bottom_sheet.dart';
+import 'package:netzpolitik_mobile/widgets/dashboard/articles/replies/reply_list_entry.dart';
 
 class RepliesBottomSheet extends StatelessWidget {
 

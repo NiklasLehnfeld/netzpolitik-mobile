@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/extensions/int_ext.dart';
-import 'package:wordpress_blog_app_template/extensions/string_ext.dart';
-import 'package:wordpress_blog_app_template/models/article.dart';
-import 'package:wordpress_blog_app_template/models/audio_model.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_article_appbar.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_html.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_play_button.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/articles/article_image.dart';
+import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/extensions/int_ext.dart';
+import 'package:netzpolitik_mobile/extensions/string_ext.dart';
+import 'package:netzpolitik_mobile/models/article.dart';
+import 'package:netzpolitik_mobile/models/audio_model.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_article_appbar.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_html.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_play_button.dart';
+import 'package:netzpolitik_mobile/widgets/dashboard/articles/article_image.dart';
 
 class ArticleDetailRoute extends StatefulWidget {
   final Article article;

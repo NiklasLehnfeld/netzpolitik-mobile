@@ -1,4 +1,4 @@
-import 'package:wordpress_blog_app_template/models/reply.dart';
+import 'package:netzpolitik_mobile/models/reply.dart';
 
 class ReplyDeserializer {
 

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:wordpress_blog_app_template/config/rest_configuration.dart';
-import 'package:wordpress_blog_app_template/models/article.dart';
-import 'package:wordpress_blog_app_template/models/category.dart';
+import 'package:netzpolitik_mobile/config/rest_configuration.dart';
+import 'package:netzpolitik_mobile/models/article.dart';
+import 'package:netzpolitik_mobile/models/category.dart';
 
 const PAGE_SIZE = 10;
 

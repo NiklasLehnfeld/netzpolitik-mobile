@@ -1,10 +1,10 @@
 import 'package:html_unescape/html_unescape.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:wordpress_blog_app_template/models/author.dart';
-import 'package:wordpress_blog_app_template/models/category.dart';
-import 'package:wordpress_blog_app_template/models/reply.dart';
-import 'package:wordpress_blog_app_template/models/tag.dart';
-import 'package:wordpress_blog_app_template/serialization/reply_deserializer.dart';
+import 'package:netzpolitik_mobile/models/author.dart';
+import 'package:netzpolitik_mobile/models/category.dart';
+import 'package:netzpolitik_mobile/models/reply.dart';
+import 'package:netzpolitik_mobile/models/tag.dart';
+import 'package:netzpolitik_mobile/serialization/reply_deserializer.dart';
 
 part 'article.g.dart';
 

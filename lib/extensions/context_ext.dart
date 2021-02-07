@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wordpress_blog_app_template/localization/app_localizations.dart';
+import 'package:netzpolitik_mobile/localization/app_localizations.dart';
 
 
 const TRANSITION_DURATION = 300;

@@ -1,9 +1,9 @@
+import 'package:netzpolitik_mobile/config/app_configuration.dart';
+import 'package:netzpolitik_mobile/config/apps.dart';
+import 'package:netzpolitik_mobile/config/rest_configuration.dart';
+import 'package:netzpolitik_mobile/logic/audio_player.dart';
+import 'package:netzpolitik_mobile/rest/rest_client.dart';
 import 'package:provider/provider.dart';
-import 'package:wordpress_blog_app_template/config/app_configuration.dart';
-import 'package:wordpress_blog_app_template/config/apps.dart';
-import 'package:wordpress_blog_app_template/config/rest_configuration.dart';
-import 'package:wordpress_blog_app_template/logic/audio_player.dart';
-import 'package:wordpress_blog_app_template/rest/rest_client.dart';
 
 
 class Providers {

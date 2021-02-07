@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 
 typedef PaginationBuilder<T> = Future<List<T>> Function(int currentListSize);
 

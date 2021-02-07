@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:netzpolitik_mobile/config/app_configuration.dart';
+import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/widgets/dashboard/categories/articles_bottom_sheet.dart';
+import 'package:netzpolitik_mobile/widgets/dashboard/imprint/imprint_bottom_sheet.dart';
 import 'package:provider/provider.dart';
-import 'package:wordpress_blog_app_template/config/app_configuration.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/categories/articles_bottom_sheet.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/imprint/imprint_bottom_sheet.dart';
 
 class WPAppBar extends StatefulWidget implements PreferredSizeWidget {
 

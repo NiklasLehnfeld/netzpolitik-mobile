@@ -1,9 +1,16 @@
-# 📚 Wordpress Blog App Template
+# 📚 Netzpolitik Mobile App
 
-A generic flutter app template for wordpress apps using [Wordpress Rest API](https://developer.wordpress.org/rest-api/).
-The example is written for [Netzpolitik.org](https://netzpolitik.org/)
+This is an unofficial cross-plattform flutter mobile app for reading [Netzpolitik.org](https://netzpolitik.org/) articles.
+It is using the open [Wordpress Rest API](https://developer.wordpress.org/rest-api/) of the netzpolitik website.
 
 <br>
+
+## ⭐️ Features
+
+- [x] Reading articles
+- [x] Reading comments of an article
+- [x] Getting information about the author of an article
+- [x] Hearing podcasts
 
 ## 📱 Screenshots
 

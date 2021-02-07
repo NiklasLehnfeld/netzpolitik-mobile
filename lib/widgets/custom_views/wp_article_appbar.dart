@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/models/article.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_back_button.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/articles/author/author_bottom_sheet.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/articles/replies/replies_bottom_sheet.dart';
+import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/models/article.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_back_button.dart';
+import 'package:netzpolitik_mobile/widgets/dashboard/articles/author/author_bottom_sheet.dart';
+import 'package:netzpolitik_mobile/widgets/dashboard/articles/replies/replies_bottom_sheet.dart';
 
 class WPArticleAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Article article;

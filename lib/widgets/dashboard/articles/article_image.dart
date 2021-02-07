@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:netzpolitik_mobile/config/rest_configuration.dart';
+import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/models/article.dart';
 import 'package:provider/provider.dart';
-import 'package:wordpress_blog_app_template/config/rest_configuration.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/models/article.dart';
 
 
 

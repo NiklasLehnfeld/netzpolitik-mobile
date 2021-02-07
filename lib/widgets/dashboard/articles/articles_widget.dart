@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wordpress_blog_app_template/widgets/dashboard/articles/articles_list.dart';
+import 'package:netzpolitik_mobile/widgets/dashboard/articles/articles_list.dart';
 
 
 

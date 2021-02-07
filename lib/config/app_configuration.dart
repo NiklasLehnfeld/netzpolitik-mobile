@@ -1,6 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:wordpress_blog_app_template/config/rest_configuration.dart';
+import 'package:netzpolitik_mobile/config/rest_configuration.dart';
 
 class AppConfiguration {
   final String name;

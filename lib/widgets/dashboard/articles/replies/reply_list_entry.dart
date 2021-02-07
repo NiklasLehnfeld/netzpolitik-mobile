@@ -1,11 +1,11 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/models/reply.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/width.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_card.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_html.dart';
+import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/models/reply.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/width.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_card.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_html.dart';
 
 class ReplyListEntry extends StatelessWidget {
   final Reply reply;

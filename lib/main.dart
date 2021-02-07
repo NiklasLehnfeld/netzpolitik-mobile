@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:netzpolitik_mobile/config/app_configuration.dart';
+import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/localization/app_localizations.dart';
+import 'package:netzpolitik_mobile/providers.dart';
+import 'package:netzpolitik_mobile/widgets/home.dart';
 import 'package:provider/provider.dart';
-import 'package:wordpress_blog_app_template/config/app_configuration.dart';
-import 'package:wordpress_blog_app_template/localization/app_localizations.dart';
-import 'package:wordpress_blog_app_template/providers.dart';
-import 'package:wordpress_blog_app_template/widgets/home.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
 
 
 void main() => runApp(WPApp());

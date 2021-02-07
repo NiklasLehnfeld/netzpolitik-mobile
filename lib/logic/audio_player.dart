@@ -1,6 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:wordpress_blog_app_template/models/audio_model.dart';
+import 'package:netzpolitik_mobile/models/audio_model.dart';
 
 class AudioPlayer extends ChangeNotifier {
 

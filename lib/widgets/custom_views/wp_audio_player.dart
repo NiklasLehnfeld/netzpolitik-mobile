@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/logic/audio_player.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/height.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_expanded_section.dart';
 import 'package:provider/provider.dart';
-import 'package:wordpress_blog_app_template/extensions/context_ext.dart';
-import 'package:wordpress_blog_app_template/logic/audio_player.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/height.dart';
-import 'package:wordpress_blog_app_template/widgets/custom_views/wp_expanded_section.dart';
 
 const PLAYER_HEIGHT = 80.0;
 
