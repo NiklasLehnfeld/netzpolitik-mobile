@@ -18,10 +18,7 @@
   "imprint_content": "Niklas Lehnfeld\nAm Brückenbach 14\n38304 Wolfenbüttel\nniklas@lehnfeld.net",
 
   "about_the_app_headline": "Über die App:",
-  "about_the_app_content": "Dies ist eine inoffizielle App zum Lesen von Beiträgen von NetzPolitik.Org.\nDiese App stammt nicht vom NetzPolitik-Team, sondern ist eine private Entwicklung. Sie bindet lediglich die öffentlich zugängliche Schnittstelle von NetzPolitik.org an.\nAlle Details zur technischen Umsetzung finden Sie auf Github. (Siehe Verlinkung unten)\nBug-Reports, sowie Verbesserungsvorschläge können ebenso über die Issue-Sektion auf Github oder per E-Mail abgegeben werden.",
-
-  "about_the_dev_headline": "Über den Entwickler:",
-  "about_the_dev_content": "Mein Name ist Niklas Lehnfeld und ich arbeite seit mehrern Jahren als Softwareentwickler.\nIch entwickle leidenschaftlich Mobile Apps, Web Apps & Backend (Cloud) Lösungen.\nMein gesamtes Profil finden Sie auf LinkedIn. (Siehe Verlinkung unten)\nKontakt zu mir kann man am Besten via E-Mail oder LinkedIn aufnehmen.",
+  "about_the_app_content": "Dies ist eine inoffizielle App zum Lesen von Beiträgen von NetzPolitik.Org.\nAlle hier gelisteten Artikel stammen von NetzPolitik.org. (Siehe Verlinkung unten)\nDiese App stammt nicht vom NetzPolitik-Team, sondern ist eine unabhängige Entwicklung. Sie bindet lediglich die öffentlich zugängliche Schnittstelle von NetzPolitik.org an.\nAlle Details zur technischen Umsetzung finden Sie auf Github. (Siehe Verlinkung unten)\nBug-Reports, sowie Verbesserungsvorschläge können ebenso über die Issue-Sektion auf Github oder per E-Mail abgegeben werden.",
 
   "github_headline": "Github",
   "github_url": "https://github.com/NiklasLehnfeld/wordpress-blog-app-template",
