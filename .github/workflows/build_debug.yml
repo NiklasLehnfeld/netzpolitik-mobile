@@ -41,6 +41,7 @@ jobs:
     - name: Install tools
       run: |
         flutter channel master && flutter pub get
+        flutter precache --ios
         cd ./ios && pod install
     #- name: Build iOS Project
     #  run: flutter build ios
