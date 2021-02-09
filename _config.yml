@@ -1,0 +1,14 @@
+
+source: .github/pages
+title: NetzPolitik.org - Mobile
+email: niklas@lehnfeld.net
+description: Inoffizielle Mobile App zum Mitlesen aller NetzPolitik.Org Artikel.
+
+twitter_username: nlehnfeld
+github_username:  niklaslehnfeld
+linkedin_username: lehnfeld
+
+theme: minima
+plugins:
+  - jekyll-feed
+

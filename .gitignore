@@ -4,6 +4,12 @@
 
 ### Flutter ###
 # Flutter/Dart/Pub related
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+
 **/doc/api/
 .dart_tool/
 .flutter-plugins
