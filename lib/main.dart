@@ -4,6 +4,7 @@ import 'package:netzpolitik_mobile/config/app_configuration.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/localization/app_localizations.dart';
 import 'package:netzpolitik_mobile/providers.dart';
+import 'package:netzpolitik_mobile/rest/push_notifications.dart';
 import 'package:netzpolitik_mobile/widgets/home.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,9 @@ class WPApp extends StatelessWidget {
     return MultiProvider(
       providers: Providers.all,
       builder: (context, child) {
+
+        initPushNotifications(context);
+
         var appConfig = context.watch<AppConfiguration>();
 
         return MaterialApp(
@@ -49,5 +53,17 @@ class WPApp extends StatelessWidget {
         );
       },
     );
+  }
+
+  void initPushNotifications(BuildContext context) async {
+    var pushNotificationManager = context.watch<PushNotificationsManager>();
+
+    await Future.delayed(Duration(seconds: 1));
+
+    var accepted = await pushNotificationManager.requestPermission();
+
+    if (accepted) {
+      pushNotificationManager.initialize();
+    }
   }
 }
