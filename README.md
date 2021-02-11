@@ -19,9 +19,9 @@ It is only visible when a podcast is currently playing.
 
 <table>
     <tr>
-        <td> <img src="screenshots/screenshot_overview.png" alt="drawing" width="300"/> </td>
-        <td> <img src="screenshots/screenshot_article.png" alt="drawing" width="300"/> </td>
-        <td> <img src="screenshots/screenshot_replies.png" alt="drawing" width="300"/> </td>
+        <td> <img src="docs/images/screenshot_overview.png" alt="drawing" width="300"/> </td>
+        <td> <img src="docs/images/screenshot_article.png" alt="drawing" width="300"/> </td>
+        <td> <img src="docs/images/screenshot_replies.png" alt="drawing" width="300"/> </td>
     </tr>
 </table>
 <br><br>
