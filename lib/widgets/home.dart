@@ -1,11 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/rest/push_notifications.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_appbar.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_bottom_navigation.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/articles_widget.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/categories/categories_widget.dart';
+import 'package:provider/provider.dart';
+
+import 'dialogs/NotificationPermissionDialog.dart';
 
 
 class Home extends StatefulWidget {
@@ -20,6 +26,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+
+    initPushNotifications(context);
+
     return Scaffold(
       appBar: WPAppBar(),
       bottomNavigationBar: WPBottomNavigation(
@@ -35,6 +44,23 @@ class _HomeState extends State<Home> {
         index: _currentIndex,
       )
     );
+  }
+
+  void initPushNotifications(BuildContext context) async {
+    var pushNotificationManager = context.watch<PushNotificationsManager>();
+
+    await Future.delayed(Duration(seconds: 3));
+
+    if (Platform.isIOS && await pushNotificationManager.shouldAskForPermission()) {
+      await showDialog(
+        context: context,
+        builder: (context) => NotificationPermissionDialog(),
+        barrierColor: context.primaryColor.withAlpha(125),
+      );
+    }
+
+    pushNotificationManager.initialize();
+
   }
 }
 

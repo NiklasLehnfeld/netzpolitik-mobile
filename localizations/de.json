@@ -24,7 +24,11 @@
   "github_url": "https://github.com/NiklasLehnfeld/wordpress-blog-app-template",
 
   "linkedin_headline": "LinkedIn",
-  "linkedin_url": "https://www.linkedin.com/in/lehnfeld/"
+  "linkedin_url": "https://www.linkedin.com/in/lehnfeld/",
 
+  "notification_content": "Wir würden dich gerne in regelmäßigen Abständen über neue Artikel auf Netzpolitik.org informieren.\nDafür benötigen wir lediglich deine Zustimmung, dass wir dir Benachrichtigungen zustellen dürfen.",
+  "notification_title": "Benachrichtigungen",
+  "notification_no": "Nein, danke!",
+  "notification_yes": "Ja, gerne!"
 
 }
