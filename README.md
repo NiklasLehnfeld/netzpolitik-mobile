@@ -1,3 +1,21 @@
+<p>
+<a href="https://play.google.com/store/apps/details?id=net.lehnfeld.netzpolitik">
+    <img src="https://img.shields.io/badge/GooglePlay-live-blue">
+</a>
+
+<a href="https://www.apple.com/de/app-store">
+    <img src="https://img.shields.io/badge/AppStore-rejected-red">
+</a>
+
+<a href="https://github.com/NiklasLehnfeld/netzpolitik-mobile/actions?query=workflow%3A%22Build+Debug%22">
+    <img src="https://github.com/NiklasLehnfeld/netzpolitik-mobile/workflows/Build%20Debug/badge.svg">
+</a>
+
+<a href="https://github.com/NiklasLehnfeld/netzpolitik-mobile/actions?query=workflow%3A%22Analyze+and+Test%22">
+    <img src="https://github.com/NiklasLehnfeld/netzpolitik-mobile/workflows/Analyze%20and%20Test/badge.svg">
+</a>
+</p>
+
 # 📚 Netzpolitik Mobile App
 
 This is an unofficial cross-plattform flutter mobile app for reading [Netzpolitik.org](https://netzpolitik.org/) articles.
