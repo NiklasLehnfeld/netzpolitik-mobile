@@ -1,0 +1,20 @@
+on:
+  schedule:
+    - cron: '0 0 1-31/2 * *'
+name: Analyze and Test
+jobs:
+  run:
+    name: Send Notifications
+    runs-on: ubuntu-latest
+    container: niklaslehnfeld/flutter-essentials:latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Execute script
+        run: |
+          python scripts/daily_push.py
+        env:
+          key: ${{ secrets.firebase_server_key }}

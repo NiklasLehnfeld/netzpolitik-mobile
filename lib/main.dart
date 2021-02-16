@@ -18,6 +18,7 @@ class WPApp extends StatelessWidget {
     return MultiProvider(
       providers: Providers.all,
       builder: (context, child) {
+
         var appConfig = context.watch<AppConfiguration>();
 
         return MaterialApp(
@@ -50,4 +51,6 @@ class WPApp extends StatelessWidget {
       },
     );
   }
+
+
 }
