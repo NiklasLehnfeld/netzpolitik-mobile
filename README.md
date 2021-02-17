@@ -8,12 +8,13 @@
 </a>
 
 <a href="https://github.com/NiklasLehnfeld/netzpolitik-mobile/actions?query=workflow%3A%22Build+Debug%22">
-    <img src="https://github.com/NiklasLehnfeld/netzpolitik-mobile/workflows/Build%20Debug/badge.svg">
+    <img src="https://github.com/NiklasLehnfeld/netzpolitik-mobile/workflows/Build%20Debug/badge.svg?branch=main">
 </a>
 
 <a href="https://github.com/NiklasLehnfeld/netzpolitik-mobile/actions?query=workflow%3A%22Analyze+and+Test%22">
-    <img src="https://github.com/NiklasLehnfeld/netzpolitik-mobile/workflows/Analyze%20and%20Test/badge.svg">
+    <img src="https://github.com/NiklasLehnfeld/netzpolitik-mobile/workflows/Analyze%20and%20Test/badge.svg?branch=main">
 </a>
+
 </p>
 
 # 📚 Netzpolitik Mobile App
