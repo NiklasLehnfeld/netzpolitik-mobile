@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:html_unescape/html_unescape.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:netzpolitik_mobile/models/author.dart';
@@ -23,9 +25,6 @@ class Article {
 
   String content;
   String summary;
-
-  @JsonKey(ignore: true)
-  String get summaryWithoutTags => summary.replaceAll(RegExp('<\/?p>'), '');
   
   String date;
   String modified;
@@ -34,6 +33,9 @@ class Article {
 
   @JsonKey(ignore: true)
   DateTime get creationTime => DateTime.parse(date);
+
+  @JsonKey(ignore: true)
+  String get summaryWithoutTags => summary.replaceAll(RegExp('<\/?p>'), '');
 
   Article();
 
@@ -74,5 +76,24 @@ class Article {
   }
 
   Map toJson() => _$ArticleToJson(this);
+
+  factory Article.fromDatabase(Map map) {
+    final result = <String, dynamic>{};
+    map.forEach((key, value) => result[key] = value);
+    result['categories'] = json.decode(map['categories']);
+    result['tags'] = json.decode(map['tags']);
+    result['authors'] = json.decode(map['authors']);
+    result['replies'] = json.decode(map['replies']);
+    return _$ArticleFromJson(result);
+  }
+
+  Map toDatabaseMap(){
+    final map = toJson();
+    map['categories'] = json.encode(map['categories']);
+    map['tags'] = json.encode(map['tags']);
+    map['authors'] = json.encode(map['authors']);
+    map['replies'] = json.encode(map['replies']);
+    return map;
+  }
 
 }

@@ -8,10 +8,11 @@ import 'package:netzpolitik_mobile/rest/push_notifications.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_appbar.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_bottom_navigation.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/articles_widget.dart';
+import 'package:netzpolitik_mobile/widgets/dashboard/bookmarks/bookmarks_widget.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/categories/categories_widget.dart';
 import 'package:provider/provider.dart';
 
-import 'dialogs/NotificationPermissionDialog.dart';
+import 'dialogs/notification_permission_dialog.dart';
 
 
 class Home extends StatefulWidget {
@@ -67,6 +68,7 @@ class _HomeState extends State<Home> {
 const BOTTOM_NAV_ITEMS = [
   BottomNavItemViewHolder(icon: FontAwesomeIcons.newspaper, titleKey: 'articles', child: ArticlesWidget()),
   BottomNavItemViewHolder(icon: FontAwesomeIcons.stream, titleKey: 'topics', child: CategoriesWidget()),
+  BottomNavItemViewHolder(icon: FontAwesomeIcons.bookmark, titleKey: 'bookmarks', child: BookmarksWidget()),
 ];
 
 class BottomNavItemViewHolder {

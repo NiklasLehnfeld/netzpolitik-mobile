@@ -1,9 +1,9 @@
 {
   "articles": "Aktuelles",
   "topics": "Kategorien",
-  "donate": "Spenden",
   "replies": "Ergänzungen",
   "entries": "Artikel",
+  "bookmarks": "Lesezeichen",
 
   "search_hint": "Suche nach Artikeln",
 
@@ -29,6 +29,8 @@
   "notification_content": "Wir würden dich gerne in regelmäßigen Abständen über neue Artikel auf Netzpolitik.org informieren.\nDafür benötigen wir lediglich deine Zustimmung, dass wir dir Benachrichtigungen zustellen dürfen.",
   "notification_title": "Benachrichtigungen",
   "notification_no": "Nein, danke!",
-  "notification_yes": "Ja, gerne!"
+  "notification_yes": "Ja, gerne!",
+
+  "no_bookmarks": "Du hast dir noch keine Artikel gemerkt. Nutze den Lesezeichen-Button in der oberen rechten Ecke eines Artikels um ihn für später zu speichern."
 
 }

@@ -12,8 +12,9 @@ class ArticleImage extends StatelessWidget {
   static const IMAGE_ASPECT_RATIO = 1.77;
 
   final Article article;
+  final String identifier;
 
-  const ArticleImage(this.article);
+  const ArticleImage(this.article, {this.identifier});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class ArticleImage extends StatelessWidget {
     var imageUrl = '${restConfig.imageBaseUrl}/${article.imageName}';
 
     return Hero(
-      tag: 'article-thumbnail-${article.id}',
+      tag: 'article-thumbnail-$identifier-${article.id}',
       child: AspectRatio(
         aspectRatio: IMAGE_ASPECT_RATIO,
         child: CachedNetworkImage(

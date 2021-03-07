@@ -512,7 +512,7 @@ packages:
     source: hosted
     version: "0.1.0"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       url: "https://pub.dartlang.org"
@@ -678,7 +678,7 @@ packages:
     source: hosted
     version: "1.8.0-nullsafety.2"
   sqflite:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: sqflite
       url: "https://pub.dartlang.org"

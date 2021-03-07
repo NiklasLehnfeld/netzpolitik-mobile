@@ -4,14 +4,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_error_widget.dart';
 
 typedef PaginationBuilder<T> = Future<List<T>> Function(int currentListSize);
 
 typedef ItemWidgetBuilder<T> = Widget Function(int index, T item, bool isBig);
 
-const ERROR_ICON_SIZE = 70.0;
 
 const VERTICAL_LIST_ITEM_SPACING = 15.0;
 const HORIZONTAL_LIST_ITEM_SPACING = 5.0;
@@ -126,28 +125,13 @@ class _WPGridPaginationState<T> extends State<WPGridPagination<T>> {
   Widget errorWidget(BuildContext context) => Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 8.0),
-          child: Column(
-            children: [
-              IconButton(
-                  iconSize: ERROR_ICON_SIZE,
-                  icon: FaIcon(
-                    FontAwesomeIcons.syncAlt,
-                    color: context.primaryColor,
-                  ),
-                  onPressed: () {
-                    setState(() => _isError = false);
-                    fetchMore();
-                  }),
-              Container(
-                width: 300,
-                child: Text(
-                  widget.errorLabel,
-                  style: context.headline6,
-                  textAlign: TextAlign.center,
-                ),
-              )
-            ],
-          ),
+          child: WPErrorWidget(
+            text: widget.errorLabel,
+            onPress: () {
+              setState(() => _isError = false);
+              fetchMore();
+            },
+          )
         ),
       );
 }
