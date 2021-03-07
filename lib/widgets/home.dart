@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/feature_management/features.dart';
 import 'package:netzpolitik_mobile/rest/push_notifications.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_appbar.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_bottom_navigation.dart';
@@ -48,6 +49,11 @@ class _HomeState extends State<Home> {
   }
 
   void initPushNotifications(BuildContext context) async {
+
+    if (!Feature.PUSH_NOTIFICATIONS.isEnabled()) {
+      return;
+    }
+
     var pushNotificationManager = context.watch<PushNotificationsManager>();
 
     await Future.delayed(Duration(seconds: 3));
