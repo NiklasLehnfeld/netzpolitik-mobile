@@ -32,10 +32,22 @@ class ImprintBottomSheet extends StatelessWidget {
         context.getString('privacy_statement_url'),
         Colors.grey[600],
       ),
+      WPLinkCard(
+        FontAwesomeIcons.globe,
+        context.getString('support_website'),
+        context.getString('support_website_url'),
+        Colors.grey[600],
+      ),
     ];
 
-    var bottomContainer = context.isWide ?
-      Row(children: cards) : Column(children: cards);
+    final colCount = context.isWide ? 2 : 1;
+
+    var bottomContainer = GridView.count(
+      crossAxisCount: colCount,
+      childAspectRatio: 16 / colCount,
+      children: cards,
+      shrinkWrap: true,
+    );
 
     return WPBottomSheet(
         child: Column(
