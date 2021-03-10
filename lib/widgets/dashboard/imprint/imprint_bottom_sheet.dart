@@ -5,6 +5,7 @@ import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/height.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_bottom_sheet.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_link_card.dart';
+import 'package:package_info/package_info.dart';
 
 class ImprintBottomSheet extends StatelessWidget {
   const ImprintBottomSheet();
@@ -46,9 +47,25 @@ class ImprintBottomSheet extends StatelessWidget {
         Height(15),
         bottomContainer,
         Height(20),
+        _buildVersionNumber(context),
       ],
     ));
   }
+
+  Widget _buildVersionNumber(BuildContext context) => Align(
+    alignment: Alignment.centerRight,
+    child: FutureBuilder(
+      future: PackageInfo.fromPlatform(),
+      builder: (context, snapshot) {
+        var text = '';
+        if (snapshot.hasData) {
+          text = (snapshot.data as PackageInfo).version;
+        }
+
+        return Text('Version: $text');
+      },
+    ),
+  );
 
   Widget _buildAboutAppSection(BuildContext context) => RichText(
         text: TextSpan(
