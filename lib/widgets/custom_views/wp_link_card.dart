@@ -26,6 +26,7 @@ class WPLinkCard extends StatelessWidget {
       child: Container(
           padding: EdgeInsets.only(left: 10, top: 5, bottom: 5, right: 10),
           width: context.isWide ? context.width / 2 - 30 : null,
+          height: 30,
           color: backgroundColor,
           child: Row(
             children: [
