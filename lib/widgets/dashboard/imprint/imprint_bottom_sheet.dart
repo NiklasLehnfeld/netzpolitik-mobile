@@ -25,6 +25,12 @@ class ImprintBottomSheet extends StatelessWidget {
         context.getString('linkedin_url'),
         Colors.blueAccent[700],
       ),
+      WPLinkCard(
+        FontAwesomeIcons.globe,
+        context.getString('privacy_statement'),
+        context.getString('privacy_statement_url'),
+        Colors.grey[600],
+      ),
     ];
 
     var bottomContainer = context.isWide ?
