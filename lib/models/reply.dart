@@ -20,7 +20,13 @@ class Reply {
   Reply();
 
   factory Reply.fromJson(Map json) {
-    json['content'] = json['content']['rendered'];
+    var isUnwrapped = json['content'] is String;
+    if (!isUnwrapped ) {
+      json['content'] = json['content']['rendered'];
+    } else {
+      json['content'] = json['content'];
+    }
+
     return _$ReplyFromJson(json);
   }
 

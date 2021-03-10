@@ -10,15 +10,16 @@ import 'package:netzpolitik_mobile/widgets/dashboard/articles/article_image.dart
 class ArticleListEntry extends StatelessWidget {
   final Article article;
   final bool isBig;
+  final String identifier;
 
-  ArticleListEntry(this.article, {this.isBig});
+  ArticleListEntry(this.article, {this.isBig, this.identifier});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: WPCard(
-        onTap: () => context.navigate((context) => ArticleDetailRoute(article, isBig: isBig)),
+        onTap: () => context.navigate((context) => ArticleDetailRoute(article, isBig: isBig, identifier: _identifier())),
         child: _buildContent(context),
       ),
     );
@@ -35,7 +36,7 @@ class ArticleListEntry extends StatelessWidget {
   Widget _buildHorizontalContent(BuildContext context) => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(child: ArticleImage(article)),
+          Expanded(child: ArticleImage(article, identifier: _identifier())),
           Expanded(child: _buildInfoSection(context)),
         ],
       );
@@ -59,7 +60,7 @@ class ArticleListEntry extends StatelessWidget {
   Widget _buildVerticalContent(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ArticleImage(article),
+          ArticleImage(article, identifier: _identifier()),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -78,19 +79,19 @@ class ArticleListEntry extends StatelessWidget {
   TextStyle getSummaryStyle(BuildContext context) => isBig ? context.headline4 : context.body2;
 
   Widget _buildTitle(BuildContext context) => Hero(
-        tag: 'article-title-${article.id}',
+        tag: 'article-title-${_identifier()}-${article.id}',
         child: Text(article.title,
             style: getTitleStyle(context).copyWith(color: Colors.black)),
       );
 
   Widget _buildSubtitle(BuildContext context) => Hero(
-        tag: 'article-subtitle-${article.id}',
+        tag: 'article-subtitle-${_identifier()}-${article.id}',
         child: Text(article.subTitle, style: getSubtitleStyle(context).copyWith( color: context.primaryColor )),
       );
 
   Widget _buildSummary(BuildContext context) => Expanded(
         child: Hero(
-          tag: 'article-summary-${article.id}',
+          tag: 'article-summary-${_identifier()}-${article.id}',
           child: Text(
             article.summaryWithoutTags,
             overflow: TextOverflow.fade,
@@ -98,6 +99,8 @@ class ArticleListEntry extends StatelessWidget {
           ),
         ),
       );
+
+  String _identifier() => identifier ?? 'default';
 
 
 }

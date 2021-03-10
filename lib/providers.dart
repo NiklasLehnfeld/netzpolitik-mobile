@@ -2,7 +2,8 @@ import 'package:netzpolitik_mobile/config/app_configuration.dart';
 import 'package:netzpolitik_mobile/config/apps.dart';
 import 'package:netzpolitik_mobile/config/rest_configuration.dart';
 import 'package:netzpolitik_mobile/logic/audio_player.dart';
-import 'package:netzpolitik_mobile/rest/push_notifications.dart';
+import 'package:netzpolitik_mobile/persistence/article_dao.dart';
+import 'package:netzpolitik_mobile/persistence/wp_database.dart';
 import 'package:netzpolitik_mobile/rest/rest_client.dart';
 import 'package:provider/provider.dart';
 
@@ -22,8 +23,9 @@ class Providers {
     //logic
     ChangeNotifierProvider<AudioPlayer>(create: (context) => AudioPlayer()),
 
-    //push-notifications
-    Provider<PushNotificationsManager>(create: (context) => PushNotificationsManager())
+    //persistence
+    Provider<WPDatabase>(create: (context) => WPDatabase()),
+    Provider<ArticleDAO>(create: (context) => ArticleDAO(context.read<WPDatabase>()),)
 
   ];
 
