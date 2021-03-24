@@ -17,6 +17,8 @@ class Article {
   String title;
   String subTitle;
 
+  String link;
+
   List<Category> categories;
   List<Tag> tags;
 
@@ -30,6 +32,8 @@ class Article {
   String modified;
 
   String imageName;
+  String imageCaption;
+  String imageLicenceCaption;
 
   @JsonKey(ignore: true)
   DateTime get creationTime => DateTime.parse(date);
@@ -46,6 +50,7 @@ class Article {
 
     try {
       json['imageName'] = json['_embedded']['wp:featuredmedia'][0]['media_details']['file'];
+      json['imageCaption'] = json['_embedded']['wp:featuredmedia'][0]['caption']['rendered'];
     } catch(e) {
       // ignore: empty_catches
     }

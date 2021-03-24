@@ -6,6 +6,9 @@ import 'package:netzpolitik_mobile/models/article.dart';
 import 'package:netzpolitik_mobile/models/category.dart';
 
 const PAGE_SIZE = 10;
+const CAPTION_START_TAG = "<span class='media-license-caption'>";
+const CAPTION_END_TAG = '</span>';
+
 
 class RestClient {
 
@@ -32,6 +35,10 @@ class RestClient {
     assert (response is List<dynamic>, 'Error while fetching posts from $url, unexpected response format: $response');
     var articles = (response as List<dynamic>).map((e) => Article.fromJson(e)).toList();
 
+    for(var article in articles){
+      article.imageLicenceCaption = await _fetchLicenceCaption(article);
+    }
+
     return articles;
   }
 
@@ -43,6 +50,26 @@ class RestClient {
     var categories = (response as List<dynamic>).map((e) => Category.fromJson(e)).toList();
 
     return categories.where((element) => element.count > 0).toList();
+  }
+
+  Future<String> _fetchLicenceCaption(Article article) async {
+    var url = article.link;
+    var response = await http.get(url);
+
+    assert (response.statusCode == 200, 'Error while fetching from $url, http code: ${response.statusCode}, error: ${response.body}');
+    
+    var htmlBody = response.body;
+
+    var captionStartIndex = htmlBody.indexOf(CAPTION_START_TAG);
+
+    var caption = '';
+
+    if (captionStartIndex > 0) {
+      var strippedBody = htmlBody.substring(htmlBody.indexOf(CAPTION_START_TAG));
+      caption = strippedBody.substring(0, strippedBody.indexOf(CAPTION_END_TAG));
+    }
+
+    return caption;
   }
 
 

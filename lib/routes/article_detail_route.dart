@@ -26,16 +26,20 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
 
   @override
   Widget build(BuildContext context) {
-
     return OrientationBuilder(
       builder: (context, orientation) {
-
         Widget topArea;
 
-        if (context.isUltraWide || (context.isWide && orientation == Orientation.landscape)) {
-          topArea = Row(crossAxisAlignment: CrossAxisAlignment.start,children: [Expanded(child: _buildImage(context)), Expanded(child: _buildSummaryArea(context))]);
+        if (context.isUltraWide ||
+            (context.isWide && orientation == Orientation.landscape)) {
+          topArea =
+              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Expanded(child: _buildImage(context)),
+            Expanded(child: _buildSummaryArea(context))
+          ]);
         } else {
-          topArea = Column(children: [_buildSummaryArea(context), _buildImage(context)]);
+          topArea = Column(
+              children: [_buildSummaryArea(context), _buildImage(context)]);
         }
 
         return Scaffold(
@@ -88,12 +92,13 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
   int get numberOfReplies => widget.article.replies.length;
 
   Widget _buildSummary(BuildContext context) => Hero(
-    tag: 'article-summary-${widget.identifier}-${widget.article.id}',
-    child: Text(
-        widget.article.summaryWithoutTags,
-        style: getSummaryStyle(context).copyWith(color: Colors.black, fontWeight: FontWeight.normal),
-    ),
-  );
+        tag: 'article-summary-${widget.identifier}-${widget.article.id}',
+        child: Text(
+          widget.article.summaryWithoutTags,
+          style: getSummaryStyle(context)
+              .copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+        ),
+      );
 
   Widget _buildTitle(BuildContext context) => Hero(
         tag: 'article-title-${widget.identifier}-${widget.article.id}',
@@ -103,14 +108,20 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
 
   Widget _buildSubtitle(BuildContext context) => Hero(
         tag: 'article-subtitle-${widget.identifier}-${widget.article.id}',
-        child: Text(widget.article.subTitle, style: getSubtitleStyle(context).copyWith( color: context.primaryColor)),
+        child: Text(widget.article.subTitle,
+            style: getSubtitleStyle(context)
+                .copyWith(color: context.primaryColor)),
       );
 
   Widget _buildImage(BuildContext context) {
     return Stack(
       alignment: Alignment.bottomRight,
       children: [
-        ArticleImage(widget.article, identifier: widget.identifier),
+        ArticleImage(
+          widget.article,
+          identifier: widget.identifier,
+          captionVisible: true,
+        ),
         Visibility(
           visible: widget.article.content.containsMP3,
           child: Container(
@@ -126,8 +137,12 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
     );
   }
 
-  TextStyle getTitleStyle(BuildContext context) => widget.isBig ? context.headline1 : context.headline5;
-  TextStyle getSubtitleStyle(BuildContext context) => widget.isBig ? context.headline2 : context.headline6;
-  TextStyle getSummaryStyle(BuildContext context) => widget.isBig ? context.headline4 : context.body2;
+  TextStyle getTitleStyle(BuildContext context) =>
+      widget.isBig ? context.headline1 : context.headline5;
 
+  TextStyle getSubtitleStyle(BuildContext context) =>
+      widget.isBig ? context.headline2 : context.headline6;
+
+  TextStyle getSummaryStyle(BuildContext context) =>
+      widget.isBig ? context.headline4 : context.body2;
 }
