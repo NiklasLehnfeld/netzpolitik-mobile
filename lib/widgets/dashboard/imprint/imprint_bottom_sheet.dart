@@ -44,7 +44,7 @@ class ImprintBottomSheet extends StatelessWidget {
 
     var bottomContainer = GridView.count(
       crossAxisCount: colCount,
-      childAspectRatio: 16 / colCount,
+      childAspectRatio: 2.5 * context.density * colCount,
       children: cards,
       shrinkWrap: true,
     );
