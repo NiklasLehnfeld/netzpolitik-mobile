@@ -22,6 +22,8 @@ class ArticleImage extends StatelessWidget {
     var restConfig = context.watch<RestConfiguration>();
     var imageUrl = '${restConfig.imageBaseUrl}/${article.imageName}';
 
+    var showCaption = captionVisible && article.imageCaption != null;
+
     return Column(
       children: [
         Hero(
@@ -38,11 +40,11 @@ class ArticleImage extends StatelessWidget {
           ),
         ),
         Visibility(
-          visible: captionVisible,
+          visible: showCaption,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: WPHtml(
-              '${article.imageCaption.replaceAll(RegExp('</?p>'), '')} ${article.imageLicenceCaption}',
+              showCaption ? '${article.imageCaption.replaceAll(RegExp('</?p>'), '')} ${article.imageLicenceCaption}' : '',
               style: context.caption,
             ),
           ),

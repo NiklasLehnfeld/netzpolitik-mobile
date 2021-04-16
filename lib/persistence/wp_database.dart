@@ -19,10 +19,19 @@ class WPDatabase {
                 'summary TEXT, '
                 'date TEXT, '
                 'modified TEXT, '
-                'imageName TEXT'
+                'imageName TEXT, '
+                'link TEXT, '
+                'imageCaption TEXT, '
              ')',
           );
         },
-        version: 1,
+        onUpgrade: (db, oldVersion, newVersion) {
+          if (oldVersion < 2) {
+            db.execute('ALTER TABLE articles ADD COLUMN link TEXT');
+            db.execute('ALTER TABLE articles ADD COLUMN imageCaption');
+            db.execute('ALTER TABLE articles ADD COLUMN imageLicenceCaption');
+          }
+        },
+        version: 2,
       );
 }

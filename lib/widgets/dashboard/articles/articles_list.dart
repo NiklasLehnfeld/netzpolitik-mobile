@@ -8,8 +8,6 @@ import 'package:netzpolitik_mobile/widgets/custom_views/wp_grid_pagination.dart'
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/article_list_entry.dart';
 import 'package:provider/provider.dart';
 
-
-
 class ArticlesList extends StatefulWidget {
   final Category categoryFilter;
   final String contentFilter;
