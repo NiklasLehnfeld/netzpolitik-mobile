@@ -15,6 +15,10 @@
     <img src="https://github.com/NiklasLehnfeld/netzpolitik-mobile/workflows/Analyze%20and%20Test/badge.svg?branch=main">
 </a>
 
+<a href="http://hits.dwyl.com/NiklasLehnfeld/netzpolitik-mobile">
+    <img src="http://hits.dwyl.com/NiklasLehnfeld/netzpolitik-mobile.svg">
+</a>
+
 </p>
 
 # 📚 Netzpolitik Mobile App
