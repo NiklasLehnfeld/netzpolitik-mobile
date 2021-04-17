@@ -7,7 +7,7 @@ import 'package:netzpolitik_mobile/widgets/custom_views/height.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_expanded_section.dart';
 import 'package:provider/provider.dart';
 
-const PLAYER_HEIGHT = 80.0;
+const PLAYER_HEIGHT = 79.0;
 
 class WPAudioPlayer extends StatefulWidget {
   const WPAudioPlayer();

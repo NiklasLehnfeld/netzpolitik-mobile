@@ -125,7 +125,7 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
         Visibility(
           visible: widget.article.content.containsMP3,
           child: Container(
-            margin: EdgeInsets.only(right: 10),
+            margin: EdgeInsets.only(right: 10, bottom: 50),
             child: WPPlayButton(
               audio: AudioModel(
                   title: widget.article.title,

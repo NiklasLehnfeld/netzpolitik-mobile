@@ -47,7 +47,7 @@ class _WPAppBarState extends State<WPAppBar> {
 
   Widget _buildImprintButton(BuildContext context) => IconButton(
         icon: FaIcon(
-          FontAwesomeIcons.infoCircle,
+          FontAwesomeIcons.userCog,
           color: context.primaryColor,
         ),
         onPressed: () => context.showBottomSheet(

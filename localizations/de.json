@@ -18,18 +18,15 @@
   "imprint_content": "Niklas Lehnfeld\nAm Brückenbach 14\n38304 Wolfenbüttel\nniklas@lehnfeld.net",
 
   "about_the_app_headline": "Über die App:",
-  "about_the_app_content": "Dies ist eine inoffizielle App zum Lesen von Beiträgen von NetzPolitik.Org.\nAlle hier gelisteten Artikel stammen von NetzPolitik.org. (Siehe Verlinkung unten)\nDiese App stammt nicht vom NetzPolitik-Team, sondern ist eine unabhängige Entwicklung. Sie bindet lediglich die öffentlich zugängliche Schnittstelle von NetzPolitik.org an.\nAlle Details zur technischen Umsetzung finden Sie auf Github. (Siehe Verlinkung unten)\nBug-Reports, sowie Verbesserungsvorschläge können ebenso über die Issue-Sektion auf Github oder per E-Mail abgegeben werden.",
-
-  "github_headline": "Github",
-  "github_url": "https://github.com/NiklasLehnfeld/wordpress-blog-app-template",
-
-  "linkedin_headline": "LinkedIn",
-  "linkedin_url": "https://www.linkedin.com/in/lehnfeld/",
+  "about_the_app_content": "Dies ist eine inoffizielle App zum Lesen von Beiträgen von netzpolitik.org.\nAlle hier gelisteten Artikel stammen von netzpolitik.org. (Siehe Verlinkung unten)\nDiese App stammt nicht vom netzpolitik-Team, sondern ist eine unabhängige Entwicklung. Sie bindet lediglich die öffentlich zugängliche Schnittstelle von netzpolitik.org an.\nAlle Details zur technischen Umsetzung finden Sie auf Github. (Siehe Verlinkung unten)",
 
   "no_bookmarks": "Du hast dir noch keine Artikel gemerkt. Nutze den Lesezeichen-Button in der oberen rechten Ecke eines Artikels um ihn für später zu speichern.",
   "privacy_statement": "Datenschutzerklärung",
   "privacy_statement_url": "https://niklaslehnfeld.github.io/netzpolitik-mobile/privacy/",
 
   "support_website": "Support-Website",
-  "support_website_url": "https://niklaslehnfeld.github.io/netzpolitik-mobile/"
+  "support_website_url": "https://niklaslehnfeld.github.io/netzpolitik-mobile/",
+
+  "settings_headline": "Einstellungen",
+  "fontsize_label": "Schriftgröße"
 }

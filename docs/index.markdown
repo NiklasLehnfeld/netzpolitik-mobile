@@ -3,8 +3,8 @@ layout: page
 title: Home
 ---
 
-❗️Dies ist eine inoffizielle App zum Lesen von Beiträgen von NetzPolitik.Org.
-Alle hier gelisteten Artikel stammen von NetzPolitik.org.
+❗️Dies ist eine inoffizielle App zum Lesen von Beiträgen von netzpolitik.org.
+Alle hier gelisteten Artikel stammen von netzpolitik.org.
 
 ⭐️ Features:
  - Lesen aller Artikel

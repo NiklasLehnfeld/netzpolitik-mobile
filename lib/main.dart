@@ -7,10 +7,11 @@ import 'package:netzpolitik_mobile/providers.dart';
 import 'package:netzpolitik_mobile/widgets/home.dart';
 import 'package:provider/provider.dart';
 
+import 'persistence/app_settings.dart';
+
 
 void main() => runApp(WPApp());
 
-const FONT_SIZE_DEFAULT = 16.0;
 
 class WPApp extends StatelessWidget {
   @override
@@ -20,6 +21,8 @@ class WPApp extends StatelessWidget {
       builder: (context, child) {
 
         var appConfig = context.watch<AppConfiguration>();
+        var appSettings = context.watch<AppSettings>();
+        var fontSize = appSettings.fontSize.toDouble();
 
         return MaterialApp(
           title: appConfig.name,
@@ -31,14 +34,14 @@ class WPApp extends StatelessWidget {
                 cursorColor: Colors.blue
               ),
               textTheme: TextTheme(
-                headline1: TextStyle(fontSize: FONT_SIZE_DEFAULT + 6, color: context.primaryColor, fontWeight: FontWeight.bold),
-                headline2: TextStyle(fontSize: FONT_SIZE_DEFAULT + 5, color: context.primaryColor, fontWeight: FontWeight.bold),
-                headline3: TextStyle(fontSize: FONT_SIZE_DEFAULT + 4, color: context.primaryColor, fontWeight: FontWeight.bold),
-                headline4: TextStyle(fontSize: FONT_SIZE_DEFAULT + 3, color: context.primaryColor, fontWeight: FontWeight.bold),
-                headline5: TextStyle(fontSize: FONT_SIZE_DEFAULT + 2, color: context.primaryColor, fontWeight: FontWeight.bold),
-                headline6: TextStyle(fontSize: FONT_SIZE_DEFAULT + 1, color: context.primaryColor, fontWeight: FontWeight.bold),
-                bodyText1: TextStyle(fontSize: FONT_SIZE_DEFAULT),
-                bodyText2: TextStyle(fontSize: FONT_SIZE_DEFAULT - 3),
+                headline1: TextStyle(fontSize: fontSize + 6, color: context.primaryColor, fontWeight: FontWeight.bold),
+                headline2: TextStyle(fontSize: fontSize + 5, color: context.primaryColor, fontWeight: FontWeight.bold),
+                headline3: TextStyle(fontSize: fontSize + 4, color: context.primaryColor, fontWeight: FontWeight.bold),
+                headline4: TextStyle(fontSize: fontSize + 3, color: context.primaryColor, fontWeight: FontWeight.bold),
+                headline5: TextStyle(fontSize: fontSize + 2, color: context.primaryColor, fontWeight: FontWeight.bold),
+                headline6: TextStyle(fontSize: fontSize + 1, color: context.primaryColor, fontWeight: FontWeight.bold),
+                bodyText1: TextStyle(fontSize: fontSize),
+                bodyText2: TextStyle(fontSize: fontSize - 3),
               )),
           localizationsDelegates: [
             AppLocalizations.delegate,

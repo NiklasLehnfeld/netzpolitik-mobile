@@ -2,30 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/persistence/app_settings.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/height.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_bottom_sheet.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_link_card.dart';
 import 'package:package_info/package_info.dart';
+import 'package:provider/provider.dart';
 
-class ImprintBottomSheet extends StatelessWidget {
+class ImprintBottomSheet extends StatefulWidget {
   const ImprintBottomSheet();
 
   @override
-  Widget build(BuildContext context) {
+  _ImprintBottomSheetState createState() => _ImprintBottomSheetState();
+}
 
+class _ImprintBottomSheetState extends State<ImprintBottomSheet> {
+  @override
+  Widget build(BuildContext context) {
     var cards = [
-      WPLinkCard(
-        FontAwesomeIcons.github,
-        context.getString('github_headline'),
-        context.getString('github_url'),
-        Colors.black,
-      ),
-      WPLinkCard(
-        FontAwesomeIcons.linkedin,
-        context.getString('linkedin_headline'),
-        context.getString('linkedin_url'),
-        Colors.blueAccent[700],
-      ),
       WPLinkCard(
         FontAwesomeIcons.globe,
         context.getString('privacy_statement'),
@@ -53,31 +47,42 @@ class ImprintBottomSheet extends StatelessWidget {
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        _buildSettingsSection(context),
+        Height(15),
         _buildAboutAppSection(context),
         Height(15),
         _buildImprintSection(context),
         Height(15),
         bottomContainer,
         Height(20),
-        _buildVersionNumber(context),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            FaIcon(
+              FontAwesomeIcons.cogs,
+              color: context.primaryColor,
+            ),
+            _buildVersionNumber(context),
+          ],
+        ),
       ],
     ));
   }
 
   Widget _buildVersionNumber(BuildContext context) => Align(
-    alignment: Alignment.centerRight,
-    child: FutureBuilder(
-      future: PackageInfo.fromPlatform(),
-      builder: (context, snapshot) {
-        var text = '';
-        if (snapshot.hasData) {
-          text = (snapshot.data as PackageInfo).version;
-        }
+        alignment: Alignment.centerRight,
+        child: FutureBuilder(
+          future: PackageInfo.fromPlatform(),
+          builder: (context, snapshot) {
+            var text = '';
+            if (snapshot.hasData) {
+              text = (snapshot.data as PackageInfo).version;
+            }
 
-        return Text('Version: $text');
-      },
-    ),
-  );
+            return Text('Version: $text');
+          },
+        ),
+      );
 
   Widget _buildAboutAppSection(BuildContext context) => RichText(
         text: TextSpan(
@@ -90,6 +95,37 @@ class ImprintBottomSheet extends StatelessWidget {
           ],
         ),
       );
+
+  Widget _buildSettingsSection(BuildContext context) {
+
+    var appSettings = context.watch<AppSettings>();
+    var fontSize = appSettings.fontSize;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          context.getString('settings_headline'),
+          style: context.headline1,
+        ),
+        Row(
+          children: [
+            Text(context.getString('fontsize_label'), style: context.body1.copyWith(fontWeight: FontWeight.normal)),
+            Expanded(
+              child: Slider(
+                value: fontSize.toDouble(),
+                divisions: (MAX_FONT_SIZE - MIN_FONT_SIZE).toInt(),
+                max: MAX_FONT_SIZE,
+                min: MIN_FONT_SIZE,
+                onChanged: (value) => setState( () => appSettings.fontSize = value.toInt() ),
+                label: fontSize.toString(),
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
 
   Widget _buildImprintSection(BuildContext context) => RichText(
         text: TextSpan(
