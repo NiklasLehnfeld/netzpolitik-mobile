@@ -1,8 +1,6 @@
 PODS:
   - assets_audio_player (0.0.1):
     - Flutter
-  - assets_audio_player_web (0.0.1):
-    - Flutter
   - Flutter (1.0.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
@@ -10,6 +8,8 @@ PODS:
   - package_info (0.0.1):
     - Flutter
   - path_provider (0.0.1):
+    - Flutter
+  - shared_preferences (0.0.1):
     - Flutter
   - sqflite (0.0.2):
     - Flutter
@@ -19,10 +19,10 @@ PODS:
 
 DEPENDENCIES:
   - assets_audio_player (from `.symlinks/plugins/assets_audio_player/ios`)
-  - assets_audio_player_web (from `.symlinks/plugins/assets_audio_player_web/ios`)
   - Flutter (from `Flutter`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
@@ -33,29 +33,29 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   assets_audio_player:
     :path: ".symlinks/plugins/assets_audio_player/ios"
-  assets_audio_player_web:
-    :path: ".symlinks/plugins/assets_audio_player_web/ios"
   Flutter:
     :path: Flutter
   package_info:
     :path: ".symlinks/plugins/package_info/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
+  shared_preferences:
+    :path: ".symlinks/plugins/shared_preferences/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
 
 SPEC CHECKSUMS:
-  assets_audio_player: edee322b9cb625571b830b35872ead1a295fd917
-  assets_audio_player_web: 19826380c44375761aa0b9053665c1e3fbc3b86b
+  assets_audio_player: 1f5d855ea3e0484357e2efb0cb703b17959e6170
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
+  url_launcher: a1c0cc845906122c4784c542523d8cacbded5626
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

@@ -50,7 +50,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget> implements ArticleDAO
         }
 
         final articles = snapshot.data as List<Article>;
-        if (articles.isEmpty) {
+        if (articles == null || articles.isEmpty) {
           return _buildEmptyWidget(context);
         } else {
           return _buildContent(context, articles);
