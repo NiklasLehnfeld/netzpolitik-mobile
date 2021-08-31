@@ -18,7 +18,7 @@
   "imprint_content": "Niklas Lehnfeld\nAm Brückenbach 14\n38304 Wolfenbüttel\nniklas@lehnfeld.net",
 
   "about_the_app_headline": "Über die App:",
-  "about_the_app_content": "Dies ist eine inoffizielle App zum Lesen von Beiträgen von netzpolitik.org.\nAlle hier gelisteten Artikel stammen von netzpolitik.org. (Siehe Verlinkung unten)\nDiese App stammt nicht vom netzpolitik-Team, sondern ist eine unabhängige Entwicklung. Sie bindet lediglich die öffentlich zugängliche Schnittstelle von netzpolitik.org an.\nAlle Details zur technischen Umsetzung finden Sie auf Github. (Siehe Verlinkung unten)",
+  "about_the_app_content": "Dies ist eine inoffizielle App zum Lesen von Beiträgen von netzpolitik.org.\nAlle hier gelisteten Artikel stammen von netzpolitik.org.\nDiese App stammt nicht vom netzpolitik-Team, sondern ist eine unabhängige Entwicklung. Sie bindet lediglich die öffentlich zugängliche Schnittstelle von netzpolitik.org an.\nAlle Details zur technischen Umsetzung finden Sie auf Github.",
 
   "no_bookmarks": "Du hast dir noch keine Artikel gemerkt. Nutze den Lesezeichen-Button in der oberen rechten Ecke eines Artikels um ihn für später zu speichern.",
   "privacy_statement": "Datenschutzerklärung",
@@ -28,5 +28,6 @@
   "support_website_url": "https://niklaslehnfeld.github.io/netzpolitik-mobile/",
 
   "settings_headline": "Einstellungen",
-  "fontsize_label": "Schriftgröße"
+  "fontsize_label": "Schriftgröße",
+  "fonttype_label": "Schriftart"
 }

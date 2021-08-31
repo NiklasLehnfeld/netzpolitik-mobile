@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:netzpolitik_mobile/config/app_configuration.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/localization/app_localizations.dart';
@@ -24,6 +25,13 @@ class WPApp extends StatelessWidget {
         var appSettings = context.watch<AppSettings>();
         var fontSize = appSettings.fontSize.toDouble();
 
+        TextStyle baseTextStyle;
+        if (appSettings.fontType != null) {
+          baseTextStyle = GoogleFonts.asMap()[appSettings.fontType]();
+        } else {
+          baseTextStyle = TextStyle();
+        }
+
         return MaterialApp(
           title: appConfig.name,
           debugShowCheckedModeBanner: false,
@@ -34,14 +42,14 @@ class WPApp extends StatelessWidget {
                 cursorColor: Colors.blue
               ),
               textTheme: TextTheme(
-                headline1: TextStyle(fontSize: fontSize + 6, color: context.primaryColor, fontWeight: FontWeight.bold),
-                headline2: TextStyle(fontSize: fontSize + 5, color: context.primaryColor, fontWeight: FontWeight.bold),
-                headline3: TextStyle(fontSize: fontSize + 4, color: context.primaryColor, fontWeight: FontWeight.bold),
-                headline4: TextStyle(fontSize: fontSize + 3, color: context.primaryColor, fontWeight: FontWeight.bold),
-                headline5: TextStyle(fontSize: fontSize + 2, color: context.primaryColor, fontWeight: FontWeight.bold),
-                headline6: TextStyle(fontSize: fontSize + 1, color: context.primaryColor, fontWeight: FontWeight.bold),
-                bodyText1: TextStyle(fontSize: fontSize),
-                bodyText2: TextStyle(fontSize: fontSize - 3),
+                headline1: baseTextStyle.copyWith(fontSize: fontSize + 6, color: context.primaryColor, fontWeight: FontWeight.bold),
+                headline2: baseTextStyle.copyWith(fontSize: fontSize + 5, color: context.primaryColor, fontWeight: FontWeight.bold),
+                headline3: baseTextStyle.copyWith(fontSize: fontSize + 4, color: context.primaryColor, fontWeight: FontWeight.bold),
+                headline4: baseTextStyle.copyWith(fontSize: fontSize + 3, color: context.primaryColor, fontWeight: FontWeight.bold),
+                headline5: baseTextStyle.copyWith(fontSize: fontSize + 2, color: context.primaryColor, fontWeight: FontWeight.bold),
+                headline6: baseTextStyle.copyWith(fontSize: fontSize + 1, color: context.primaryColor, fontWeight: FontWeight.bold),
+                bodyText1: baseTextStyle.copyWith(fontSize: fontSize),
+                bodyText2: baseTextStyle.copyWith(fontSize: fontSize - 3),
               )),
           localizationsDelegates: [
             AppLocalizations.delegate,

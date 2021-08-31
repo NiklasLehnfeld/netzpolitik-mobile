@@ -25,8 +25,9 @@ class _WPAudioPlayerState extends State<WPAudioPlayer> {
     return WPExpandedSection(
       expand: audioPlayer.isOpened,
       child: Container(
+        padding: EdgeInsets.only(left: 16, right: 8),
         height: PLAYER_HEIGHT,
-        width: context.width,
+        width: context.width - 16,
         color: context.audioPlayerBackground,
         child: Column(
           children: [
@@ -52,16 +53,9 @@ class _WPAudioPlayerState extends State<WPAudioPlayer> {
     );
   }
 
-  Widget _buildTime(BuildContext context, AudioPlayer audioPlayer) => Padding(
-    padding: const EdgeInsets.only(right: 16.0),
-    child: Text(audioPlayer.currentDuration.toReadableString(),  maxLines: 1, style: context.body2.copyWith( fontWeight:  FontWeight.bold)),
-  );
+  Widget _buildTime(BuildContext context, AudioPlayer audioPlayer) => Text(audioPlayer.currentDuration.toReadableString(),  maxLines: 1, style: context.body2.copyWith( fontWeight:  FontWeight.bold));
 
-  Widget _buildTitle(BuildContext context, AudioPlayer audioPlayer) => Container(
-      margin: EdgeInsets.only(left: 16),
-      width: context.width / 1.3,
-      child: Text(audioPlayer.title ?? '',  style: context.body2.copyWith( fontWeight:  FontWeight.bold), overflow: TextOverflow.ellipsis,)
-  );
+  Widget _buildTitle(BuildContext context, AudioPlayer audioPlayer) => Text(audioPlayer.title ?? '',  style: context.body2.copyWith( fontWeight:  FontWeight.bold), overflow: TextOverflow.ellipsis,);
 
   Widget _buildSlider(BuildContext context, AudioPlayer audioPlayer) {
 
@@ -80,29 +74,23 @@ class _WPAudioPlayerState extends State<WPAudioPlayer> {
   }
 
   Widget _buildCloseButton(BuildContext context, AudioPlayer audioPlayer) {
-    return Container(
-      margin: EdgeInsets.only(left: 8, right: 16),
-      child: IconButton(
-        onPressed: () => audioPlayer.close(),
-        icon: FaIcon(
-          FontAwesomeIcons.times,
-          color: context.primaryColor,
-        ),
+    return IconButton(
+      onPressed: () => audioPlayer.close(),
+      icon: FaIcon(
+        FontAwesomeIcons.times,
+        color: context.primaryColor,
       ),
     );
   }
 
   Widget _buildPlayButton(BuildContext context, AudioPlayer audioPlayer) {
-    return Container(
-      margin: EdgeInsets.only(left: 16, right: 8),
-      child: IconButton(
-        onPressed: () => audioPlayer.toggle(),
-        icon: FaIcon(
-          audioPlayer.isPlaying
-              ? FontAwesomeIcons.pause
-              : FontAwesomeIcons.play,
-          color: context.primaryColor,
-        ),
+    return IconButton(
+      onPressed: () => audioPlayer.toggle(),
+      icon: FaIcon(
+        audioPlayer.isPlaying
+            ? FontAwesomeIcons.pause
+            : FontAwesomeIcons.play,
+        color: context.primaryColor,
       ),
     );
   }

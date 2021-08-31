@@ -35,6 +35,7 @@ dependencies:
   path: ^1.7.0
   package_info: ^0.4.3+4
   shared_preferences: ^0.5.12+4
+  google_fonts: ^1.1.2
 
 dependency_overrides:
   intl: ^0.16.0
