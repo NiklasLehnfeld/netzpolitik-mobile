@@ -10,9 +10,7 @@ jobs:
     container: niklaslehnfeld/flutter-essentials:latest
     steps:
       - uses: actions/checkout@v2
-      - run: flutter pub get
-      - run: flutter pub run build_runner build --delete-conflicting-outputs
-      - run: flutter analyze
+      - uses: ./.github/actions/analyze
   test:
     name: test
     runs-on: ubuntu-latest
