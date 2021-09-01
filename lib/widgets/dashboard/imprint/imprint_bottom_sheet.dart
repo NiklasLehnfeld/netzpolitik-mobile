@@ -7,7 +7,6 @@ import 'package:netzpolitik_mobile/widgets/custom_views/height.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/width.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_bottom_sheet.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_link_card.dart';
-import 'package:netzpolitik_mobile/widgets/dashboard/imprint/fonttype_widget.dart';
 import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 
@@ -109,20 +108,6 @@ class _ImprintBottomSheetState extends State<ImprintBottomSheet> {
       ],
     );
   }
-
-  Widget _buildFonttypeWidget(BuildContext context) {
-    return Row(
-      children: [
-        Text(context.getString('fonttype_label'),
-            style: context.body1.copyWith(fontWeight: FontWeight.normal)),
-        Width(8),
-        Expanded(
-          child: FonttypeWidget()
-        ),
-      ],
-    );
-  }
-
 
   Widget _buildFontsizeWidget(BuildContext context) {
     var appSettings = context.watch<AppSettings>();
