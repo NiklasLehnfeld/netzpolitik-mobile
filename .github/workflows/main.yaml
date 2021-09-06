@@ -1,0 +1,58 @@
+on:
+  push:
+    #branches:
+     # - main
+name: Main
+jobs:
+
+  analyze:
+    name: analyze
+    runs-on: ubuntu-latest
+    container: niklaslehnfeld/flutter-essentials:latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/flutter-analyze
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    container: niklaslehnfeld/flutter-essentials:latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/flutter-test
+
+  android-release-build:
+    name: android-release-build
+    runs-on: ubuntu-latest
+    needs: [test, analyze]
+    container: niklaslehnfeld/flutter-essentials:latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/flutter-android-build
+        with:
+          release: true
+      - name: Archive APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-build
+          path: build/app/outputs/apk/release/*.apk
+
+  create-github-release:
+    name: create-github-release
+    runs-on: ubuntu-latest
+    needs: [android-release-build]
+    container: niklaslehnfeld/flutter-essentials:latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: release-build
+      - id: version
+        uses: ./.github/actions/flutter-version-number
+      - uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
+          title: ${{ steps.version.outputs.version-number }}
+          files: |
+            release-build/*.apk
+

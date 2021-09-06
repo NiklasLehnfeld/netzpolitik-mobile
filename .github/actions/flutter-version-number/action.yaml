@@ -1,0 +1,16 @@
+name: flutter-version-number
+description: 'Reads the version number of the pubspec.yaml'
+outputs:
+  version-number:
+    description: "Version number"
+    value: ${{ steps.read-yaml.outputs.version }}
+runs:
+  using: "composite"
+  steps:
+    - run: sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' file.yaml > file.sh
+      shell: bash
+    - run: ./file.sh
+      shell: bash
+    - id: read-yaml
+      run: echo "::set-output name=version::$(echo $version)"
+      shell: bash

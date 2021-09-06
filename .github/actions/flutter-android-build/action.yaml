@@ -1,5 +1,10 @@
 name: flutter-android-build
 description: 'Build Android apk from flutter project'
+inputs:
+  release:
+    description: 'If set to `true`, it will run assembleRelease, otherwise assembleDebug'
+    required: false
+    default: 'false'
 runs:
   using: "composite"
   steps:
@@ -7,5 +12,11 @@ runs:
       shell: bash
     - run: flutter pub run build_runner build --delete-conflicting-outputs
       shell: bash
-    - run: cd android && ./gradlew assembleDebug
+    - run: |
+        cd android
+        if [ ${{ inputs.release }} = "true" ]; then
+          ./gradlew assembleRelease
+        elsecd
+          ./gradlew assembleDebug
+        fi
       shell: bash
