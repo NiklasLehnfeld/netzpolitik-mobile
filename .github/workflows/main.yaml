@@ -8,7 +8,7 @@ jobs:
   analyze:
     name: analyze
     runs-on: ubuntu-latest
-    container: niklaslehnfeld/flutter-essentials:latest
+    container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/flutter-analyze
@@ -16,7 +16,7 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-latest
-    container: niklaslehnfeld/flutter-essentials:latest
+    container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/flutter-test
@@ -25,7 +25,7 @@ jobs:
     name: android-release-build
     runs-on: ubuntu-latest
     needs: [test, analyze]
-    container: niklaslehnfeld/flutter-essentials:latest
+    container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/flutter-android-build
@@ -41,7 +41,7 @@ jobs:
     name: create-github-release
     runs-on: ubuntu-latest
     needs: [android-release-build]
-    container: niklaslehnfeld/flutter-essentials:latest
+    container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
     steps:
       - uses: actions/download-artifact@v2
         with:
