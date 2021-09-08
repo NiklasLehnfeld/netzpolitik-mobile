@@ -5,6 +5,18 @@ inputs:
     description: 'If set to `true`, it will run assembleRelease, otherwise assembleDebug'
     required: false
     default: false
+  keystore:
+    description: 'Base64 encoded keystore.jks, required if release is true'
+    required: false
+    default: ''
+  keystore-pwd:
+    description: 'keystore password, required if release is true'
+    required: false
+    default: ''
+  key-pwd:
+    description: 'key password, required if release is true'
+    required: false
+    default: ''
 runs:
   using: "composite"
   steps:
@@ -12,7 +24,12 @@ runs:
       shell: bash
     - run: flutter pub run build_runner build --delete-conflicting-outputs
       shell: bash
-    - run: |
+    - run: echo "${{ inputs.keystore }}" | base64 -d > android/keystore.jks
+      shell: bash
+    - env:
+        NETZPOLITIK_KEY_PWD: ${{ inputs.key-pwd }}
+        NETZPOLITIK_KEYSTORE_PWD: ${{ inputs.keystore-pwd }}
+      run: |
         cd android
         if [ ${{ inputs.release }} = "true" ]; then
           ./gradlew assembleRelease

@@ -31,6 +31,9 @@ jobs:
       - uses: ./.github/actions/flutter-android-build
         with:
           release: true
+          keystore: ${{ secrets.KEYSTORE }}
+          keystore-pwd: "${{ secrets.NETZPOLITIK_KEYSTORE_PWD }}"
+          key-pwd: "${{ secrets.NETZPOLITIK_KEY_PWD }}"
       - name: Archive APK
         uses: actions/upload-artifact@v2
         with:
