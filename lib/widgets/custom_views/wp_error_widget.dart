@@ -8,10 +8,10 @@ const ERROR_ICON_SIZE = 70.0;
 class WPErrorWidget extends StatelessWidget {
 
   final String text;
-  final Function onPress;
-  final IconData icon;
+  final VoidCallback? onPress;
+  final IconData? icon;
 
-  WPErrorWidget({this.text, this.onPress, this.icon});
+  WPErrorWidget({required this.text, this.onPress, this.icon});
 
   @override
   Widget build(BuildContext context) {

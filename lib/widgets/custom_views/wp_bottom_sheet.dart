@@ -9,10 +9,10 @@ const HORIZONTAL_PADDING = 15.0;
 
 class WPBottomSheet extends StatelessWidget {
 
-  final double fixedHeight;
+  final double? fixedHeight;
   final Widget child;
 
-  WPBottomSheet({@required this.child, this.fixedHeight});
+  WPBottomSheet({required this.child, this.fixedHeight});
 
   @override
   Widget build(BuildContext context) {

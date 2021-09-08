@@ -13,37 +13,37 @@ part 'article.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Article {
 
-  int id;
-  String title;
-  String subTitle;
+  late int? id;
+  late String? title;
+  late String? subTitle;
 
-  String link;
+  late String? link;
 
-  List<Category> categories;
-  List<Tag> tags;
+  late List<Category>? categories;
+  late List<Tag>? tags;
 
-  List<Author> authors;
-  List<Reply> replies = [];
+  late List<Author>? authors;
+  late List<Reply?>? replies = [];
 
-  String content;
-  String summary;
-  
-  String date;
-  String modified;
+  late String? content;
+  late String? summary;
 
-  String imageName;
-  String imageCaption;
-  String imageLicenceCaption;
+  late String? date;
+  late String? modified;
 
-  @JsonKey(ignore: true)
-  DateTime get creationTime => DateTime.parse(date);
+  late String? imageName;
+  late String? imageCaption;
+  late String? imageLicenceCaption;
 
   @JsonKey(ignore: true)
-  String get summaryWithoutTags => summary.replaceAll(RegExp('<\/?p>'), '');
+  DateTime get creationTime => DateTime.parse(date ?? '');
+
+  @JsonKey(ignore: true)
+  String? get summaryWithoutTags => summary?.replaceAll(RegExp('<\/?p>'), '');
 
   Article();
 
-  factory Article.fromJson(Map json) {
+  factory Article.fromJson(Map<String, dynamic> json) {
     json['title'] = HtmlUnescape().convert(json['title']['rendered']);
     json['content'] = json['content']['rendered'];
     json['subTitle'] = HtmlUnescape().convert(json['wps_subtitle']);
@@ -80,7 +80,7 @@ class Article {
     return article;
   }
 
-  Map toJson() => _$ArticleToJson(this);
+  Map<String, dynamic> toJson() => _$ArticleToJson(this);
 
   factory Article.fromDatabase(Map map) {
     final result = <String, dynamic>{};
@@ -92,7 +92,7 @@ class Article {
     return _$ArticleFromJson(result);
   }
 
-  Map toDatabaseMap(){
+  Map<String, dynamic> toDatabaseMap(){
     final map = toJson();
     map['categories'] = json.encode(map['categories']);
     map['tags'] = json.encode(map['tags']);

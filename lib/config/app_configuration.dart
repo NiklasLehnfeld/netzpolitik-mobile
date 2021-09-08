@@ -7,5 +7,5 @@ class AppConfiguration {
   final RestConfiguration restConfiguration ;
   final Widget title;
 
-  const AppConfiguration({@required this.name, @required this.restConfiguration, this.title});
+  const AppConfiguration({required this.name, required this.restConfiguration, required this.title});
 }

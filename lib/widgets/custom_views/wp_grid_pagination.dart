@@ -17,14 +17,12 @@ const HORIZONTAL_LIST_ITEM_SPACING = 5.0;
 
 class WPGridPagination<T> extends StatefulWidget {
   WPGridPagination({
-    Key key,
-    @required this.pageBuilder,
-    @required this.itemBuilder,
+    Key? key,
+    required this.pageBuilder,
+    required this.itemBuilder,
     this.enableSingleTop = true,
-    this.errorLabel,
-  })  : assert(pageBuilder != null),
-        assert(itemBuilder != null),
-        super(key: key);
+    this.errorLabel = '',
+  }) : super(key: key);
 
   final PaginationBuilder<T> pageBuilder;
   final ItemWidgetBuilder<T> itemBuilder;

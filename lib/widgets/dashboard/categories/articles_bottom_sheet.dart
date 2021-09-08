@@ -8,8 +8,8 @@ import 'package:netzpolitik_mobile/widgets/dashboard/articles/articles_list.dart
 const SHEET_HEIGHT_FACTOR = 0.85;
 
 class ArticlesBottomSheet extends StatelessWidget {
-  final Category filterByCategory;
-  final String filterByTerm;
+  final Category? filterByCategory;
+  final String? filterByTerm;
 
   ArticlesBottomSheet({this.filterByCategory, this.filterByTerm});
 

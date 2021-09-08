@@ -53,13 +53,13 @@ class _WPAudioPlayerState extends State<WPAudioPlayer> {
     );
   }
 
-  Widget _buildTime(BuildContext context, AudioPlayer audioPlayer) => Text(audioPlayer.currentDuration.toReadableString(),  maxLines: 1, style: context.body2.copyWith( fontWeight:  FontWeight.bold));
+  Widget _buildTime(BuildContext context, AudioPlayer audioPlayer) => Text(audioPlayer.currentDuration?.toReadableString() ?? '',  maxLines: 1, style: context.body2.copyWith( fontWeight:  FontWeight.bold));
 
   Widget _buildTitle(BuildContext context, AudioPlayer audioPlayer) => Text(audioPlayer.title ?? '',  style: context.body2.copyWith( fontWeight:  FontWeight.bold), overflow: TextOverflow.ellipsis,);
 
   Widget _buildSlider(BuildContext context, AudioPlayer audioPlayer) {
 
-    var currentDuration = audioPlayer.currentDuration;
+    var currentDuration = audioPlayer.currentDuration ?? Duration();
     var rawTotalDuration = audioPlayer.totalDuration?.inSeconds;
 
     var totalDuration = rawTotalDuration != null && rawTotalDuration > 0 ? rawTotalDuration : 1;
@@ -69,7 +69,7 @@ class _WPAudioPlayerState extends State<WPAudioPlayer> {
       max: totalDuration.toDouble(),
       divisions: totalDuration,
       onChanged: (value) => audioPlayer.currentDuration = Duration(seconds: value.toInt()),
-      label: audioPlayer.currentDuration.toReadableString(),
+      label: currentDuration.toReadableString(),
     );
   }
 

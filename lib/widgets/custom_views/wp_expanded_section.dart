@@ -6,15 +6,15 @@ class WPExpandedSection extends StatefulWidget {
 
   final Widget child;
   final bool expand;
-  WPExpandedSection({this.expand = false, this.child});
+  WPExpandedSection({this.expand = false, required this.child});
 
   @override
   _WPExpandedSectionState createState() => _WPExpandedSectionState();
 }
 
 class _WPExpandedSectionState extends State<WPExpandedSection> with SingleTickerProviderStateMixin {
-  AnimationController expandController;
-  Animation<double> animation;
+  late AnimationController expandController;
+  late Animation<double> animation;
 
   @override
   void initState() {

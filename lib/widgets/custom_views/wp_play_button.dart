@@ -10,7 +10,7 @@ class WPPlayButton extends StatelessWidget {
   final double size;
   final AudioModel audio;
 
-  const WPPlayButton({this.size = 60, this.audio});
+  const WPPlayButton({this.size = 60, required this.audio});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class WPPlayButton extends StatelessWidget {
     );
   }
 
-  Widget _buildBackground(BuildContext context, {Widget child}) {
+  Widget _buildBackground(BuildContext context, {required Widget child}) {
     var audioPlayer = context.watch<AudioPlayer>();
     var isPlaying = audioPlayer.isPlayingAudio(audio);
 
@@ -48,7 +48,6 @@ class WPPlayButton extends StatelessWidget {
       height: size,
       alignment: Alignment.center,
       padding: EdgeInsets.only(left: isPlaying ? 0 : 7),
-      child: child,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
         color: Theme.of(context).backgroundColor,
@@ -60,6 +59,7 @@ class WPPlayButton extends StatelessWidget {
           )
         ],
       ),
+      child: child,
     );
   }
 

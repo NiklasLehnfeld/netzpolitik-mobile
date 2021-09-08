@@ -20,7 +20,7 @@ class CategoriesWidget extends StatefulWidget {
 
 class _CategoriesWidgetState extends State<CategoriesWidget> {
 
-  RestClient restClient;
+  late RestClient restClient;
 
   @override
   void initState() {

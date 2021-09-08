@@ -10,9 +10,9 @@ import 'package:netzpolitik_mobile/widgets/dashboard/articles/article_image.dart
 class ArticleListEntry extends StatelessWidget {
   final Article article;
   final bool isBig;
-  final String identifier;
+  final String? identifier;
 
-  ArticleListEntry(this.article, {this.isBig, this.identifier});
+  ArticleListEntry(this.article, {required this.isBig, this.identifier});
 
   @override
   Widget build(BuildContext context) {
@@ -80,20 +80,20 @@ class ArticleListEntry extends StatelessWidget {
 
   Widget _buildTitle(BuildContext context) => Hero(
         tag: 'article-title-${_identifier()}-${article.id}',
-        child: Text(article.title,
+        child: Text(article.title ?? '',
             style: getTitleStyle(context).copyWith(color: Colors.black)),
       );
 
   Widget _buildSubtitle(BuildContext context) => Hero(
         tag: 'article-subtitle-${_identifier()}-${article.id}',
-        child: Text(article.subTitle, style: getSubtitleStyle(context).copyWith( color: context.primaryColor )),
+        child: Text(article.subTitle ?? '', style: getSubtitleStyle(context).copyWith( color: context.primaryColor )),
       );
 
   Widget _buildSummary(BuildContext context) => Expanded(
         child: Hero(
           tag: 'article-summary-${_identifier()}-${article.id}',
           child: Text(
-            article.summaryWithoutTags,
+            article.summaryWithoutTags ?? '',
             overflow: TextOverflow.fade,
             style: getSummaryStyle(context).copyWith(color: Colors.black, fontWeight: FontWeight.normal),
           ),

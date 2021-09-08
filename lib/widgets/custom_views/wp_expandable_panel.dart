@@ -12,14 +12,14 @@ class WPExpandablePanel extends StatefulWidget {
   final String title;
   final String body;
 
-  WPExpandablePanel({this.title, this.body});
+  WPExpandablePanel({required this.title, required this.body});
 
   @override
   _WPExpandablePanelState createState() => _WPExpandablePanelState();
 }
 
 class _WPExpandablePanelState extends State<WPExpandablePanel> {
-  ExpandableController _controller;
+  late ExpandableController _controller;
 
   @override
   void initState() {

@@ -32,8 +32,8 @@ class _HomeState extends State<Home> {
           onTap: (index) => setState(() => _currentIndex = index)
       ),
       body: IndexedStack(
-        children: BOTTOM_NAV_ITEMS.map((e) => e.child).toList(),
         index: _currentIndex,
+        children: BOTTOM_NAV_ITEMS.map((e) => e.child).toList(),
       )
     );
   }
@@ -51,6 +51,6 @@ class BottomNavItemViewHolder {
   final IconData icon;
   final Widget child;
 
-  const BottomNavItemViewHolder({this.titleKey, this.icon, this.child});
+  const BottomNavItemViewHolder({required this.titleKey, required this.icon, required this.child});
 
 }

@@ -5,6 +5,9 @@ import 'package:netzpolitik_mobile/extensions/int_ext.dart';
 import 'package:netzpolitik_mobile/extensions/string_ext.dart';
 import 'package:netzpolitik_mobile/models/article.dart';
 import 'package:netzpolitik_mobile/models/audio_model.dart';
+import 'package:netzpolitik_mobile/models/author.dart';
+import 'package:netzpolitik_mobile/models/category.dart';
+import 'package:netzpolitik_mobile/models/reply.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_article_appbar.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_html.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_play_button.dart';
@@ -15,7 +18,7 @@ class ArticleDetailRoute extends StatefulWidget {
   final bool isBig;
   final String identifier;
 
-  ArticleDetailRoute(this.article, {this.isBig, this.identifier});
+  ArticleDetailRoute(this.article, {required this.isBig, required this.identifier});
 
   @override
   _ArticleDetailRouteState createState() => _ArticleDetailRouteState();
@@ -65,7 +68,7 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
 
   Widget _buildContentArea(BuildContext context) => Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
-        child: WPHtml(widget.article.content),
+        child: WPHtml(widget.article.content ?? ''),
       );
 
   Widget _buildSummaryArea(BuildContext context) => Padding(
@@ -84,17 +87,18 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
         ),
       );
 
-  String get authorNames =>
-      widget.article.authors.map((a) => a.name).join(', ');
+  List<Author> get authors => widget.article.authors ?? [];
+  List<Reply?> get replies => widget.article.replies ?? [];
+  List<Category> get categories => widget.article.categories ?? [];
 
-  String get categoryName => widget.article.categories.first.name;
-
-  int get numberOfReplies => widget.article.replies.length;
+  String get authorNames => authors.map((a) => a.name).join(', ');
+  String get categoryName => categories.first.name ?? '';
+  int get numberOfReplies => replies.length;
 
   Widget _buildSummary(BuildContext context) => Hero(
         tag: 'article-summary-${widget.identifier}-${widget.article.id}',
         child: Text(
-          widget.article.summaryWithoutTags,
+          widget.article.summaryWithoutTags ?? '',
           style: getSummaryStyle(context)
               .copyWith(color: Colors.black, fontWeight: FontWeight.normal),
         ),
@@ -102,13 +106,13 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
 
   Widget _buildTitle(BuildContext context) => Hero(
         tag: 'article-title-${widget.identifier}-${widget.article.id}',
-        child: Text(widget.article.title,
+        child: Text(widget.article.title ?? '',
             style: getTitleStyle(context).copyWith(color: Colors.black)),
       );
 
   Widget _buildSubtitle(BuildContext context) => Hero(
         tag: 'article-subtitle-${widget.identifier}-${widget.article.id}',
-        child: Text(widget.article.subTitle,
+        child: Text(widget.article.subTitle ?? '',
             style: getSubtitleStyle(context)
                 .copyWith(color: context.primaryColor)),
       );
@@ -123,13 +127,13 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
           captionVisible: true,
         ),
         Visibility(
-          visible: widget.article.content.containsMP3,
+          visible: widget.article.content?.containsMP3 ?? false,
           child: Container(
             margin: EdgeInsets.only(right: 10, bottom: 50),
             child: WPPlayButton(
               audio: AudioModel(
-                  title: widget.article.title,
-                  url: widget.article.content.mp3Url),
+                  title: widget.article.title ?? '',
+                  url: widget.article.content?.mp3Url ?? ''),
             ),
           ),
         )

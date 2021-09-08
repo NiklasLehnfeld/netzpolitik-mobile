@@ -25,13 +25,13 @@ class _ImprintBottomSheetState extends State<ImprintBottomSheet> {
         FontAwesomeIcons.globe,
         context.getString('privacy_statement'),
         context.getString('privacy_statement_url'),
-        Colors.grey[600],
+        Colors.grey[600]!,
       ),
       WPLinkCard(
         FontAwesomeIcons.globe,
         context.getString('support_website'),
         context.getString('support_website_url'),
-        Colors.grey[600],
+        Colors.grey[600]!,
       ),
     ];
 
@@ -40,8 +40,8 @@ class _ImprintBottomSheetState extends State<ImprintBottomSheet> {
     var bottomContainer = GridView.count(
       crossAxisCount: colCount,
       childAspectRatio: 2.5 * context.density * colCount,
-      children: cards,
       shrinkWrap: true,
+      children: cards,
     );
 
     return WPBottomSheet(

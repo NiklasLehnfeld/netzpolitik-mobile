@@ -19,7 +19,7 @@ dependencies:
   json_annotation: ^4.1.0
   http: ^0.13.3
 
-  flutter_html: ^0.11.1
+  flutter_html: ^2.1.2
   cupertino_icons: ^1.0.3
   font_awesome_flutter: ^9.1.0
   html_unescape: ^2.0.0
