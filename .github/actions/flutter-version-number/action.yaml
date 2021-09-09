@@ -7,10 +7,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' pubspec.yaml > file.sh
-      shell: bash
-    - run: chmod +x file.sh && ./file.sh
-      shell: bash
     - id: read-yaml
-      run: echo "::set-output name=version::$(echo $version)"
+      run: |
+        VERSION=`cat pubspec.yaml | grep -o 'version:[^:]*' | cut -f2 -d":" | xargs`
+        echo "::set-output name=version::$(echo $VERSION)"
       shell: bash
