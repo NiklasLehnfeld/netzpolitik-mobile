@@ -46,6 +46,7 @@ jobs:
     needs: [android-release-build]
     container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
     steps:
+      - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
           name: release-build
