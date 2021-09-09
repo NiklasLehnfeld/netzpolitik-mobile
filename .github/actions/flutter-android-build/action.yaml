@@ -33,7 +33,7 @@ runs:
         cd android
         if [ ${{ inputs.release }} = "true" ]; then
           ./gradlew assembleRelease
-        elsecd
+        else
           ./gradlew assembleDebug
         fi
       shell: bash
