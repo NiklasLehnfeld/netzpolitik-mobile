@@ -7,7 +7,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' file.yaml > file.sh
+    - run: sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' pubspec.yaml > file.sh
       shell: bash
     - run: ./file.sh
       shell: bash
