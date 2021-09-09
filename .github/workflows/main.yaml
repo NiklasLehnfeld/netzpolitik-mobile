@@ -51,7 +51,7 @@ jobs:
         with:
           name: release-build
       - id: version
-        uses: ./.github/actions/flutter-version-number
+        uses: NiklasLehnfeld/flutter-version-number-action@v1
       - uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
