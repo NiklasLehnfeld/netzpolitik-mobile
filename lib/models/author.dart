@@ -4,14 +4,14 @@ part 'author.g.dart';
 
 @JsonSerializable()
 class Author {
-  int id;
-  String name;
-  String link;
-  String description;
+  late int? id;
+  late String? name;
+  late String? link;
+  late String? description;
 
   Author();
 
-  factory Author.fromJson(Map json) => _$AuthorFromJson(json);
+  factory Author.fromJson(Map<String, dynamic> json) => _$AuthorFromJson(json);
 
   Map toJson() => _$AuthorToJson(this);
 }

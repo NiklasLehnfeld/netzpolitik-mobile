@@ -41,8 +41,8 @@ class CategoryListEntry extends StatelessWidget {
   );
 
 
-  Widget _buildDescription(BuildContext context) => WPHtml(category.description,
+  Widget _buildDescription(BuildContext context) => WPHtml(category.description ?? '',
       style: context.body1.copyWith(color: Colors.black),);
 
-  Widget _buildName(BuildContext context) => Text(category.name, style: context.headline4);
+  Widget _buildName(BuildContext context) => Text(category.name ?? '', style: context.headline4);
 }

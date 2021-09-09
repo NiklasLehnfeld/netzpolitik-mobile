@@ -17,9 +17,9 @@ class AuthorListEntry extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 2.0, bottom: 8),
-          child: Text(author.name, style: context.headline6.copyWith( fontSize: 20),),
+          child: Text(author.name ?? '', style: context.headline6.copyWith( fontSize: 20),),
         ),
-        WPHtml(author.description, style: context.body1,)
+        WPHtml(author.description ?? '', style: context.body1,)
       ],
     );
   }

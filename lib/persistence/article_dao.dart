@@ -50,7 +50,7 @@ class ArticleDAO {
     _notifyOnChange();
   }
 
-  Future<Article> getById(int id) async {
+  Future<Article?> getById(int id) async {
     final db = await database.open();
 
     final map = await db.query(
@@ -67,7 +67,11 @@ class ArticleDAO {
   }
 
   Future<bool> isStored(Article article) async {
-    final result = await getById(article.id);
+    if (article.id == null) {
+      return false;
+    }
+
+    final result = await getById(article.id!);
 
     return result != null;
   }

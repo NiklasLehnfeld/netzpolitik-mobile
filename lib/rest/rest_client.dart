@@ -19,7 +19,7 @@ class RestClient {
 
   RestClient(this.configuration);
 
-  Future<List<Article>> fetchArticles({int page = 1, Category category, String searchTerm}) async {
+  Future<List<Article>> fetchArticles({int page = 1, Category? category, String? searchTerm}) async {
     var url = '$baseUrl/posts?_embed&page_size=$PAGE_SIZE&page=$page';
 
     if (category != null) {
@@ -33,6 +33,7 @@ class RestClient {
     var response = await _get(url);
 
     assert (response is List<dynamic>, 'Error while fetching posts from $url, unexpected response format: $response');
+
     var articles = (response as List<dynamic>).map((e) => Article.fromJson(e)).toList();
 
     for(var article in articles){
@@ -49,24 +50,27 @@ class RestClient {
     assert (response is List<dynamic>, 'Error while fetching categories from $url, unexpected response format: $response');
     var categories = (response as List<dynamic>).map((e) => Category.fromJson(e)).toList();
 
-    return categories.where((element) => element.count > 0).toList();
+    return categories.where((element) => (element.count ?? 0) > 0).toList();
   }
 
   Future<String> _fetchLicenceCaption(Article article) async {
     var url = article.link;
-    var response = await http.get(url);
-
-    assert (response.statusCode == 200, 'Error while fetching from $url, http code: ${response.statusCode}, error: ${response.body}');
-    
-    var htmlBody = response.body;
-
-    var captionStartIndex = htmlBody.indexOf(CAPTION_START_TAG);
-
     var caption = '';
 
-    if (captionStartIndex > 0) {
-      var strippedBody = htmlBody.substring(htmlBody.indexOf(CAPTION_START_TAG));
-      caption = strippedBody.substring(0, strippedBody.indexOf(CAPTION_END_TAG));
+    if (url != null) {
+      var response = await http.get(Uri.parse(url));
+
+      assert (response.statusCode == 200, 'Error while fetching from $url, http code: ${response.statusCode}, error: ${response.body}');
+
+      var htmlBody = response.body;
+
+      var captionStartIndex = htmlBody.indexOf(CAPTION_START_TAG);
+
+
+      if (captionStartIndex > 0) {
+        var strippedBody = htmlBody.substring(htmlBody.indexOf(CAPTION_START_TAG));
+        caption = strippedBody.substring(0, strippedBody.indexOf(CAPTION_END_TAG));
+      }
     }
 
     return caption;
@@ -74,7 +78,7 @@ class RestClient {
 
 
   Future<dynamic> _get(String url) async {
-    var response = await http.get(url);
+    var response = await http.get(Uri.parse(url));
 
     assert (response.statusCode == 200, 'Error while fetching from $url, http code: ${response.statusCode}, error: ${response.body}');
 

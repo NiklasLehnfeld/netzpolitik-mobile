@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:netzpolitik_mobile/config/app_configuration.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/localization/app_localizations.dart';
@@ -25,12 +24,7 @@ class WPApp extends StatelessWidget {
         var appSettings = context.watch<AppSettings>();
         var fontSize = appSettings.fontSize.toDouble();
 
-        TextStyle baseTextStyle;
-        if (appSettings.fontType != null) {
-          baseTextStyle = GoogleFonts.asMap()[appSettings.fontType]();
-        } else {
-          baseTextStyle = TextStyle();
-        }
+        var baseTextStyle = TextStyle();
 
         return MaterialApp(
           title: appConfig.name,
@@ -40,6 +34,9 @@ class WPApp extends StatelessWidget {
               hintColor: Colors.grey,
               textSelectionTheme: TextSelectionThemeData(
                 cursorColor: Colors.blue
+              ),
+              bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                backgroundColor: Colors.white,
               ),
               textTheme: TextTheme(
                 headline1: baseTextStyle.copyWith(fontSize: fontSize + 6, color: context.primaryColor, fontWeight: FontWeight.bold),

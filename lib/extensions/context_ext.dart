@@ -7,7 +7,7 @@ const TRANSITION_DURATION = 300;
 
 extension ContextExteinsions on BuildContext {
 
-  String getString(String key) => AppLocalizations.of(this).translate(key) ?? key;
+  String getString(String key) => AppLocalizations.of(this)?.translate(key) ?? key;
 
   void navigate(Widget Function(BuildContext) builder, {bool isDialog = false}) => Navigator.of(this).push(
       PageRouteBuilder(
@@ -21,7 +21,7 @@ extension ContextExteinsions on BuildContext {
       ),
   );
 
-  void showBottomSheet({Widget Function(BuildContext) builder}) => showModalBottomSheet(
+  void showBottomSheet({required Widget Function(BuildContext) builder}) => showModalBottomSheet(
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
     builder: builder,
@@ -29,23 +29,23 @@ extension ContextExteinsions on BuildContext {
   );
 
 
-  TextStyle get headline1 => Theme.of(this).textTheme.headline1;
-  TextStyle get headline2 => Theme.of(this).textTheme.headline2;
-  TextStyle get headline3 => Theme.of(this).textTheme.headline3;
-  TextStyle get headline4 => Theme.of(this).textTheme.headline4;
-  TextStyle get headline5 => Theme.of(this).textTheme.headline5;
-  TextStyle get headline6 => Theme.of(this).textTheme.headline6;
+  TextStyle get headline1 => Theme.of(this).textTheme.headline1!;
+  TextStyle get headline2 => Theme.of(this).textTheme.headline2!;
+  TextStyle get headline3 => Theme.of(this).textTheme.headline3!;
+  TextStyle get headline4 => Theme.of(this).textTheme.headline4!;
+  TextStyle get headline5 => Theme.of(this).textTheme.headline5!;
+  TextStyle get headline6 => Theme.of(this).textTheme.headline6!;
 
-  TextStyle get body1 => Theme.of(this).textTheme.bodyText1;
-  TextStyle get body2 => Theme.of(this).textTheme.bodyText2;
+  TextStyle get body1 => Theme.of(this).textTheme.bodyText1!;
+  TextStyle get body2 => Theme.of(this).textTheme.bodyText2!;
 
-  TextStyle get caption => Theme.of(this).textTheme.caption;
+  TextStyle get caption => Theme.of(this).textTheme.caption!;
 
   Color get primaryColor => Theme.of(this).primaryColor;
   Color get scaffoldColor => Theme.of(this).scaffoldBackgroundColor;
   Color get iconButtonColor => Theme.of(this).primaryColor;
   Color get dialogBackground => Theme.of(this).dialogBackgroundColor;
-  Color get audioPlayerBackground => Theme.of(this).bottomNavigationBarTheme.backgroundColor;
+  Color get audioPlayerBackground => Theme.of(this).bottomNavigationBarTheme.backgroundColor!;
 
   double get width => MediaQuery.of(this).size.width;
   double get height => MediaQuery.of(this).size.height;

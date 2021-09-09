@@ -8,8 +8,8 @@ const MIN_FONT_SIZE = 14.0;
 
 class AppSettings extends ChangeNotifier {
 
-  SharedPreferences _sharedPreferences;
-  List<MapEntry<String, Function>> fonts;
+  SharedPreferences? _sharedPreferences;
+  late List<MapEntry<String, Function>> fonts;
 
   AppSettings() {
     SharedPreferences.getInstance().then((value) => _sharedPreferences = value);
@@ -19,15 +19,17 @@ class AppSettings extends ChangeNotifier {
   int get fontSize => _sharedPreferences?.getInt('fontSize') ?? _FONT_SIZE_DEFAULT;
 
   set fontSize(int size) {
-    _sharedPreferences.setInt('fontSize', size);
+    _sharedPreferences?.setInt('fontSize', size);
     notifyListeners();
   }
 
-  String get fontType => _sharedPreferences?.getString('fontType');
+  String? get fontType => _sharedPreferences?.getString('fontType');
 
-  set fontType(String type) {
-    _sharedPreferences.setString('fontType', type);
-    notifyListeners();
+  set fontType(String? type) {
+    if (type != null) {
+      _sharedPreferences?.setString('fontType', type);
+      notifyListeners();
+    }
   }
 
 

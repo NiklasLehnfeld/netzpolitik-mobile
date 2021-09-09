@@ -19,7 +19,7 @@ class WPAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _WPAppBarState extends State<WPAppBar> {
-  SearchBar _searchBar;
+  SearchBar? _searchBar;
 
   Widget _buildAppBar(BuildContext context) {
     var appConfig = context.watch<AppConfiguration>();
@@ -28,7 +28,7 @@ class _WPAppBarState extends State<WPAppBar> {
       backgroundColor: Colors.white,
       title: Container(
         alignment: Alignment.centerLeft,
-        child: appConfig.title ?? Text(appConfig.name),
+        child: appConfig.title,
       ),
       actions: [
         _buildSearchButton(context),
@@ -42,7 +42,7 @@ class _WPAppBarState extends State<WPAppBar> {
           FontAwesomeIcons.search,
           color: context.primaryColor,
         ),
-        onPressed: () => _searchBar.beginSearch(context),
+        onPressed: () => _searchBar?.beginSearch(context),
       );
 
   Widget _buildImprintButton(BuildContext context) => IconButton(
@@ -58,7 +58,7 @@ class _WPAppBarState extends State<WPAppBar> {
   @override
   Widget build(BuildContext context) {
     _searchBar = _searchBar ?? _buildSearchBar(context);
-    return _searchBar.build(context);
+    return _searchBar?.build(context) ?? Container();
   }
 
   SearchBar _buildSearchBar(BuildContext context) => SearchBar(

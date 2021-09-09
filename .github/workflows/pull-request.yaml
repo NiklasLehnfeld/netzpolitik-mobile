@@ -1,0 +1,33 @@
+on:
+  pull_request:
+    branches:
+      - main
+name: PullRequest
+jobs:
+  analyze:
+    name: analyze
+    runs-on: ubuntu-latest
+    container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/flutter-analyze
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/flutter-test
+  android-build:
+    name: android-build
+    runs-on: ubuntu-latest
+    needs: [test, analyze]
+    container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/flutter-android-build
+      - name: Archive APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: debug-build
+          path: build/app/outputs/apk/debug/*.apk

@@ -61,7 +61,7 @@ class ReplyListEntry extends StatelessWidget {
 
   Widget _buildAuthorName(BuildContext context, Reply reply) => Row(
         children: [
-          Text(reply.nameOrAnonymous,
+          Text(reply.nameOrAnonymous ?? '',
               style: context.body1.copyWith(fontWeight: FontWeight.bold)),
           Width(2),
           Text(context.getString('reply_name_says'), style: context.body1)
@@ -73,6 +73,6 @@ extension on Reply {
   String get summary =>
       content.length <= 150 ? content : content.substring(0, 150) + '...';
 
-  String get nameOrAnonymous =>
-      authorName != null && authorName.isNotEmpty ? authorName : 'Anonymous';
+  String? get nameOrAnonymous =>
+      authorName != null && (authorName?.isNotEmpty ?? false) ? authorName : 'Anonymous';
 }

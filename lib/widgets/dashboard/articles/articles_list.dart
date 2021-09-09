@@ -9,8 +9,8 @@ import 'package:netzpolitik_mobile/widgets/dashboard/articles/article_list_entry
 import 'package:provider/provider.dart';
 
 class ArticlesList extends StatefulWidget {
-  final Category categoryFilter;
-  final String contentFilter;
+  final Category? categoryFilter;
+  final String? contentFilter;
 
   ArticlesList({this.categoryFilter, this.contentFilter});
 
