@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/config/rest_configuration.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
