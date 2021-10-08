@@ -63,6 +63,7 @@ runs:
             ./gradlew bundleDebug
           fi
         fi
+        cd ..
       shell: bash
     - run: |
         if [ ${{ inputs.release }} = "true" ]; then
