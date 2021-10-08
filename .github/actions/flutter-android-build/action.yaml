@@ -1,10 +1,15 @@
 name: flutter-android-build
 description: 'Build Android apk from flutter project'
+
 inputs:
   release:
-    description: 'If set to `true`, it will run assembleRelease, otherwise assembleDebug'
+    description: 'If set to `true`, it will run release builds, otherwise debug builds'
     required: false
     default: false
+  build-type:
+    description: 'apk | aab | both'
+    required: false
+    default: both
   keystore:
     description: 'Base64 encoded keystore.jks, required if release is true'
     required: false
@@ -17,6 +22,15 @@ inputs:
     description: 'key password, required if release is true'
     required: false
     default: ''
+
+outputs:
+  apk-path:
+    description: "Path to built apk if build-type was set to apk or both"
+    value: ${{ steps.path-output.outputs.apk-path }}
+  aab-path:
+    description: "Path to built aab if build-type was set to aab or both"
+    value: ${{ steps.path-output.outputs.aab-path }}
+
 runs:
   using: "composite"
   steps:
@@ -32,8 +46,33 @@ runs:
       run: |
         cd android
         if [ ${{ inputs.release }} = "true" ]; then
-          ./gradlew assembleRelease
+
+          if [ ${{ inputs.build-type }} = "apk" ] || [ ${{ inputs.build-type }} = "both" ]; then
+            ./gradlew assembleRelease
+          fi
+          if [ ${{ inputs.build-type }} = "aab" ] || [ ${{ inputs.build-type }} = "both" ]; then
+            ./gradlew bundleRelease
+          fi
+
         else
-          ./gradlew assembleDebug
+
+          if [ ${{ inputs.build-type }} = "apk" ] || [ ${{ inputs.build-type }} = "both" ]; then
+            ./gradlew assembleDebug
+          fi
+          if [ ${{ inputs.build-type }} = "aab" ] || [ ${{ inputs.build-type }} = "both" ]; then
+            ./gradlew bundleDebug
+          fi
         fi
       shell: bash
+    - run: |
+        if [ ${{ inputs.release }} = "true" ]; then
+          APK_PATH=build/app/outputs/apk/release/`ls build/app/outputs/apk/release | grep apk`
+          AAB_PATH=build/app/outputs/bundle/release/`ls build/app/outputs/bundle/release | grep apk`
+        else
+          APK_PATH=build/app/outputs/apk/debug/`ls build/app/outputs/apk/debug | grep apk`
+          AAB_PATH=build/app/outputs/bundle/debug/`ls build/app/outputs/bundle/debug | grep apk`
+        fi
+        echo "::set-output name=apk-path::$(echo $APK_PATH)"
+        echo "::set-output name=aab-path::$(echo $AAB_PATH)"
+      shell: bash
+      id: path-output

@@ -44,7 +44,6 @@ jobs:
     name: create-github-release
     runs-on: ubuntu-latest
     needs: [android-release-build]
-    container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
@@ -60,4 +59,23 @@ jobs:
           title: ${{ steps.version.outputs.version-number }}
           files: |
             *.apk
+
+  create-playstore-release:
+    name: create-playstore-release
+    runs-on: ubuntu-latest
+    needs: [android-release-build]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: release-build
+      - run: cp *.apk netzpolitik.apk
+      - uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJson: ${{ secrets.SERVICE_ACCOUNT_PRIVATE_KEY }}
+          packageName: net.lehnfeld.netzpolitik
+          releaseFile: netzpolitik.apk
+          track: production
+
+
 
