@@ -66,14 +66,30 @@ runs:
         cd ..
       shell: bash
     - run: |
+
         if [ ${{ inputs.release }} = "true" ]; then
-          APK_PATH=build/app/outputs/apk/release/`ls build/app/outputs/apk/release | grep apk`
-          AAB_PATH=build/app/outputs/bundle/release/`ls build/app/outputs/bundle/release | grep apk`
+
+          if [ ${{ inputs.build-type }} = "apk" ] || [ ${{ inputs.build-type }} = "both" ]; then
+            APK_PATH=build/app/outputs/apk/release/`ls build/app/outputs/apk/release | grep apk`
+            echo "::set-output name=apk-path::$(echo $APK_PATH)"
+          fi
+
+          if [ ${{ inputs.build-type }} = "aab" ] || [ ${{ inputs.build-type }} = "both" ]; then
+            AAB_PATH=build/app/outputs/bundle/release/`ls build/app/outputs/bundle/release | grep aab`
+            echo "::set-output name=aab-path::$(echo $AAB_PATH)"
+          fi
+
         else
-          APK_PATH=build/app/outputs/apk/debug/`ls build/app/outputs/apk/debug | grep apk`
-          AAB_PATH=build/app/outputs/bundle/debug/`ls build/app/outputs/bundle/debug | grep apk`
+
+          if [ ${{ inputs.build-type }} = "apk" ] || [ ${{ inputs.build-type }} = "both" ]; then
+            APK_PATH=build/app/outputs/apk/debug/`ls build/app/outputs/apk/debug | grep apk`
+            echo "::set-output name=apk-path::$(echo $APK_PATH)"
+          fi
+
+          if [ ${{ inputs.build-type }} = "aab" ] || [ ${{ inputs.build-type }} = "both" ]; then
+            AAB_PATH=build/app/outputs/bundle/debug/`ls build/app/outputs/bundle/debug | grep aab`
+            echo "::set-output name=aab-path::$(echo $AAB_PATH)"
+          fi
         fi
-        echo "::set-output name=apk-path::$(echo $APK_PATH)"
-        echo "::set-output name=aab-path::$(echo $AAB_PATH)"
       shell: bash
       id: path-output
