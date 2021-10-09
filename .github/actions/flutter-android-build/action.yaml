@@ -44,26 +44,24 @@ runs:
         NETZPOLITIK_KEY_PWD: ${{ inputs.key-pwd }}
         NETZPOLITIK_KEYSTORE_PWD: ${{ inputs.keystore-pwd }}
       run: |
-        cd android
         if [ ${{ inputs.release }} = "true" ]; then
 
           if [ ${{ inputs.build-type }} = "apk" ] || [ ${{ inputs.build-type }} = "both" ]; then
-            ./gradlew assembleRelease
+            flutter build apk || true
           fi
           if [ ${{ inputs.build-type }} = "aab" ] || [ ${{ inputs.build-type }} = "both" ]; then
-            ./gradlew bundleRelease
+            flutter build appbundle || true
           fi
 
         else
 
           if [ ${{ inputs.build-type }} = "apk" ] || [ ${{ inputs.build-type }} = "both" ]; then
-            ./gradlew assembleDebug
+            flutter build apk --debug || true
           fi
           if [ ${{ inputs.build-type }} = "aab" ] || [ ${{ inputs.build-type }} = "both" ]; then
-            ./gradlew bundleDebug
+            flutter build appbundle --debug || true
           fi
         fi
-        cd ..
       shell: bash
     - run: |
 
@@ -71,11 +69,17 @@ runs:
 
           if [ ${{ inputs.build-type }} = "apk" ] || [ ${{ inputs.build-type }} = "both" ]; then
             APK_PATH=build/app/outputs/apk/release/`ls build/app/outputs/apk/release | grep apk`
+            if [ ! -f $APK_PATH ]; then
+              exit 1
+            fi
             echo "::set-output name=apk-path::$(echo $APK_PATH)"
           fi
 
           if [ ${{ inputs.build-type }} = "aab" ] || [ ${{ inputs.build-type }} = "both" ]; then
             AAB_PATH=build/app/outputs/bundle/release/`ls build/app/outputs/bundle/release | grep aab`
+            if [ ! -f $AAB_PATH ]; then
+              exit 1
+            fi
             echo "::set-output name=aab-path::$(echo $AAB_PATH)"
           fi
 
@@ -83,11 +87,17 @@ runs:
 
           if [ ${{ inputs.build-type }} = "apk" ] || [ ${{ inputs.build-type }} = "both" ]; then
             APK_PATH=build/app/outputs/apk/debug/`ls build/app/outputs/apk/debug | grep apk`
+            if [ ! -f $APK_PATH ]; then
+              exit 1
+            fi
             echo "::set-output name=apk-path::$(echo $APK_PATH)"
           fi
 
           if [ ${{ inputs.build-type }} = "aab" ] || [ ${{ inputs.build-type }} = "both" ]; then
             AAB_PATH=build/app/outputs/bundle/debug/`ls build/app/outputs/bundle/debug | grep aab`
+            if [ ! -f $AAB_PATH ]; then
+              exit 1
+            fi
             echo "::set-output name=aab-path::$(echo $AAB_PATH)"
           fi
         fi
