@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_audio_player.dart';
 
@@ -9,7 +8,7 @@ class WPBottomNavigation extends StatefulWidget {
   final List<BottomNavigationBarItem> items;
   final Function(int) onTap;
 
-  const WPBottomNavigation({this.index, this.items, this.onTap});
+  const WPBottomNavigation({required this.index, required this.items, required this.onTap});
 
   @override
   _WPBottomNavigationState createState() => _WPBottomNavigationState();

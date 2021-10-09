@@ -4,22 +4,22 @@ part 'reply.g.dart';
 
 @JsonSerializable()
 class Reply {
-  int id;
-  int parent;
+  int? id;
+  int? parent;
 
   @JsonKey(name: 'author_name')
-  String authorName;
+  String? authorName;
 
-  String date;
+  String date = '';
 
-  String content;
+  String content = '';
 
   @JsonKey(ignore: true) //handled on our own
   List<Reply> replies = [];
 
   Reply();
 
-  factory Reply.fromJson(Map json) {
+  factory Reply.fromJson(Map<String, dynamic> json) {
     var isUnwrapped = json['content'] is String;
     if (!isUnwrapped ) {
       json['content'] = json['content']['rendered'];

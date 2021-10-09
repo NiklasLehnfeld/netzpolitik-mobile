@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_card.dart';
@@ -9,10 +8,10 @@ const HORIZONTAL_PADDING = 15.0;
 
 class WPBottomSheet extends StatelessWidget {
 
-  final double fixedHeight;
+  final double? fixedHeight;
   final Widget child;
 
-  WPBottomSheet({@required this.child, this.fixedHeight});
+  WPBottomSheet({required this.child, this.fixedHeight});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/config/rest_configuration.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
@@ -15,7 +14,7 @@ class ArticleImage extends StatelessWidget {
   final bool captionVisible;
 
   const ArticleImage(this.article,
-      {this.identifier, this.captionVisible = false});
+      {required this.identifier, this.captionVisible = false});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class ArticleImage extends StatelessWidget {
             child: CachedNetworkImage(
               imageUrl: imageUrl,
               progressIndicatorBuilder: (context, url, downloadProgress) =>
-                  _buildProgressIndicator(downloadProgress.progress),
+                  _buildProgressIndicator(downloadProgress.progress ?? 0),
               errorWidget: (context, url, error) => _buildErrorWidget(context),
               fit: BoxFit.cover,
             ),
@@ -44,7 +43,7 @@ class ArticleImage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: WPHtml(
-              showCaption ? '${article.imageCaption.replaceAll(RegExp('</?p>'), '')} ${article.imageLicenceCaption}' : '',
+              showCaption ? '${article.imageCaption?.replaceAll(RegExp('</?p>'), '')} ${article.imageLicenceCaption}' : '',
               style: context.caption,
             ),
           ),

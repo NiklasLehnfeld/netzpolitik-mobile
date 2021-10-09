@@ -5,14 +5,14 @@ part 'tag.g.dart';
 @JsonSerializable()
 class Tag {
 
-  int id;
-  String name;
-  String slag;
-  String taxonomy;
+  late int? id;
+  late String? name;
+  late String? slag;
+  late String? taxonomy;
 
   Tag();
 
-  factory Tag.fromJson(Map json) =>_$TagFromJson(json);
+  factory Tag.fromJson(Map<String, dynamic> json) =>_$TagFromJson(json);
 
   Map toJson() => _$TagToJson(this);
 

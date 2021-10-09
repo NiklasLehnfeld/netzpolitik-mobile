@@ -1,5 +1,4 @@
 import 'package:expandable/expandable.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_card.dart';
@@ -12,14 +11,14 @@ class WPExpandablePanel extends StatefulWidget {
   final String title;
   final String body;
 
-  WPExpandablePanel({this.title, this.body});
+  WPExpandablePanel({required this.title, required this.body});
 
   @override
   _WPExpandablePanelState createState() => _WPExpandablePanelState();
 }
 
 class _WPExpandablePanelState extends State<WPExpandablePanel> {
-  ExpandableController _controller;
+  late ExpandableController _controller;
 
   @override
   void initState() {

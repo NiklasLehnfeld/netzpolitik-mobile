@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/models/category.dart';
@@ -41,8 +40,8 @@ class CategoryListEntry extends StatelessWidget {
   );
 
 
-  Widget _buildDescription(BuildContext context) => WPHtml(category.description,
+  Widget _buildDescription(BuildContext context) => WPHtml(category.description ?? '',
       style: context.body1.copyWith(color: Colors.black),);
 
-  Widget _buildName(BuildContext context) => Text(category.name, style: context.headline4);
+  Widget _buildName(BuildContext context) => Text(category.name ?? '', style: context.headline4);
 }

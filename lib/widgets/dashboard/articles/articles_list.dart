@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/models/article.dart';
@@ -9,8 +8,8 @@ import 'package:netzpolitik_mobile/widgets/dashboard/articles/article_list_entry
 import 'package:provider/provider.dart';
 
 class ArticlesList extends StatefulWidget {
-  final Category categoryFilter;
-  final String contentFilter;
+  final Category? categoryFilter;
+  final String? contentFilter;
 
   ArticlesList({this.categoryFilter, this.contentFilter});
 

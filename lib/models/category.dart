@@ -5,18 +5,18 @@ part 'category.g.dart';
 
 @JsonSerializable()
 class Category {
-  int id;
-  String name;
-  String description;
+  late int? id;
+  late String? name;
+  late String? description;
 
-  String slug;
-  String taxonomy;
+  late String? slug;
+  late String? taxonomy;
 
-  int count;
+  late int? count;
 
   Category();
 
-  factory Category.fromJson(Map json) {
+  factory Category.fromJson(Map<String, dynamic> json) {
     if (json['description'] != null) {
       json['description'] = HtmlUnescape().convert(json['description']);
     }

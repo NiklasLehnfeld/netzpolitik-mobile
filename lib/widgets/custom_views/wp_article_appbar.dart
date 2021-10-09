@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/models/article.dart';
+import 'package:netzpolitik_mobile/models/author.dart';
+import 'package:netzpolitik_mobile/models/category.dart';
+import 'package:netzpolitik_mobile/models/reply.dart';
 import 'package:netzpolitik_mobile/persistence/article_dao.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_back_button.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/author/author_bottom_sheet.dart';
@@ -23,6 +26,10 @@ class WPArticleAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _WPArticleAppBarState extends State<WPArticleAppBar> {
 
   bool _bookmarked = false;
+
+  List<Author> get authors => widget.article.authors ?? [];
+  List<Reply?> get replies => widget.article.replies ?? [];
+  List<Category> get categories => widget.article.categories ?? [];
 
   @override
   Widget build(BuildContext context) {
@@ -50,20 +57,20 @@ class _WPArticleAppBarState extends State<WPArticleAppBar> {
   Widget repliesButton(BuildContext context) => IconButton(
       icon: FaIcon(
         FontAwesomeIcons.solidCommentAlt,
-        color: widget.article.replies.isNotEmpty ? context.iconButtonColor : null,
+        color: replies.isNotEmpty ? context.iconButtonColor : null,
       ),
-      onPressed: widget.article.replies.isNotEmpty ? () => showReplies(context) : null);
+      onPressed: replies.isNotEmpty ? () => showReplies(context) : null);
 
   Widget bookmarkButton(BuildContext context) {
 
     final dao = context.watch<ArticleDAO>();
 
-    return FutureBuilder(
+    return FutureBuilder<bool>(
       future: dao.isStored(widget.article),
       builder: (context, snapshot) {
 
-        if (snapshot.hasData) {
-          _bookmarked = snapshot.data;
+        if (snapshot.hasData && snapshot.data != null) {
+          _bookmarked = snapshot.data!;
         }
 
         return IconButton(
@@ -73,7 +80,7 @@ class _WPArticleAppBarState extends State<WPArticleAppBar> {
           ),
           onPressed: () async {
             if (_bookmarked) {
-              await dao.delete(widget.article.id);
+              await dao.delete(widget.article.id!);
             } else {
               await dao.insert(widget.article);
             }
@@ -87,11 +94,14 @@ class _WPArticleAppBarState extends State<WPArticleAppBar> {
   }
 
   void showReplies(BuildContext context) => context.showBottomSheet(
-    builder: (context) => RepliesBottomSheet(widget.article.replies),
+    builder: (context) => RepliesBottomSheet(
+        replies.where((e) => e != null).map((e) => e as Reply).toList()
+    ),
   );
 
   void showAuthor(BuildContext context) => context.showBottomSheet(
-    builder: (context) => AuthorBottomSheet(widget.article.authors),
+    builder: (context) => AuthorBottomSheet(authors),
   );
+
 
 }

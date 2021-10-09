@@ -1,18 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WPCard extends StatefulWidget {
 
   final Widget child;
-  final EdgeInsets margin;
-  final BorderRadius cornerRadius;
-  final EdgeInsets padding;
+  final EdgeInsets? margin;
+  final BorderRadius? cornerRadius;
+  final EdgeInsets? padding;
   final double tappedElevation;
   final double defaultElevation;
-  final Function onTap;
+  final VoidCallback? onTap;
 
   WPCard({
-    @required this.child,
+    required this.child,
     this.tappedElevation = 1.0,
     this.defaultElevation = 8.0,
     this.onTap,

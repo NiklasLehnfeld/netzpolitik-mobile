@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/persistence/app_settings.dart';
 import 'package:provider/provider.dart';
 
 class FonttypeWidget extends StatefulWidget {
-
 
   @override
   State<StatefulWidget> createState() => FonttypeWidgetState();
@@ -13,12 +11,12 @@ class FonttypeWidget extends StatefulWidget {
 
 class FonttypeWidgetState extends State<FonttypeWidget> {
 
-  String get _style {
+  String? get _style {
     var appSettings = context.read<AppSettings>();
     return appSettings.fontType;
   }
 
-  set _style(String value) {
+  set _style(String? value) {
     var appSettings = context.read<AppSettings>();
     appSettings.fontType = value;
   }
@@ -38,7 +36,7 @@ class FonttypeWidgetState extends State<FonttypeWidget> {
         height: 2,
         color: Colors.deepPurpleAccent,
       ),
-      onChanged: (String data) {
+      onChanged: (String? data) {
         setState(() {
           _style = data;
         });

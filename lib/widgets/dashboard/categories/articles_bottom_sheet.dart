@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/models/category.dart';
@@ -8,8 +7,8 @@ import 'package:netzpolitik_mobile/widgets/dashboard/articles/articles_list.dart
 const SHEET_HEIGHT_FACTOR = 0.85;
 
 class ArticlesBottomSheet extends StatelessWidget {
-  final Category filterByCategory;
-  final String filterByTerm;
+  final Category? filterByCategory;
+  final String? filterByTerm;
 
   ArticlesBottomSheet({this.filterByCategory, this.filterByTerm});
 

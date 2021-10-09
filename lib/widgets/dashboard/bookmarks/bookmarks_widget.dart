@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math' as math;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
@@ -22,7 +21,7 @@ class BookmarksWidget extends StatefulWidget {
 
 class _BookmarksWidgetState extends State<BookmarksWidget> implements ArticleDAOListener {
 
-  ArticleDAO _articleDAO;
+  late ArticleDAO _articleDAO;
 
   @override
   void initState() {
@@ -41,7 +40,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget> implements ArticleDAO
   @override
   Widget build(BuildContext context) {
 
-    return FutureBuilder(
+    return FutureBuilder<List<Article>>(
       future: _articleDAO.getAll(),
       builder: (context, snapshot) {
         //loading
@@ -49,7 +48,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget> implements ArticleDAO
           return CircularProgressIndicator();
         }
 
-        final articles = snapshot.data as List<Article>;
+        final articles = snapshot.data;
         if (articles == null || articles.isEmpty) {
           return _buildEmptyWidget(context);
         } else {
