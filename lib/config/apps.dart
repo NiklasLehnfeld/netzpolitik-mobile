@@ -1,4 +1,4 @@
-import 'package:netzpolitik_mobile/app_specific/netzpolitik_title.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/netzpolitik_title.dart';
 import 'package:netzpolitik_mobile/config/app_configuration.dart';
 import 'package:netzpolitik_mobile/config/rest_configuration.dart';
 

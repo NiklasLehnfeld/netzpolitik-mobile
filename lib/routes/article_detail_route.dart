@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/extensions/int_ext.dart';
 import 'package:netzpolitik_mobile/extensions/string_ext.dart';
+import 'package:netzpolitik_mobile/logic/rating_manager.dart';
 import 'package:netzpolitik_mobile/models/article.dart';
 import 'package:netzpolitik_mobile/models/audio_model.dart';
 import 'package:netzpolitik_mobile/models/author.dart';
@@ -11,6 +12,7 @@ import 'package:netzpolitik_mobile/widgets/custom_views/wp_article_appbar.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_html.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_play_button.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/article_image.dart';
+import 'package:provider/provider.dart';
 
 class ArticleDetailRoute extends StatefulWidget {
   final Article article;
@@ -24,7 +26,15 @@ class ArticleDetailRoute extends StatefulWidget {
 }
 
 class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
+
   bool hasMp3 = false;
+
+  @override
+  void initState() {
+    var ratingManager = context.read<RatingManager>();
+    ratingManager.trackArticleRead();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

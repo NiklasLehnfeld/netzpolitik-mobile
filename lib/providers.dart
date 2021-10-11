@@ -8,6 +8,8 @@ import 'package:netzpolitik_mobile/persistence/wp_database.dart';
 import 'package:netzpolitik_mobile/rest/rest_client.dart';
 import 'package:provider/provider.dart';
 
+import 'logic/rating_manager.dart';
+
 
 class Providers {
 
@@ -28,7 +30,8 @@ class Providers {
     Provider<WPDatabase>(create: (context) => WPDatabase()),
     Provider<ArticleDAO>(create: (context) => ArticleDAO(context.read<WPDatabase>()),),
 
-    ChangeNotifierProvider<AppSettings>(create: (context) => AppSettings(),)
+    ChangeNotifierProvider<AppSettings>(create: (context) => AppSettings(),),
+    Provider<RatingManager>(create: (context) => RatingManager(),)
 
   ];
 
