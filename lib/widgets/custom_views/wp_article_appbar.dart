@@ -5,11 +5,10 @@ import 'package:netzpolitik_mobile/models/article.dart';
 import 'package:netzpolitik_mobile/models/author.dart';
 import 'package:netzpolitik_mobile/models/category.dart';
 import 'package:netzpolitik_mobile/models/reply.dart';
-import 'package:netzpolitik_mobile/persistence/article_dao.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/bookmark_button.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_back_button.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/author/author_bottom_sheet.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/replies/replies_bottom_sheet.dart';
-import 'package:provider/provider.dart';
 
 class WPArticleAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Article article;
@@ -25,8 +24,6 @@ class WPArticleAppBar extends StatefulWidget implements PreferredSizeWidget {
 
 class _WPArticleAppBarState extends State<WPArticleAppBar> {
 
-  bool _bookmarked = false;
-
   List<Author> get authors => widget.article.authors ?? [];
   List<Reply?> get replies => widget.article.replies ?? [];
   List<Category> get categories => widget.article.categories ?? [];
@@ -39,7 +36,7 @@ class _WPArticleAppBarState extends State<WPArticleAppBar> {
       backgroundColor: context.scaffoldColor,
       leading: WPBackButton(),
       actions: [
-        bookmarkButton(context),
+        BookmarkButtonWidget(widget.article),
         repliesButton(context),
         authorButton(context),
       ],
@@ -60,38 +57,6 @@ class _WPArticleAppBarState extends State<WPArticleAppBar> {
         color: replies.isNotEmpty ? context.iconButtonColor : null,
       ),
       onPressed: replies.isNotEmpty ? () => showReplies(context) : null);
-
-  Widget bookmarkButton(BuildContext context) {
-
-    final dao = context.watch<ArticleDAO>();
-
-    return FutureBuilder<bool>(
-      future: dao.isStored(widget.article),
-      builder: (context, snapshot) {
-
-        if (snapshot.hasData && snapshot.data != null) {
-          _bookmarked = snapshot.data!;
-        }
-
-        return IconButton(
-          icon: FaIcon(
-            _bookmarked ? FontAwesomeIcons.solidBookmark : FontAwesomeIcons.bookmark,
-            color: context.iconButtonColor,
-          ),
-          onPressed: () async {
-            if (_bookmarked) {
-              await dao.delete(widget.article.id!);
-            } else {
-              await dao.insert(widget.article);
-            }
-            setState(() {
-              _bookmarked = !_bookmarked;
-            });
-          },
-        );
-      }
-    );
-  }
 
   void showReplies(BuildContext context) => context.showBottomSheet(
     builder: (context) => RepliesBottomSheet(

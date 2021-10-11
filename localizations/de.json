@@ -29,5 +29,7 @@
 
   "settings_headline": "Einstellungen",
   "fontsize_label": "Schriftgröße",
-  "fonttype_label": "Schriftart"
+  "fonttype_label": "Schriftart",
+
+  "unknown_author": "Unbekannter Author"
 }
