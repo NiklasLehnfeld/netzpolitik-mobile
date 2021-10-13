@@ -1,9 +1,11 @@
 {
-  "articles": "Aktuelles",
-  "topics": "Kategorien",
+  "home": "Startseite",
+  "podcasts": "Podcasts",
+  "bookmarks": "Lesezeichen",
+  "support": "Unterstützung",
+
   "replies": "Ergänzungen",
   "entries": "Artikel",
-  "bookmarks": "Lesezeichen",
 
   "search_hint": "Suche nach Artikeln",
 

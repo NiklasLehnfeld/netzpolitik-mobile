@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_audio_player.dart';
 
 
@@ -36,7 +37,9 @@ class _WPBottomNavigationState extends State<WPBottomNavigation> {
       showUnselectedLabels: false,
       currentIndex: widget.index,
       items: widget.items,
-      onTap: widget.onTap
+      onTap: widget.onTap,
+      selectedItemColor: context.primaryColor,
+      unselectedItemColor: context.caption.color,
   );
 
 }

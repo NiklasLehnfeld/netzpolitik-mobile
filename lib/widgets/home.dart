@@ -4,6 +4,7 @@ import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_appbar.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_bottom_navigation.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/articles_widget.dart';
+import 'package:netzpolitik_mobile/widgets/dashboard/articles/podcasts_widget.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/bookmarks/bookmarks_widget.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/categories/categories_widget.dart';
 
@@ -26,7 +27,7 @@ class _HomeState extends State<Home> {
           index: _currentIndex,
           items: BOTTOM_NAV_ITEMS.map((viewHolder) => BottomNavigationBarItem(
               label: context.getString(viewHolder.titleKey),
-              icon: FaIcon(viewHolder.icon)
+              icon: FaIcon(viewHolder.icon,)
           )).toList(),
           onTap: (index) => setState(() => _currentIndex = index)
       ),
@@ -39,9 +40,10 @@ class _HomeState extends State<Home> {
 }
 
 const BOTTOM_NAV_ITEMS = [
-  BottomNavItemViewHolder(icon: FontAwesomeIcons.newspaper, titleKey: 'articles', child: ArticlesWidget()),
-  BottomNavItemViewHolder(icon: FontAwesomeIcons.stream, titleKey: 'topics', child: CategoriesWidget()),
+  BottomNavItemViewHolder(icon: FontAwesomeIcons.home, titleKey: 'home', child: ArticlesWidget()),
+  BottomNavItemViewHolder(icon: FontAwesomeIcons.headphones, titleKey: 'podcasts', child: PodcastsWidget()),
   BottomNavItemViewHolder(icon: FontAwesomeIcons.bookmark, titleKey: 'bookmarks', child: BookmarksWidget()),
+  BottomNavItemViewHolder(icon: FontAwesomeIcons.heart, titleKey: 'support', child: BookmarksWidget()),
 ];
 
 class BottomNavItemViewHolder {

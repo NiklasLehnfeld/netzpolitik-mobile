@@ -10,8 +10,9 @@ import 'package:provider/provider.dart';
 class ArticlesList extends StatefulWidget {
   final Category? categoryFilter;
   final String? contentFilter;
+  final String? identifier;
 
-  ArticlesList({this.categoryFilter, this.contentFilter});
+  ArticlesList({this.categoryFilter, this.contentFilter, this.identifier});
 
   @override
   _ArticlesListState createState() => _ArticlesListState();
@@ -23,7 +24,11 @@ class _ArticlesListState extends State<ArticlesList> {
   @override
   Widget build(BuildContext context) {
     return WPGridPagination<Article>(
-      itemBuilder: (position, article, isBig) => ArticleListEntry(article, isBig: isBig),
+      itemBuilder: (position, article, isBig) => ArticleListEntry(
+        article,
+        isBig: isBig,
+        identifier: widget.identifier,
+      ),
       pageBuilder: (listSize) => loadData(context, listSize),
       errorLabel: context.getString('article_loading_error'),
     );
@@ -41,7 +46,6 @@ class _ArticlesListState extends State<ArticlesList> {
 
     var page = (currentListSize / restClient.pageSize).ceil() + 1;
 
-
     var result = await restClient.fetchArticles(
         page: page,
         category: widget.categoryFilter,
@@ -51,5 +55,4 @@ class _ArticlesListState extends State<ArticlesList> {
 
     return result;
   }
-
 }
