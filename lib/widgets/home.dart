@@ -6,7 +6,8 @@ import 'package:netzpolitik_mobile/widgets/custom_views/wp_bottom_navigation.dar
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/articles_widget.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/podcasts_widget.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/bookmarks/bookmarks_widget.dart';
-import 'package:netzpolitik_mobile/widgets/dashboard/categories/categories_widget.dart';
+
+import 'dashboard/support/support_widget.dart';
 
 
 class Home extends StatefulWidget {
@@ -43,7 +44,7 @@ const BOTTOM_NAV_ITEMS = [
   BottomNavItemViewHolder(icon: FontAwesomeIcons.home, titleKey: 'home', child: ArticlesWidget()),
   BottomNavItemViewHolder(icon: FontAwesomeIcons.headphones, titleKey: 'podcasts', child: PodcastsWidget()),
   BottomNavItemViewHolder(icon: FontAwesomeIcons.bookmark, titleKey: 'bookmarks', child: BookmarksWidget()),
-  BottomNavItemViewHolder(icon: FontAwesomeIcons.heart, titleKey: 'support', child: BookmarksWidget()),
+  BottomNavItemViewHolder(icon: FontAwesomeIcons.heart, titleKey: 'support', child: SupportWidget()),
 ];
 
 class BottomNavItemViewHolder {

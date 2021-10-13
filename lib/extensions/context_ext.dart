@@ -37,6 +37,9 @@ extension ContextExteinsions on BuildContext {
 
   TextStyle get body1 => Theme.of(this).textTheme.bodyText1!;
   TextStyle get body2 => Theme.of(this).textTheme.bodyText2!;
+  TextStyle get quote => Theme.of(this).textTheme.bodyText2!.copyWith(
+    fontStyle: FontStyle.italic
+  );
 
   TextStyle get caption => Theme.of(this).textTheme.caption!;
 

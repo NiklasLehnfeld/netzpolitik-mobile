@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/logic/audio_player.dart';
 import 'package:netzpolitik_mobile/models/article.dart';
-import 'package:netzpolitik_mobile/widgets/custom_views/height.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_expanded_section.dart';
 import 'package:provider/provider.dart';
 
