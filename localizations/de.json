@@ -1,9 +1,11 @@
 {
-  "articles": "Aktuelles",
-  "topics": "Kategorien",
+  "home": "Startseite",
+  "podcasts": "Podcasts",
+  "bookmarks": "Lesezeichen",
+  "support": "Unterstützung",
+
   "replies": "Ergänzungen",
   "entries": "Artikel",
-  "bookmarks": "Lesezeichen",
 
   "search_hint": "Suche nach Artikeln",
 
@@ -29,5 +31,23 @@
 
   "settings_headline": "Einstellungen",
   "fontsize_label": "Schriftgröße",
-  "fonttype_label": "Schriftart"
+  "fonttype_label": "Schriftart",
+
+  "unknown_author": "Unbekannter Author",
+
+  "support_title_developer_start": "Unterstütze den ",
+  "support_title_developer": "Entwickler",
+  "support_developer_quote": "Diese App ist zu 100% in meiner Freizeit entstanden und wurde in keinster Weise von irgendjemanden finanziert. Sie soll das netzpolitik.org Team in dem unterstützen was sie tun und ihnen eventuell sogar neue Leser bringen. {Ich freue mich über jede Unterstüzung, jedes Kommentar und jede Bewertung!}",
+  "support_developer_cta": "Unterstütze den Entwickler!",
+  "contact_developer": "Kontaktiere den Entwickler!",
+  "rate_the_app": "Bewerte die App!",
+
+  "support_title_authors_start": "Unterstütze die ",
+  "support_title_authors": "Autoren",
+
+  "support_netzpolitik_quote": "\"Egal wie niedrig unser Kontostand ist, mit uns wird es keine Paywalls geben. Auch wenn wir bald eins der letzten Einhörner in der Medienlandschaft sind: Wir werden dich nie tracken, um deine Daten zu verkaufen. Diese Unabhängigkeit hat einen Preis. Deswegen sind wir in höchstem Maße auf deine Mithilfe angewiesen: {Wir sind nur so stark, wie du uns machst!}\"",
+  "support_netzpolitik_cta": "Unterstütze das netzpolitik.org Team!",
+
+  "patreon_url": "https://www.patreon.com/lehnfeld",
+  "authors_support_url": "https://netzpolitik.org/spenden/?via=app"
 }

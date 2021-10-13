@@ -50,4 +50,8 @@ class RatingManager {
     }
   }
 
+  void openStore() async {
+    await _inAppReview.openStoreListing();
+  }
+
 }

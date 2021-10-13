@@ -20,7 +20,7 @@ class WPErrorWidget extends StatelessWidget {
           iconSize: ERROR_ICON_SIZE,
           icon: FaIcon(
             icon ?? FontAwesomeIcons.syncAlt,
-            color: context.primaryColor,
+            color: Colors.blue[200],
           ),
           onPressed: onPress,
         ),
@@ -28,7 +28,7 @@ class WPErrorWidget extends StatelessWidget {
           width: 300,
           child: Text(
             text,
-            style: context.headline6,
+            style: context.headline6.copyWith(color: Colors.blue[200]),
             textAlign: TextAlign.center,
           ),
         )

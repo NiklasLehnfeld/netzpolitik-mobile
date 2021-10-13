@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/config/rest_configuration.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/extensions/article_ext.dart';
 import 'package:netzpolitik_mobile/models/article.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_audio_player.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_html.dart';
 import 'package:provider/provider.dart';
 
@@ -12,9 +14,13 @@ class ArticleImage extends StatelessWidget {
   final Article article;
   final String identifier;
   final bool captionVisible;
+  final bool showAudioPlayer;
 
   const ArticleImage(this.article,
-      {required this.identifier, this.captionVisible = false});
+      {required this.identifier,
+        this.captionVisible = false,
+        this.showAudioPlayer = true
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +35,26 @@ class ArticleImage extends StatelessWidget {
           tag: 'article-thumbnail-$identifier-${article.id}',
           child: AspectRatio(
             aspectRatio: IMAGE_ASPECT_RATIO,
-            child: CachedNetworkImage(
-              imageUrl: imageUrl,
-              progressIndicatorBuilder: (context, url, downloadProgress) =>
-                  _buildProgressIndicator(downloadProgress.progress ?? 0),
-              errorWidget: (context, url, error) => _buildErrorWidget(context),
-              fit: BoxFit.cover,
+            child: Stack(
+              children: [
+                CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      _buildProgressIndicator(downloadProgress.progress ?? 0),
+                  errorWidget: (context, url, error) => _buildErrorWidget(context),
+                  fit: BoxFit.cover,
+                ),
+                Visibility(
+                  visible: showAudioPlayer && article.hasMp3,
+                  child: WPAudioPlayer(
+                    article: article,
+                    alwaysVisible: true,
+                    showTitleSection: false,
+                    backgroundAlpha: 200,
+                    showCross: false,
+                  ),
+                )
+              ],
             ),
           ),
         ),

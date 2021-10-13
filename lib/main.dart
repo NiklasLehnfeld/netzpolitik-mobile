@@ -32,6 +32,7 @@ class WPApp extends StatelessWidget {
           theme: ThemeData(
               primarySwatch: Colors.blue,
               hintColor: Colors.grey,
+              scaffoldBackgroundColor: Colors.grey[100],
               textSelectionTheme: TextSelectionThemeData(
                 cursorColor: Colors.blue
               ),

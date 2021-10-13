@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/extensions/int_ext.dart';
+import 'package:netzpolitik_mobile/extensions/article_ext.dart';
 import 'package:netzpolitik_mobile/extensions/string_ext.dart';
 import 'package:netzpolitik_mobile/logic/rating_manager.dart';
 import 'package:netzpolitik_mobile/models/article.dart';
-import 'package:netzpolitik_mobile/models/audio_model.dart';
 import 'package:netzpolitik_mobile/models/author.dart';
 import 'package:netzpolitik_mobile/models/category.dart';
 import 'package:netzpolitik_mobile/models/reply.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_article_appbar.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/wp_audio_player.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_html.dart';
-import 'package:netzpolitik_mobile/widgets/custom_views/wp_play_button.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/article_image.dart';
 import 'package:provider/provider.dart';
 
@@ -19,16 +19,14 @@ class ArticleDetailRoute extends StatefulWidget {
   final bool isBig;
   final String identifier;
 
-  ArticleDetailRoute(this.article, {required this.isBig, required this.identifier});
+  ArticleDetailRoute(this.article,
+      {required this.isBig, required this.identifier});
 
   @override
   _ArticleDetailRouteState createState() => _ArticleDetailRouteState();
 }
 
 class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
-
-  bool hasMp3 = false;
-
   @override
   void initState() {
     var ratingManager = context.read<RatingManager>();
@@ -53,7 +51,6 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
           topArea = Column(
               children: [_buildSummaryArea(context), _buildImage(context)]);
         }
-
         return Scaffold(
           body: SingleChildScrollView(
             child: Column(
@@ -77,7 +74,7 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
 
   Widget _buildContentArea(BuildContext context) => Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
-        child: WPHtml(widget.article.content ?? ''),
+        child: WPHtml((widget.article.content ?? '').withoutMp3),
       );
 
   Widget _buildSummaryArea(BuildContext context) => Padding(
@@ -97,11 +94,15 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
       );
 
   List<Author> get authors => widget.article.authors ?? [];
+
   List<Reply?> get replies => widget.article.replies ?? [];
+
   List<Category> get categories => widget.article.categories ?? [];
 
   String get authorNames => authors.map((a) => a.name).join(', ');
+
   String get categoryName => categories.first.name ?? '';
+
   int get numberOfReplies => replies.length;
 
   Widget _buildSummary(BuildContext context) => Hero(
@@ -127,25 +128,28 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
       );
 
   Widget _buildImage(BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomRight,
+    return Column(
       children: [
+        Visibility(
+            visible: widget.article.hasMp3,
+            child: Column(
+              children: [
+                Divider(
+                  height: 1,
+                ),
+                WPAudioPlayer(
+                  article: widget.article,
+                  alwaysVisible: true,
+                  showCross: false,
+                ),
+              ],
+            )),
         ArticleImage(
           widget.article,
           identifier: widget.identifier,
           captionVisible: true,
+          showAudioPlayer: false,
         ),
-        Visibility(
-          visible: widget.article.content?.containsMP3 ?? false,
-          child: Container(
-            margin: EdgeInsets.only(right: 10, bottom: 50),
-            child: WPPlayButton(
-              audio: AudioModel(
-                  title: widget.article.title ?? '',
-                  url: widget.article.content?.mp3Url ?? ''),
-            ),
-          ),
-        )
       ],
     );
   }

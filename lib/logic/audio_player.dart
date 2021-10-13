@@ -1,11 +1,12 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:netzpolitik_mobile/models/audio_model.dart';
+import 'package:netzpolitik_mobile/models/article.dart';
+import 'package:netzpolitik_mobile/extensions/article_ext.dart';
 
 class AudioPlayer extends ChangeNotifier {
 
   late AssetsAudioPlayer _assetsAudioPlayer;
-  AudioModel? _audio;
+  Article? currentPlayingArticle;
 
   AudioPlayer() {
     _assetsAudioPlayer = AssetsAudioPlayer.newPlayer();
@@ -14,7 +15,7 @@ class AudioPlayer extends ChangeNotifier {
 
   bool get isPlaying => _assetsAudioPlayer.isPlaying.value;
   bool get isBuffering => _assetsAudioPlayer.isBuffering.value;
-  bool get isOpened => _audio != null;
+  bool get isOpened => currentPlayingArticle != null;
 
   Duration? get totalDuration {
     if (_assetsAudioPlayer.realtimePlayingInfos.hasValue) {
@@ -32,28 +33,30 @@ class AudioPlayer extends ChangeNotifier {
 
   set currentDuration(Duration? value) => _assetsAudioPlayer.seek(value ?? Duration());
   
-  String? get title => _audio?.title;
+  String? get title => currentPlayingArticle?.title;
 
-  bool isPlayingAudio(AudioModel audio) => isPlaying && _audio?.url == audio.url;
-  bool isBufferingAudio(AudioModel audio) => isBuffering && _audio?.url == audio.url;
+  bool isPlayingArticle(Article article) => isPlaying && currentPlayingArticle?.mp3Url == article.mp3Url;
+  bool isBufferingArticle(Article article) => isBuffering && currentPlayingArticle?.mp3Url == article.mp3Url;
 
   void close() {
-    _audio = null;
+    currentPlayingArticle = null;
     _assetsAudioPlayer.stop();
     notifyListeners();
   }
   
-  void openOrToggle(AudioModel audio) {
-    if (_audio != null && _audio?.url == audio.url) {
+  void openOrToggle(Article article) {
+    if (currentPlayingArticle != null && currentPlayingArticle?.mp3Url == article.mp3Url) {
       toggle();
-    } else if (audio.url != null){
-      open(audio.url!);
-      _audio = audio;
+    } else if (article.mp3Url != null){
+      open(article.mp3Url!);
+      currentPlayingArticle = article;
     }
   }
 
   void open(String url) => _assetsAudioPlayer.open(Audio.network(url));
 
   void toggle() => _assetsAudioPlayer.playOrPause();
+
+
 
 }

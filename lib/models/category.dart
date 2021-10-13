@@ -16,6 +16,8 @@ class Category {
 
   Category();
 
+  Category.withId(this.id);
+
   factory Category.fromJson(Map<String, dynamic> json) {
     if (json['description'] != null) {
       json['description'] = HtmlUnescape().convert(json['description']);
