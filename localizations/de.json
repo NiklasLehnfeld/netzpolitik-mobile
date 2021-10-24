@@ -49,5 +49,8 @@
   "support_netzpolitik_cta": "Unterstütze das netzpolitik.org Team!",
 
   "patreon_url": "https://www.patreon.com/lehnfeld",
-  "authors_support_url": "https://netzpolitik.org/spenden/?via=app"
+  "authors_support_url": "https://netzpolitik.org/spenden/?via=app",
+
+  "article_notification_channel_name": "Artikel Benachrichtigungen",
+  "article_notification_channel_description": "Benachrichtigungen über neu veröffentlichte Artikel"
 }

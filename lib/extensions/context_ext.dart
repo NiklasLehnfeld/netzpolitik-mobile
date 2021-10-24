@@ -20,6 +20,19 @@ extension ContextExteinsions on BuildContext {
       ),
   );
 
+  void open(Widget Function(BuildContext) builder, {bool isDialog = false}) => Navigator.push(
+    this,
+    PageRouteBuilder(
+      fullscreenDialog: isDialog,
+      opaque: !isDialog,
+      barrierDismissible: isDialog,
+      barrierColor: primaryColor.withOpacity(0.5),
+      pageBuilder: (context, __, _) => builder(context),
+      transitionDuration: Duration(milliseconds: TRANSITION_DURATION),
+      reverseTransitionDuration: Duration(milliseconds: TRANSITION_DURATION),
+    ),
+  );
+
   void showBottomSheet({required Widget Function(BuildContext) builder}) => showModalBottomSheet(
     isScrollControlled: true,
     backgroundColor: Colors.transparent,

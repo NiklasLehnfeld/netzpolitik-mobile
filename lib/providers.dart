@@ -1,7 +1,9 @@
+import 'package:flutter/widgets.dart';
 import 'package:netzpolitik_mobile/config/app_configuration.dart';
 import 'package:netzpolitik_mobile/config/apps.dart';
 import 'package:netzpolitik_mobile/config/rest_configuration.dart';
 import 'package:netzpolitik_mobile/logic/audio_player.dart';
+import 'package:netzpolitik_mobile/logic/notification_manager.dart';
 import 'package:netzpolitik_mobile/persistence/app_settings.dart';
 import 'package:netzpolitik_mobile/persistence/article_dao.dart';
 import 'package:netzpolitik_mobile/persistence/wp_database.dart';
@@ -13,6 +15,9 @@ import 'logic/rating_manager.dart';
 
 class Providers {
 
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: "Main Navigator");
+
+
   static List<InheritedProvider<dynamic>> get all => [
 
     //app configurations
@@ -22,6 +27,8 @@ class Providers {
 
     //singletons
     Provider<RestClient>(create: (context) => RestClient( context.read<RestConfiguration>() ), lazy: true),
+    Provider<RatingManager>(create: (context) => RatingManager(),),
+    Provider<NotificationManager>(create: (context) => NotificationManager(context)),
 
     //logic
     ChangeNotifierProvider<AudioPlayer>(create: (context) => AudioPlayer()),
@@ -31,7 +38,6 @@ class Providers {
     Provider<ArticleDAO>(create: (context) => ArticleDAO(context.read<WPDatabase>()),),
 
     ChangeNotifierProvider<AppSettings>(create: (context) => AppSettings(),),
-    Provider<RatingManager>(create: (context) => RatingManager(),)
 
   ];
 

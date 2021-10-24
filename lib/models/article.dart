@@ -81,6 +81,7 @@ class Article {
   }
 
   Map<String, dynamic> toJson() => _$ArticleToJson(this);
+  factory Article.fromNotificationJson(Map<String, dynamic> json) => _$ArticleFromJson(json);
 
   factory Article.fromDatabase(Map map) {
     final result = <String, dynamic>{};

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/logic/notification_manager.dart';
 import 'package:netzpolitik_mobile/models/article.dart';
 import 'package:netzpolitik_mobile/routes/article_detail_route.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/bookmark_button.dart';
@@ -8,6 +9,7 @@ import 'package:netzpolitik_mobile/widgets/custom_views/share_button.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/width.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_card.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/articles/article_image.dart';
+import 'package:provider/provider.dart';
 
 class ArticleListEntry extends StatelessWidget {
   final Article article;
@@ -18,11 +20,11 @@ class ArticleListEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var notificationManager = context.watch<NotificationManager>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: WPCard(
-        onTap: () => context.navigate((context) => ArticleDetailRoute(article,
-            isBig: isBig, identifier: _identifier())),
+        onTap: () => notificationManager.showNotification(context, article),
         child: _buildContent(context),
       ),
     );

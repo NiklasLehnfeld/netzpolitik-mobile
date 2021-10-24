@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:netzpolitik_mobile/config/app_configuration.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/localization/app_localizations.dart';
+import 'package:netzpolitik_mobile/logic/notification_manager.dart';
 import 'package:netzpolitik_mobile/providers.dart';
 import 'package:netzpolitik_mobile/widgets/home.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,7 @@ import 'persistence/app_settings.dart';
 
 
 void main() => runApp(WPApp());
+
 
 
 class WPApp extends StatelessWidget {
@@ -28,6 +30,7 @@ class WPApp extends StatelessWidget {
 
         return MaterialApp(
           title: appConfig.name,
+          navigatorKey: Providers.navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
               primarySwatch: Colors.blue,
