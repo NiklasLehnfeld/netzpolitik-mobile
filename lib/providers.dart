@@ -28,7 +28,7 @@ class Providers {
     //singletons
     Provider<RestClient>(create: (context) => RestClient( context.read<RestConfiguration>() ), lazy: true),
     Provider<RatingManager>(create: (context) => RatingManager(),),
-    Provider<NotificationManager>(create: (context) => NotificationManager(context)),
+    Provider<NotificationManager>(create: (context) => NotificationManager()),
 
     //logic
     ChangeNotifierProvider<AudioPlayer>(create: (context) => AudioPlayer()),

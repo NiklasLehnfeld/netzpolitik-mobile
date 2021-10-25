@@ -40,6 +40,7 @@ dependencies:
   share: ^2.0.4
   flutter_email_sender: ^5.0.2
   flutter_local_notifications: ^9.0.0
+  workmanager: ^0.4.1
 
 dev_dependencies:
   flutter_test:

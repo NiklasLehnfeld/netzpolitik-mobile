@@ -12,26 +12,22 @@ class NotificationManager {
   final FlutterLocalNotificationsPlugin _localNotificationsPlugin;
   late final NotificationAppLaunchDetails? _appLaunchDetails;
 
-  NotificationManager(BuildContext context)
+  NotificationManager()
       : _localNotificationsPlugin = FlutterLocalNotificationsPlugin() {
-
-    _localNotificationsPlugin
-        .getNotificationAppLaunchDetails()
-        .then((value) {
-          _appLaunchDetails = value;
-          if (_appLaunchDetails?.didNotificationLaunchApp ?? false) {
-            _onNotificationTapped(context, _appLaunchDetails!.payload);
-          }
-        });
+    _localNotificationsPlugin.getNotificationAppLaunchDetails().then((value) {
+      _appLaunchDetails = value;
+      if (_appLaunchDetails?.didNotificationLaunchApp ?? false) {
+        _onNotificationTapped(_appLaunchDetails!.payload);
+      }
+    });
 
     final initializationSettings = InitializationSettings(
         android: _androidSettings(), iOS: _iosSettings());
     _localNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: (payload) =>
-            _onNotificationTapped(context, payload));
+        onSelectNotification: (payload) => _onNotificationTapped(payload));
   }
 
-  void showNotification(BuildContext context, Article article) {
+  void showNotification(BuildContext? context, Article article) {
     _localNotificationsPlugin.show(
         article.id ?? 0,
         article.subTitle,
@@ -41,26 +37,29 @@ class NotificationManager {
   }
 
   bool isOpenedByNotification() {
-    return _appLaunchDetails != null && _appLaunchDetails!.didNotificationLaunchApp;
+    return _appLaunchDetails != null &&
+        _appLaunchDetails!.didNotificationLaunchApp;
   }
 
-  static void _onNotificationTapped(BuildContext context, String? payload) async {
+  static void _onNotificationTapped(String? payload) async {
     if (payload != null) {
       var article = Article.fromNotificationJson(jsonDecode(payload));
 
-      Providers.navigatorKey.currentContext!.open((context) =>
+      Providers.navigatorKey.currentContext?.open((context) =>
           ArticleDetailRoute(article,
               isBig: false, identifier: 'notification'));
     }
   }
 
   static AndroidNotificationDetails _articleChannel(
-          BuildContext context, Article article) =>
+          BuildContext? context, Article article) =>
       AndroidNotificationDetails(
         'Articles',
-        context.getString('article_notification_channel_name'),
+        context?.getString('article_notification_channel_name') ??
+            'Artikel Benachrichtigungen',
         channelDescription:
-            context.getString('article_notification_channel_description'),
+            context?.getString('article_notification_channel_description') ??
+                'Benachrichtigungen über neu veröffentlichte Artikel',
         importance: Importance.max,
         priority: Priority.high,
         styleInformation: article.title != null

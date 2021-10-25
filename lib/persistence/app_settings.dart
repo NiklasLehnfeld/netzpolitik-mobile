@@ -32,6 +32,13 @@ class AppSettings extends ChangeNotifier {
     }
   }
 
+  set lastNotifiedArticle(int? id) {
+    _sharedPreferences?.setInt('lastNotifiedArticle', id ?? 0);
+  }
+
+  int? get lastNotifiedArticle => _sharedPreferences?.getInt('lastNotifiedArticle');
+
+
 
 
 }

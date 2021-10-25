@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:netzpolitik_mobile/config/app_configuration.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
+import 'package:netzpolitik_mobile/extensions/workmanager_ext.dart';
 import 'package:netzpolitik_mobile/localization/app_localizations.dart';
-import 'package:netzpolitik_mobile/logic/notification_manager.dart';
 import 'package:netzpolitik_mobile/providers.dart';
 import 'package:netzpolitik_mobile/widgets/home.dart';
 import 'package:provider/provider.dart';
+import 'package:workmanager/workmanager.dart';
 
 import 'persistence/app_settings.dart';
 
 
-void main() => runApp(WPApp());
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Workmanager().initTasks();
+  runApp(WPApp());
+}
 
 
 
