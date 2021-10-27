@@ -9,7 +9,7 @@ class NotificationTask {
 
   // Unfortunately we cannot use BuildContext in a background task. Therefore we
   // cannot use the Providers stuff.
-  void run() async {
+  Future<bool> run() async {
     var restClient = RestClient(App.NETZPOLITIK.configuration.restConfiguration);
     var appSettings = AppSettings();
     var notificationManager = NotificationManager();

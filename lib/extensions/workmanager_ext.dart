@@ -2,11 +2,10 @@ import 'package:netzpolitik_mobile/tasks/notification-task.dart';
 import 'package:workmanager/workmanager.dart';
 
 void callbackDispatcher() {
-  Workmanager().executeTask((task, inputData) {
+  Workmanager().executeTask((task, inputData) async {
     switch (task) {
       case NotificationTask.NAME:
-        NotificationTask().run();
-        break;
+        return NotificationTask().run();
     }
     return Future.value(true);
   });
@@ -18,6 +17,7 @@ extension WorkManagerExt on Workmanager {
     await workmanager.initialize(callbackDispatcher, isInDebugMode: true);
     await workmanager.registerPeriodicTask(
         NotificationTask.NAME, NotificationTask.NAME,
-        frequency: Duration(minutes: 30));
+
+        frequency: Duration(minutes: 15));
   }
 }
