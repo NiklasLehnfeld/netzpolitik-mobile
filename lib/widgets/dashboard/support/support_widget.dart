@@ -15,7 +15,8 @@ class SupportWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Column(
         children: [
-          _buildCard(11,
+          _buildCard(
+            11,
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -32,6 +33,9 @@ class SupportWidget extends StatelessWidget {
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(context.primaryColor),
+                    ),
                     onPressed: () => openDeveloperSupportPage(context),
                     child: Text(context.getString('support_developer_cta')),
                   ),
@@ -40,20 +44,31 @@ class SupportWidget extends StatelessWidget {
                   width: 300,
                   child: OutlinedButton(
                     onPressed: () => openStore(context),
-                    child: Text(context.getString('rate_the_app')),
+                    child: Text(
+                      context.getString('rate_the_app'),
+                      style: context.body2.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
                   width: 300,
                   child: OutlinedButton(
                     onPressed: () => contactMe(context),
-                    child: Text(context.getString('contact_developer')),
+                    child: Text(
+                      context.getString('contact_developer'),
+                      style: context.body2.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-          _buildCard(9,
+          _buildCard(
+            9,
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -69,6 +84,9 @@ class SupportWidget extends StatelessWidget {
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(context.primaryColor),
+                    ),
                     onPressed: () => openAuthorsSupportPage(context),
                     child: Text(context.getString('support_netzpolitik_cta')),
                   ),
@@ -81,15 +99,14 @@ class SupportWidget extends StatelessWidget {
     );
   }
 
-  void openStore(BuildContext context) => context.read<RatingManager>().openStore();
+  void openStore(BuildContext context) =>
+      context.read<RatingManager>().openStore();
 
   void openDeveloperSupportPage(BuildContext context) =>
-    launch(context.getString('patreon_url'));
-
+      launch(context.getString('patreon_url'));
 
   void openAuthorsSupportPage(BuildContext context) =>
-    launch(context.getString('authors_support_url'));
-
+      launch(context.getString('authors_support_url'));
 
   void contactMe(BuildContext context) async {
     var email = Email(
@@ -105,7 +122,9 @@ class SupportWidget extends StatelessWidget {
           constraints: BoxConstraints.expand(),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-            child: WPCard(child: SingleChildScrollView(child: Padding(
+            child: WPCard(
+                child: SingleChildScrollView(
+                    child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: child,
             ))),
@@ -117,10 +136,11 @@ class SupportWidget extends StatelessWidget {
       RichText(
         text: TextSpan(
           text: start,
-          style: context.headline6
-              .copyWith(color: Colors.black87, fontWeight: FontWeight.normal),
+          style: context.headline6.copyWith(fontWeight: FontWeight.bold),
           children: <TextSpan>[
-            TextSpan(text: who, style: context.headline1),
+            TextSpan(
+                text: who,
+                style: context.headline1.copyWith(color: context.primaryColor)),
           ],
         ),
       );

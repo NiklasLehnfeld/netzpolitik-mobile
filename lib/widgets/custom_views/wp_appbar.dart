@@ -25,7 +25,7 @@ class _WPAppBarState extends State<WPAppBar> {
     var appConfig = context.watch<AppConfiguration>();
 
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: context.scaffoldColor,
       title: Container(
         alignment: Alignment.centerLeft,
         child: appConfig.title,

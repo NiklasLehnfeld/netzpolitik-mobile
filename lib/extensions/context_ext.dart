@@ -27,6 +27,8 @@ extension ContextExteinsions on BuildContext {
     context: this,
   );
 
+  bool get isDarkTheme => Theme.of(this).brightness == Brightness.dark;
+
 
   TextStyle get headline1 => Theme.of(this).textTheme.headline1!;
   TextStyle get headline2 => Theme.of(this).textTheme.headline2!;
@@ -47,7 +49,7 @@ extension ContextExteinsions on BuildContext {
   Color get scaffoldColor => Theme.of(this).scaffoldBackgroundColor;
   Color get iconButtonColor => Theme.of(this).primaryColor;
   Color get dialogBackground => Theme.of(this).dialogBackgroundColor;
-  Color get audioPlayerBackground => Colors.white70;
+  Color get audioPlayerBackground => Theme.of(this).scaffoldBackgroundColor;
 
   double get width => MediaQuery.of(this).size.width;
   double get height => MediaQuery.of(this).size.height;

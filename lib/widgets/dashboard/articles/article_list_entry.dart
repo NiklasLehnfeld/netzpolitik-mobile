@@ -100,14 +100,13 @@ class ArticleListEntry extends StatelessWidget {
   Widget _buildTitle(BuildContext context) => Hero(
         tag: 'article-title-${_identifier()}-${article.id}',
         child: Text(article.title ?? '',
-            style: getTitleStyle(context).copyWith(color: Colors.black)),
+            style: getTitleStyle(context)),
       );
 
   Widget _buildSubtitle(BuildContext context) => Hero(
         tag: 'article-subtitle-${_identifier()}-${article.id}',
         child: Text(article.subTitle ?? '',
-            style: getSubtitleStyle(context)
-                .copyWith(color: context.primaryColor)),
+            style: getSubtitleStyle(context)),
       );
 
   Widget _buildSummary(BuildContext context) => Hero(
@@ -116,7 +115,7 @@ class ArticleListEntry extends StatelessWidget {
           article.summaryWithoutTags ?? '',
           overflow: TextOverflow.fade,
           style: getSummaryStyle(context)
-              .copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+              .copyWith(fontWeight: FontWeight.normal),
         ),
       );
 
