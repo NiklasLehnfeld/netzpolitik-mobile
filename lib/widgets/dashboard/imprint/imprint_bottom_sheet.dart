@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/persistence/app_settings.dart';
+import 'package:netzpolitik_mobile/theme/theme_mode_provider.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/height.dart';
+import 'package:netzpolitik_mobile/widgets/custom_views/theme_mode_toggle.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/width.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_bottom_sheet.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_link_card.dart';
@@ -104,6 +106,20 @@ class _ImprintBottomSheetState extends State<ImprintBottomSheet> {
           style: context.headline1,
         ),
         _buildFontsizeWidget(context),
+        _buildThemeModeSection(context)
+      ],
+    );
+  }
+
+  Widget _buildThemeModeSection(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(context.getString('thememode_label'),
+            style: context.body1.copyWith(fontWeight: FontWeight.normal)),
+        Expanded(
+          child: Center(child: ThemeModeToggle()),
+        ),
       ],
     );
   }

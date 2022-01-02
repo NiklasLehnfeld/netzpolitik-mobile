@@ -31,6 +31,10 @@
 
   "settings_headline": "Einstellungen",
   "fontsize_label": "Schriftgröße",
+  "thememode_label": "Helligkeits-Modus",
+  "thememode_dark": "Dunkel-Modus",
+  "thememode_light": "Hell-Modus",
+  "thememode_auto": "System-Voreinstellung",
   "fonttype_label": "Schriftart",
 
   "unknown_author": "Unbekannter Author",

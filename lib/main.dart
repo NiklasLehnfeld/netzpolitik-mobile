@@ -6,6 +6,7 @@ import 'package:netzpolitik_mobile/localization/app_localizations.dart';
 import 'package:netzpolitik_mobile/providers.dart';
 import 'package:netzpolitik_mobile/theme/dark_theme.dart';
 import 'package:netzpolitik_mobile/theme/light_theme.dart';
+import 'package:netzpolitik_mobile/theme/theme_mode_provider.dart';
 import 'package:netzpolitik_mobile/widgets/home.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,7 @@ class WPApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: lightTheme(context, fontSize),
           darkTheme: darkTheme(context, fontSize),
-          themeMode: ThemeMode.system,
+          themeMode: context.themeMode,
           localizationsDelegates: [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
