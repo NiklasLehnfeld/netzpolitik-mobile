@@ -9,11 +9,9 @@ const MIN_FONT_SIZE = 14.0;
 class AppSettings extends ChangeNotifier {
 
   SharedPreferences? _sharedPreferences;
-  late List<MapEntry<String, Function>> fonts;
 
   AppSettings() {
     SharedPreferences.getInstance().then((value) => _sharedPreferences = value);
-    fonts = GoogleFonts.asMap().entries.toList();
   }
 
   int get fontSize => _sharedPreferences?.getInt('fontSize') ?? _FONT_SIZE_DEFAULT;
