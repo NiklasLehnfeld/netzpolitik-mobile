@@ -53,5 +53,11 @@
   "support_netzpolitik_cta": "Unterstütze das netzpolitik.org Team!",
 
   "patreon_url": "https://www.patreon.com/lehnfeld",
-  "authors_support_url": "https://netzpolitik.org/spenden/?via=app"
+  "authors_support_url": "https://netzpolitik.org/spenden/?via=app",
+
+  "theme_mode_dialog_title": "Der Dark-Mode ist da",
+  "theme_mode_dialog_content_1": "Ihr habt euch den Dark-Mode für die App gewünscht und hier ist er. Wenn ihr weitere Wünsche, Hinweise oder Anregungen habt, lasst es mich bitte über eine E-Mail oder eine Bewertung im Store wissen.",
+  "theme_mode_dialog_content_2": "Der Modus kann auch zu einem späteren Zeitpunkt in den Einstellungen wieder geändert werden.",
+  "store_button": "Zum Store",
+  "done": "Fertig"
 }

@@ -28,6 +28,11 @@ class ThemeModeProvider extends ChangeNotifier{
 
   bool get isLightTheme => themeMode == ThemeMode.light;
 
+  bool get shouldShowThemeDialog => _sharedPreferences?.getInt(THEME_MODE_KEY) == null;
+
+  void save() {
+    themeMode = themeMode;
+  }
 }
 
 extension ThemeModeContextExt on BuildContext {
