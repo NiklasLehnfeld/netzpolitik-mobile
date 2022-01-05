@@ -52,7 +52,7 @@
   "support_netzpolitik_quote": "\"Egal wie niedrig unser Kontostand ist, mit uns wird es keine Paywalls geben. Auch wenn wir bald eins der letzten Einhörner in der Medienlandschaft sind: Wir werden dich nie tracken, um deine Daten zu verkaufen. Diese Unabhängigkeit hat einen Preis. Deswegen sind wir in höchstem Maße auf deine Mithilfe angewiesen: {Wir sind nur so stark, wie du uns machst!}\"",
   "support_netzpolitik_cta": "Unterstütze das netzpolitik.org Team!",
 
-  "patreon_url": "https://www.patreon.com/lehnfeld",
+  "dev_support_url": "https://netzpolitik-support.lehnfeld.net",
   "authors_support_url": "https://netzpolitik.org/spenden/?via=app",
 
   "theme_mode_dialog_title": "Der Dark-Mode ist da",

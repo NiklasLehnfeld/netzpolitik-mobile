@@ -103,7 +103,7 @@ class SupportWidget extends StatelessWidget {
       context.read<RatingManager>().openStore();
 
   void openDeveloperSupportPage(BuildContext context) =>
-      launch(context.getString('patreon_url'));
+      launch(context.getString('dev_support_url'));
 
   void openAuthorsSupportPage(BuildContext context) =>
       launch(context.getString('authors_support_url'));
