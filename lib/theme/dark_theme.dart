@@ -194,11 +194,6 @@ ThemeData darkTheme(BuildContext context, double fontSize) => ThemeData(
     opacity: 1,
     size: 24,
   ),
-  accentIconTheme: IconThemeData(
-    color: Color(0xff000000),
-    opacity: 1,
-    size: 24,
-  ),
   sliderTheme: SliderThemeData(
     activeTrackColor: null,
     inactiveTrackColor: null,

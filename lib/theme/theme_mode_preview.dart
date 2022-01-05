@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
-import 'package:netzpolitik_mobile/theme/theme_mode_preview_switcher.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/height.dart';
 
 class ThemeModePreviewState {

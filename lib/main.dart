@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:netzpolitik_mobile/config/app_configuration.dart';
-import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/localization/app_localizations.dart';
 import 'package:netzpolitik_mobile/providers.dart';
 import 'package:netzpolitik_mobile/theme/dark_theme.dart';

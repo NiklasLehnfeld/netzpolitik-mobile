@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/theme/theme_mode_preview.dart';
 import 'package:netzpolitik_mobile/theme/theme_mode_provider.dart';
 import 'package:provider/provider.dart';

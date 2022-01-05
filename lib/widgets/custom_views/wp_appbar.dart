@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:netzpolitik_mobile/config/app_configuration.dart';
-import 'package:netzpolitik_mobile/dialogs/theme_mode_dialog.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/categories/articles_bottom_sheet.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/imprint/imprint_bottom_sheet.dart';

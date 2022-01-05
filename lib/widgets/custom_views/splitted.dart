@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'dart:math' as Math;
+import 'dart:math' as math;
 
 class Splitted extends StatelessWidget {
   final Widget first;
@@ -29,7 +29,7 @@ class Splitted extends StatelessWidget {
 }
 
 class SplitClipPath extends CustomClipper<Path> {
-  double degToRad(num deg) => deg * (Math.pi / 180.0);
+  double degToRad(num deg) => deg * (math.pi / 180.0);
 
   @override
   Path getClip(Size size) {
