@@ -73,7 +73,7 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
   DateTime get creation => widget.article.creationTime;
 
   Widget _buildContentArea(BuildContext context) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.symmetric(horizontal: 8.0),
         child: WPHtml((widget.article.content ?? '').withoutMp3),
       );
 
@@ -110,21 +110,20 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
         child: Text(
           widget.article.summaryWithoutTags ?? '',
           style: getSummaryStyle(context)
-              .copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+              .copyWith(fontWeight: FontWeight.normal),
         ),
       );
 
   Widget _buildTitle(BuildContext context) => Hero(
         tag: 'article-title-${widget.identifier}-${widget.article.id}',
         child: Text(widget.article.title ?? '',
-            style: getTitleStyle(context).copyWith(color: Colors.black)),
+            style: getTitleStyle(context)),
       );
 
   Widget _buildSubtitle(BuildContext context) => Hero(
         tag: 'article-subtitle-${widget.identifier}-${widget.article.id}',
         child: Text(widget.article.subTitle ?? '',
-            style: getSubtitleStyle(context)
-                .copyWith(color: context.primaryColor)),
+            style: getSubtitleStyle(context)),
       );
 
   Widget _buildImage(BuildContext context) {

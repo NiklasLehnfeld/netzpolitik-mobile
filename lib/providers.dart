@@ -6,6 +6,7 @@ import 'package:netzpolitik_mobile/persistence/app_settings.dart';
 import 'package:netzpolitik_mobile/persistence/article_dao.dart';
 import 'package:netzpolitik_mobile/persistence/wp_database.dart';
 import 'package:netzpolitik_mobile/rest/rest_client.dart';
+import 'package:netzpolitik_mobile/theme/theme_mode_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'logic/rating_manager.dart';
@@ -31,6 +32,7 @@ class Providers {
     Provider<ArticleDAO>(create: (context) => ArticleDAO(context.read<WPDatabase>()),),
 
     ChangeNotifierProvider<AppSettings>(create: (context) => AppSettings(),),
+    ChangeNotifierProvider<ThemeModeProvider>(create: (context) => ThemeModeProvider(),),
     Provider<RatingManager>(create: (context) => RatingManager(),)
 
   ];
