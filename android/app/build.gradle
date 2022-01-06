@@ -54,9 +54,9 @@ android {
     signingConfigs {
         release {
             keyAlias 'netzpolitik'
-            keyPassword System.env.NETZPOLITIK_KEY_PWD ?: ''
+            keyPassword System.env.KEY_PWD ?: ''
             storeFile file('../keystore.jks')
-            storePassword System.env.NETZPOLITIK_KEYSTORE_PWD ?: ''
+            storePassword System.env.KEYSTORE_PWD ?: ''
         }
     }
 
