@@ -5,6 +5,7 @@ import 'package:netzpolitik_mobile/widgets/custom_views/wp_card.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:io' show Platform;
 
 class SupportWidget extends StatelessWidget {
   const SupportWidget();
@@ -30,17 +31,18 @@ class SupportWidget extends StatelessWidget {
                       horizontal: 16.0, vertical: 12),
                   child: _buildQuote(context, 'support_developer_quote'),
                 ),
+                Container(height: Platform.isIOS ? 20 : 0),
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(context.primaryColor),
                     ),
-                    onPressed: () => openDeveloperSupportPage(context),
-                    child: Text(context.getString('support_developer_cta')),
+                    onPressed: () => Platform.isIOS ? openStore(context) : openDeveloperSupportPage(context),
+                    child: Text(context.getString(Platform.isIOS ? 'rate_the_app' : 'support_developer_cta')),
                   ),
                 ),
-                SizedBox(
+                Platform.isIOS ? Container() : SizedBox(
                   width: 300,
                   child: OutlinedButton(
                     onPressed: () => openStore(context),
