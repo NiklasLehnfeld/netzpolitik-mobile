@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:netzpolitik_mobile/config/app_configuration.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/categories/articles_bottom_sheet.dart';
 import 'package:netzpolitik_mobile/widgets/dashboard/imprint/imprint_bottom_sheet.dart';
 import 'package:provider/provider.dart';
+import 'package:netzpolitik_mobile/widgets/flutter_search_bar/flutter_search_bar_base.dart' as sb;
 
 class WPAppBar extends StatefulWidget implements PreferredSizeWidget {
 
@@ -19,7 +19,7 @@ class WPAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _WPAppBarState extends State<WPAppBar> {
-  SearchBar? _searchBar;
+  sb.SearchBar? _searchBar;
 
   Widget _buildAppBar(BuildContext context) {
     var appConfig = context.watch<AppConfiguration>();
@@ -61,7 +61,7 @@ class _WPAppBarState extends State<WPAppBar> {
     return _searchBar?.build(context) ?? Container();
   }
 
-  SearchBar _buildSearchBar(BuildContext context) => SearchBar(
+  sb.SearchBar _buildSearchBar(BuildContext context) => sb.SearchBar(
         setState: setState,
         buildDefaultAppBar: _buildAppBar,
         inBar: false,

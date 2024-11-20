@@ -12,30 +12,30 @@ ThemeData lightTheme(BuildContext context, double fontSize) => ThemeData(
       backgroundColor: Colors.white,
     ),
     textTheme: TextTheme(
-      headline1: baseTextStyle.copyWith(
+      headlineLarge: baseTextStyle.copyWith(
           fontSize: fontSize + 6,
           color: context.primaryColor,
           fontWeight: FontWeight.bold),
-      headline2: baseTextStyle.copyWith(
+      headlineMedium: baseTextStyle.copyWith(
           fontSize: fontSize + 5,
           color: context.primaryColor,
           fontWeight: FontWeight.bold),
-      headline3: baseTextStyle.copyWith(
+      headlineSmall: baseTextStyle.copyWith(
           fontSize: fontSize + 4,
           color: context.primaryColor,
           fontWeight: FontWeight.bold),
-      headline4: baseTextStyle.copyWith(
+      titleLarge: baseTextStyle.copyWith(
           fontSize: fontSize + 3,
           color: context.primaryColor,
           fontWeight: FontWeight.bold),
-      headline5: baseTextStyle.copyWith(
+      titleMedium: baseTextStyle.copyWith(
           fontSize: fontSize + 2,
           color: context.primaryColor,
           fontWeight: FontWeight.bold),
-      headline6: baseTextStyle.copyWith(
+      titleSmall: baseTextStyle.copyWith(
           fontSize: fontSize + 1,
           color: context.primaryColor,
           fontWeight: FontWeight.bold),
-      bodyText1: baseTextStyle.copyWith(fontSize: fontSize),
-      bodyText2: baseTextStyle.copyWith(fontSize: fontSize - 3),
+      bodyLarge: baseTextStyle.copyWith(fontSize: fontSize),
+      bodyMedium: baseTextStyle.copyWith(fontSize: fontSize - 3),
     ));

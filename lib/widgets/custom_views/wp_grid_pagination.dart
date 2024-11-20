@@ -78,33 +78,53 @@ class _WPGridPaginationState<T> extends State<WPGridPagination<T>> {
 
     var colCount = context.isUltraWide ? 2 : 1;
 
-    return StaggeredGridView.countBuilder(
+    List<Widget> children = [];
+    for(int i=0; i<_list.length; i++) {
+      children.add(
+        buildItem(i, colCount)
+      );
+    }
+
+    return StaggeredGrid.count(
         crossAxisCount: colCount,
-        itemCount: _list.length + 1,
         mainAxisSpacing: VERTICAL_LIST_ITEM_SPACING,
         crossAxisSpacing: HORIZONTAL_LIST_ITEM_SPACING,
-        itemBuilder: (BuildContext context, int position) {
-          if (position < _list.length) {
-            return widget.itemBuilder(position, _list[position], false);
-          } else if (position == _list.length && !_isEndOfList) {
-            fetchMore();
-            return defaultLoading();
-          }
-          return Container();
-        },
-        staggeredTileBuilder: (int index) {
-
-          if (widget.enableSingleTop && index == 0 && context.isWide) {
-            return StaggeredTile.fit(colCount);
-          }
-
-          if (index == _list.length) {
-            return StaggeredTile.extent(colCount, 40);
-          }
-
-          return StaggeredTile.fit(1);
-        }
+        children: children,
     );
+  }
+
+  Widget buildItem(int index, int colCount) {
+
+    Widget item = Container();
+
+    if (index < _list.length) {
+      item = widget.itemBuilder(index, _list[index], false);
+    } else if (index == _list.length && !_isEndOfList) {
+      fetchMore();
+      item = defaultLoading();
+    }
+
+    if (widget.enableSingleTop && index == 0 && context.isWide) {
+      return StaggeredGridTile.fit(
+          crossAxisCellCount: colCount,
+          child: item,
+      );
+    }
+
+    if (index == _list.length) {
+      return StaggeredGridTile.extent(
+          crossAxisCellCount: colCount,
+          mainAxisExtent: 40,
+          child: item
+      );
+    }
+
+    return StaggeredGridTile.fit(
+        crossAxisCellCount: 1,
+        child: item,
+    );
+
+
   }
 
   Widget defaultLoading() {

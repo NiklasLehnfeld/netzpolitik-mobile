@@ -30,20 +30,20 @@ extension ContextExteinsions on BuildContext {
   bool get isDarkTheme => Theme.of(this).brightness == Brightness.dark;
 
 
-  TextStyle get headline1 => Theme.of(this).textTheme.headline1!;
-  TextStyle get headline2 => Theme.of(this).textTheme.headline2!;
-  TextStyle get headline3 => Theme.of(this).textTheme.headline3!;
-  TextStyle get headline4 => Theme.of(this).textTheme.headline4!;
-  TextStyle get headline5 => Theme.of(this).textTheme.headline5!;
-  TextStyle get headline6 => Theme.of(this).textTheme.headline6!;
+  TextStyle get headline1 => Theme.of(this).textTheme.headlineLarge!;
+  TextStyle get headline2 => Theme.of(this).textTheme.headlineMedium!;
+  TextStyle get headline3 => Theme.of(this).textTheme.headlineSmall!;
+  TextStyle get headline4 => Theme.of(this).textTheme.titleLarge!;
+  TextStyle get headline5 => Theme.of(this).textTheme.titleMedium!;
+  TextStyle get headline6 => Theme.of(this).textTheme.titleSmall!;
 
-  TextStyle get body1 => Theme.of(this).textTheme.bodyText1!;
-  TextStyle get body2 => Theme.of(this).textTheme.bodyText2!;
-  TextStyle get quote => Theme.of(this).textTheme.bodyText2!.copyWith(
+  TextStyle get body1 => Theme.of(this).textTheme.bodyLarge!;
+  TextStyle get body2 => Theme.of(this).textTheme.bodyMedium!;
+  TextStyle get quote => Theme.of(this).textTheme.bodySmall!.copyWith(
     fontStyle: FontStyle.italic
   );
 
-  TextStyle get caption => Theme.of(this).textTheme.caption!;
+  TextStyle get caption => Theme.of(this).textTheme.displaySmall!;
 
   Color get primaryColor => Theme.of(this).primaryColor;
   Color get scaffoldColor => Theme.of(this).scaffoldBackgroundColor;
