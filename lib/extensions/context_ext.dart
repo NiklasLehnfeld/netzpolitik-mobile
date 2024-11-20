@@ -45,9 +45,9 @@ extension ContextExteinsions on BuildContext {
 
   TextStyle get caption => Theme.of(this).textTheme.labelSmall!;
 
-  Color get primaryColor => Theme.of(this).primaryColor;
+  Color get primaryColor => Theme.of(this).colorScheme.primary;
   Color get scaffoldColor => Theme.of(this).scaffoldBackgroundColor;
-  Color get iconButtonColor => Theme.of(this).primaryColor;
+  Color get iconButtonColor => Theme.of(this).colorScheme.primary  ;
   Color get dialogBackground => Theme.of(this).dialogBackgroundColor;
   Color get audioPlayerBackground => Theme.of(this).scaffoldBackgroundColor;
 

@@ -88,6 +88,11 @@ ThemeData darkTheme(BuildContext context, double fontSize) {
       color: Colors.white,
       size: 24,
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.white, // Text color
+      ),
+    ),
     buttonTheme: ButtonThemeData(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
       buttonColor: Color(0xff1e88e5),
