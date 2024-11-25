@@ -25,7 +25,7 @@ class Providers {
     Provider<RestClient>(create: (context) => RestClient( context.read<RestConfiguration>() ), lazy: true),
 
     //logic
-    ChangeNotifierProvider<AudioPlayer>(create: (context) => AudioPlayer()),
+    // ChangeNotifierProvider<AudioPlayer>(create: (context) => AudioPlayer()),
 
     //persistence
     Provider<WPDatabase>(create: (context) => WPDatabase()),
