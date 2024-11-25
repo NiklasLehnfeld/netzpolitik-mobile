@@ -20,7 +20,7 @@ jobs:
     container: ghcr.io/cirruslabs/flutter:3.24.5
     steps:
       - uses: actions/checkout@v4
-      - uses: NiklasLehnfeld/flutter-android-build-action@v1
+      - uses: NiklasLehnfeld/flutter-android-build-action@v2
         id: android-build
         with:
           release: true
