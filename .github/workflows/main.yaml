@@ -51,7 +51,7 @@ jobs:
         with:
           name: release-aab
       - id: version
-        uses: NiklasLehnfeld/flutter-version-number-action@v1
+        uses: NiklasLehnfeld/flutter-version-number-action@v2
       - uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
