@@ -46,14 +46,13 @@ class ArticleImage extends StatelessWidget {
                 ),
                 Visibility(
                   visible: showAudioPlayer && article.hasMp3,
-                  // child: WPAudioPlayer(
-                  //   article: article,
-                  //   alwaysVisible: true,
-                  //   showTitleSection: false,
-                  //   backgroundAlpha: 200,
-                  //   showCross: false,
-                  // ),
-                  child: Container(),
+                  child: WPAudioPlayer(
+                    article: article,
+                    alwaysVisible: true,
+                    showTitleSection: false,
+                    backgroundAlpha: 200,
+                    showCross: false,
+                  ),
                 )
               ],
             ),

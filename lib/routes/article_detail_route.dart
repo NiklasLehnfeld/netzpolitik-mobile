@@ -136,11 +136,11 @@ class _ArticleDetailRouteState extends State<ArticleDetailRoute> {
                 Divider(
                   height: 1,
                 ),
-                // WPAudioPlayer(
-                //   article: widget.article,
-                //   alwaysVisible: true,
-                //   showCross: false,
-                // ),
+                WPAudioPlayer(
+                  article: widget.article,
+                  alwaysVisible: true,
+                  showCross: false,
+                ),
               ],
             )),
         ArticleImage(

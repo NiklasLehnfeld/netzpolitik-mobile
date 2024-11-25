@@ -24,7 +24,7 @@ class _WPBottomNavigationState extends State<WPBottomNavigation> {
         Column(
           children: [
             _buildNavigation(),
-            // WPAudioPlayer()
+            WPAudioPlayer()
           ],
         ),
       ],
