@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:netzpolitik_mobile/logic/rating_manager.dart';
+import 'package:netzpolitik_mobile/utils/url_launcher.dart';
 import 'package:netzpolitik_mobile/widgets/custom_views/wp_card.dart';
 import 'package:netzpolitik_mobile/extensions/context_ext.dart';
 import 'package:provider/provider.dart';
@@ -111,11 +112,7 @@ class SupportWidget extends StatelessWidget {
       launch(context.getString('authors_support_url'));
 
   void contactMe(BuildContext context) async {
-    var email = Email(
-      recipients: ['niklas@lehnfeld.net'],
-    );
-
-    await FlutterEmailSender.send(email);
+    UrlLauncher.launch('mailto:niklas@lehnfeld.net');
   }
 
   Widget _buildCard(int flex, Widget child) => Expanded(
