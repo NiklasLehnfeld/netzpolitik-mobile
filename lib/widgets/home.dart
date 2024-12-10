@@ -25,10 +25,6 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    var themeModeProvider = context.read<ThemeModeProvider>();
-    if (themeModeProvider.shouldShowThemeDialog) {
-      Future.delayed(Duration.zero, () => ThemeModeDialog.show(context));
-    }
     super.initState();
   }
 
