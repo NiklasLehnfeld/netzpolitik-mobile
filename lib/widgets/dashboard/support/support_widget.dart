@@ -71,7 +71,7 @@ class SupportWidget extends StatelessWidget {
             ),
           ),
           _buildCard(
-            9,
+            11,
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -122,11 +122,10 @@ class SupportWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
             child: WPCard(
-                child: SingleChildScrollView(
-                    child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: child,
-            ))),
+                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: child,
+                            )),
           ),
         ),
       );
