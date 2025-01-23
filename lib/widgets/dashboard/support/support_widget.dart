@@ -33,7 +33,7 @@ class SupportWidget extends StatelessWidget {
                   child: _buildQuote(context, 'support_developer_quote'),
                 ),
                 Container(height: Platform.isIOS ? 20 : 0),
-                SizedBox(
+                Platform.isIOS ? Container() : SizedBox(
                   width: 300,
                   child: ElevatedButton(
                     style: ButtonStyle(
@@ -90,8 +90,8 @@ class SupportWidget extends StatelessWidget {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(context.primaryColor),
                     ),
-                    onPressed: () => openAuthorsSupportPage(context),
-                    child: Text(context.getString('support_netzpolitik_cta')),
+                    onPressed: () => Platform.isIOS ? openAuthorsLandingPage(context) : openAuthorsSupportPage(context),
+                    child: Text(context.getString(Platform.isIOS ? 'visit_netzpolitik_cta' : 'support_netzpolitik_cta')),
                   ),
                 )
               ],
@@ -110,6 +110,9 @@ class SupportWidget extends StatelessWidget {
 
   void openAuthorsSupportPage(BuildContext context) =>
       launch(context.getString('authors_support_url'));
+
+  void openAuthorsLandingPage(BuildContext context) =>
+      launch(context.getString('authors_landing_url'));
 
   void contactMe(BuildContext context) async {
     UrlLauncher.launch('mailto:niklas@lehnfeld.net');
