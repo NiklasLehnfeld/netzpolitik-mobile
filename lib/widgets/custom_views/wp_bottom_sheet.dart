@@ -56,6 +56,7 @@ class WPBottomSheet extends StatelessWidget {
   Widget _buildFixedHeightContent(BuildContext context) {
     return Container(
       height: fixedHeight,
+      width: context.width,
       padding: EdgeInsets.symmetric(horizontal: HORIZONTAL_PADDING),
       child: Column(
         children: [

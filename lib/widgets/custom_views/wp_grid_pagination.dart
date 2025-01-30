@@ -60,6 +60,16 @@ class _WPGridPaginationState<T> extends State<WPGridPagination<T>> {
     }
   }
 
+  Widget buildItem(BuildContext context, int position) {
+    if (position < _list.length) {
+      return widget.itemBuilder(position, _list[position], false);
+    } else if (position == _list.length && !_isEndOfList) {
+      fetchMore();
+      return defaultLoading();
+    }
+    return Container();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -83,17 +93,7 @@ class _WPGridPaginationState<T> extends State<WPGridPagination<T>> {
       itemCount: _list.length + 1,
       mainAxisSpacing: VERTICAL_LIST_ITEM_SPACING,
       crossAxisSpacing: HORIZONTAL_LIST_ITEM_SPACING,
-      itemBuilder: (BuildContext context, int position) {
-        if (position < _list.length) {
-          return widget.itemBuilder(position, _list[position], false);
-        } else if (position == _list.length && !_isEndOfList) {
-          fetchMore();
-          return defaultLoading();
-        }
-        return Container();
-      },
-
-
+      itemBuilder: buildItem,
     );
   }
 

@@ -29,7 +29,7 @@ class ArticleListEntry extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
-    if (context.isWide) {
+    if (context.isWide && isBig) {
       return _buildHorizontalContent(context);
     } else {
       return _buildVerticalContent(context);
@@ -85,15 +85,11 @@ class ArticleListEntry extends StatelessWidget {
         ],
       );
 
-  TextStyle getTitleStyle(BuildContext context) =>
-      isBig ? context.headline1 : context.headline5;
+  TextStyle getTitleStyle(BuildContext context) => context.headline5;
 
-  TextStyle getSubtitleStyle(BuildContext context) => isBig
-      ? context.body1
-      : context.body2.copyWith(fontWeight: FontWeight.bold);
+  TextStyle getSubtitleStyle(BuildContext context) => context.body2.copyWith(fontWeight: FontWeight.bold);
 
-  TextStyle getSummaryStyle(BuildContext context) =>
-      isBig ? context.headline4 : context.body2;
+  TextStyle getSummaryStyle(BuildContext context) => context.body2;
 
   TextStyle getCaptionStyle(BuildContext context) => context.caption;
 
