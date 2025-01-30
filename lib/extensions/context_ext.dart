@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netzpolitik_mobile/localization/app_localizations.dart';
 
@@ -9,15 +10,11 @@ extension ContextExteinsions on BuildContext {
   String getString(String key) => AppLocalizations.of(this)?.translate(key) ?? key;
 
   void navigate(Widget Function(BuildContext) builder, {bool isDialog = false}) => Navigator.of(this).push(
-      PageRouteBuilder(
-        fullscreenDialog: isDialog,
-        opaque: !isDialog,
-        barrierDismissible: isDialog,
-        barrierColor: primaryColor.withOpacity(0.5),
-        pageBuilder: (context, __, _) => builder(context),
-        transitionDuration: Duration(milliseconds: TRANSITION_DURATION),
-        reverseTransitionDuration: Duration(milliseconds: TRANSITION_DURATION),
-      ),
+    CupertinoPageRoute(
+      builder: (context) => builder(context),
+      fullscreenDialog: isDialog,
+      barrierDismissible: isDialog,
+    ),
   );
 
   void showBottomSheet({required Widget Function(BuildContext) builder}) => showModalBottomSheet(

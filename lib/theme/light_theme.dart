@@ -5,6 +5,12 @@ var baseTextStyle = TextStyle();
 
 ThemeData lightTheme(BuildContext context, double fontSize) =>
     ThemeData(
+      pageTransitionsTheme: PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        },
+      ),
       primarySwatch: Colors.blue,
       colorScheme: ColorScheme(
         brightness: Brightness.light,

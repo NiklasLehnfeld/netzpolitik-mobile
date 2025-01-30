@@ -6,6 +6,12 @@ final baseTextStyle = TextStyle(
 
 ThemeData darkTheme(BuildContext context, double fontSize) {
   return ThemeData(
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      },
+    ),
     colorScheme: ColorScheme.dark(
       primary: Color(0xff2196f3),
       secondary: Color(0xff64ffda),
